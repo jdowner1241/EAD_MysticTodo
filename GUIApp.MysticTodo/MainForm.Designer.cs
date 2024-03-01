@@ -35,6 +35,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LDescription = new System.Windows.Forms.Label();
             this.CbPerodicAlarm = new System.Windows.Forms.ComboBox();
+            this.timeframeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mysticToDoDBEntitiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DtpAlarmDate = new System.Windows.Forms.DateTimePicker();
             this.CbPeriodicAlarm = new System.Windows.Forms.CheckBox();
@@ -51,7 +52,6 @@
             this.TpAlarm = new System.Windows.Forms.TabPage();
             this.TpStopWatch = new System.Windows.Forms.TabPage();
             this.TpTimer = new System.Windows.Forms.TabPage();
-            this.timeframeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MsFileMenu = new System.Windows.Forms.MenuStrip();
             this.TsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.TpmiEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,12 +59,12 @@
             this.TpmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.TcMainTabControl.SuspendLayout();
             this.TpReminder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScReminderPage)).BeginInit();
             this.ScReminderPage.Panel1.SuspendLayout();
             this.ScReminderPage.Panel2.SuspendLayout();
             this.ScReminderPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).BeginInit();
             this.MsFileMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,9 +147,6 @@
             // CbPerodicAlarm
             // 
             this.CbPerodicAlarm.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.CbPerodicAlarm.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.timeframeBindingSource, "Timeframe_Name", true));
-            this.CbPerodicAlarm.DataSource = this.mysticToDoDBEntitiesBindingSource;
-            this.CbPerodicAlarm.DisplayMember = "Timeframes";
             this.CbPerodicAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CbPerodicAlarm.FormattingEnabled = true;
             this.CbPerodicAlarm.Location = new System.Drawing.Point(431, 284);
@@ -157,11 +154,6 @@
             this.CbPerodicAlarm.Name = "CbPerodicAlarm";
             this.CbPerodicAlarm.Size = new System.Drawing.Size(380, 30);
             this.CbPerodicAlarm.TabIndex = 6;
-            this.CbPerodicAlarm.ValueMember = "Timeframes";
-            // 
-            // mysticToDoDBEntitiesBindingSource
-            // 
-            this.mysticToDoDBEntitiesBindingSource.DataSource = typeof(GUIApp.MysticTodo.Data.MysticToDo_DBEntities);
             // 
             // DtpAlarmDate
             // 
@@ -274,7 +266,6 @@
             // 
             // listbReminderList
             // 
-            this.listbReminderList.DataSource = this.mysticToDoDBEntitiesBindingSource;
             this.listbReminderList.FormattingEnabled = true;
             this.listbReminderList.ItemHeight = 22;
             this.listbReminderList.Location = new System.Drawing.Point(46, 86);
@@ -340,10 +331,6 @@
             this.TpTimer.Text = "Timer";
             this.TpTimer.UseVisualStyleBackColor = true;
             // 
-            // timeframeBindingSource
-            // 
-            this.timeframeBindingSource.DataSource = typeof(GUIApp.MysticTodo.Data.Timeframe);
-            // 
             // MsFileMenu
             // 
             this.MsFileMenu.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -399,6 +386,7 @@
             this.TcMainTabControl.ResumeLayout(false);
             this.TpReminder.ResumeLayout(false);
             this.TpReminder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).EndInit();
             this.ScReminderPage.Panel1.ResumeLayout(false);
             this.ScReminderPage.Panel1.PerformLayout();
@@ -406,7 +394,6 @@
             this.ScReminderPage.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScReminderPage)).EndInit();
             this.ScReminderPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).EndInit();
             this.MsFileMenu.ResumeLayout(false);
             this.MsFileMenu.PerformLayout();
             this.ResumeLayout(false);
