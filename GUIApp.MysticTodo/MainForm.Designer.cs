@@ -35,10 +35,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LDescription = new System.Windows.Forms.Label();
             this.CbPerodicAlarm = new System.Windows.Forms.ComboBox();
-            this.timeframeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mysticToDoDBEntitiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DtpAlarmDate = new System.Windows.Forms.DateTimePicker();
-            this.CbPeriodicAlarm = new System.Windows.Forms.CheckBox();
+            this.CheckbPeriodicAlarm = new System.Windows.Forms.CheckBox();
             this.CebSetAlarm = new System.Windows.Forms.CheckBox();
             this.LbTitleReminder = new System.Windows.Forms.Label();
             this.TbReminder = new System.Windows.Forms.TextBox();
@@ -52,6 +50,8 @@
             this.TpAlarm = new System.Windows.Forms.TabPage();
             this.TpStopWatch = new System.Windows.Forms.TabPage();
             this.TpTimer = new System.Windows.Forms.TabPage();
+            this.timeframeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mysticToDoDBEntitiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MsFileMenu = new System.Windows.Forms.MenuStrip();
             this.TsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.TpmiEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,12 +59,12 @@
             this.TpmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.TcMainTabControl.SuspendLayout();
             this.TpReminder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScReminderPage)).BeginInit();
             this.ScReminderPage.Panel1.SuspendLayout();
             this.ScReminderPage.Panel2.SuspendLayout();
             this.ScReminderPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).BeginInit();
             this.MsFileMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +94,7 @@
             this.TpReminder.Controls.Add(this.LDescription);
             this.TpReminder.Controls.Add(this.CbPerodicAlarm);
             this.TpReminder.Controls.Add(this.DtpAlarmDate);
-            this.TpReminder.Controls.Add(this.CbPeriodicAlarm);
+            this.TpReminder.Controls.Add(this.CheckbPeriodicAlarm);
             this.TpReminder.Controls.Add(this.CebSetAlarm);
             this.TpReminder.Controls.Add(this.LbTitleReminder);
             this.TpReminder.Controls.Add(this.TbReminder);
@@ -163,17 +163,17 @@
             this.DtpAlarmDate.Size = new System.Drawing.Size(380, 29);
             this.DtpAlarmDate.TabIndex = 5;
             // 
-            // CbPeriodicAlarm
+            // CheckbPeriodicAlarm
             // 
-            this.CbPeriodicAlarm.AutoSize = true;
-            this.CbPeriodicAlarm.BackColor = System.Drawing.Color.Silver;
-            this.CbPeriodicAlarm.Location = new System.Drawing.Point(191, 284);
-            this.CbPeriodicAlarm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.CbPeriodicAlarm.Name = "CbPeriodicAlarm";
-            this.CbPeriodicAlarm.Size = new System.Drawing.Size(175, 26);
-            this.CbPeriodicAlarm.TabIndex = 4;
-            this.CbPeriodicAlarm.Text = "Periodic Alarm";
-            this.CbPeriodicAlarm.UseVisualStyleBackColor = false;
+            this.CheckbPeriodicAlarm.AutoSize = true;
+            this.CheckbPeriodicAlarm.BackColor = System.Drawing.Color.Silver;
+            this.CheckbPeriodicAlarm.Location = new System.Drawing.Point(191, 284);
+            this.CheckbPeriodicAlarm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CheckbPeriodicAlarm.Name = "CheckbPeriodicAlarm";
+            this.CheckbPeriodicAlarm.Size = new System.Drawing.Size(175, 26);
+            this.CheckbPeriodicAlarm.TabIndex = 4;
+            this.CheckbPeriodicAlarm.Text = "Periodic Alarm";
+            this.CheckbPeriodicAlarm.UseVisualStyleBackColor = false;
             // 
             // CebSetAlarm
             // 
@@ -383,17 +383,18 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Text = "MysticToDo";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.TcMainTabControl.ResumeLayout(false);
             this.TpReminder.ResumeLayout(false);
             this.TpReminder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).EndInit();
             this.ScReminderPage.Panel1.ResumeLayout(false);
             this.ScReminderPage.Panel1.PerformLayout();
             this.ScReminderPage.Panel2.ResumeLayout(false);
             this.ScReminderPage.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScReminderPage)).EndInit();
             this.ScReminderPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).EndInit();
             this.MsFileMenu.ResumeLayout(false);
             this.MsFileMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -418,7 +419,7 @@
         private System.Windows.Forms.Label LbTitleReminder;
         private System.Windows.Forms.TextBox TbReminder;
         private System.Windows.Forms.Label LbNewReminder;
-        private System.Windows.Forms.CheckBox CbPeriodicAlarm;
+        private System.Windows.Forms.CheckBox CheckbPeriodicAlarm;
         private System.Windows.Forms.CheckBox CebSetAlarm;
         private System.Windows.Forms.ComboBox CbPerodicAlarm;
         private System.Windows.Forms.DateTimePicker DtpAlarmDate;

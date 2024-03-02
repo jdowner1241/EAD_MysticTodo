@@ -55,6 +55,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\MysticToDoReminderDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MysticToDoReminderDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MysticToDoReminderDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MysticToDoReminderDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MysticToDoReminderDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Reminder.cs">
+      <DependentUpon>MysticToDoReminderDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Timeframe.cs">
+      <DependentUpon>MysticToDoReminderDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +96,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="Data\MysticToDoReminderDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MysticToDoReminderDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\MysticToDoReminderDb.edmx.diagram">
+      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GUIApp.MysticTodo.Data.MysticToDo_DBEntities.datasource" />
     <None Include="Properties\DataSources\GUIApp.MysticTodo.Data.Reminder.datasource" />
@@ -96,6 +124,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\MysticToDoReminderDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+      <LastGenOutput>MysticToDoReminderDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\MysticToDoReminderDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+      <LastGenOutput>MysticToDoReminderDb.cs</LastGenOutput>
+    </Content>
     <Content Include="Data\Script\01_CreateTables.sql" />
     <Content Include="Data\Script\02_AddTabledata.sql" />
     <Content Include="Data\Script\03_ViewTableData.sql" />
