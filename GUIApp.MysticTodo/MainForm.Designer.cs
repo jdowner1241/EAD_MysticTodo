@@ -544,7 +544,7 @@
         private System.Windows.Forms.BindingSource timeframeBindingSource;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource reminderBindingSource;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn reminderHasAlarmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn reminderHadAlarmDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn reminderReminderActiveDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reminderDateTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reminderNextPeriodicDateTimeDataGridViewTextBoxColumn;
