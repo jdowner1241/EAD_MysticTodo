@@ -13,10 +13,10 @@ namespace GUIApp.MysticTodo.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MysticToDo_DBEntities1 : DbContext
+    public partial class MysticToDoEntities1 : DbContext
     {
-        public MysticToDo_DBEntities1()
-            : base("name=MysticToDo_DBEntities1")
+        public MysticToDoEntities1()
+            : base("name=MysticToDoEntities1")
         {
         }
     

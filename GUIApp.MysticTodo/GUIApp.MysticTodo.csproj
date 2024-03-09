@@ -65,10 +65,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MysticToDoReminderDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\MysticToDoReminderDb.Designer.cs">
+    <Compile Include="Data\MysticToDoReminderDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+      <DependentUpon>MysticToDoReminderDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\Reminder.cs">
       <DependentUpon>MysticToDoReminderDb.tt</DependentUpon>
@@ -96,17 +96,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Data\MysticToDoReminderDb.edmx">
+    <EntityDeploy Include="Data\MysticToDoReminderDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MysticToDoReminderDb.Designer.cs</LastGenOutput>
+      <LastGenOutput>MysticToDoReminderDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\MysticToDoReminderDb.edmx.diagram">
-      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+    <None Include="Data\MysticToDoReminderDB.edmx.diagram">
+      <DependentUpon>MysticToDoReminderDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\GUIApp.MysticTodo.Data.MysticToDo_DBEntities.datasource" />
-    <None Include="Properties\DataSources\GUIApp.MysticTodo.Data.Reminder.datasource" />
-    <None Include="Properties\DataSources\GUIApp.MysticTodo.Data.Timeframe.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,17 +123,20 @@
   <ItemGroup>
     <Content Include="Data\MysticToDoReminderDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+      <DependentUpon>MysticToDoReminderDB.edmx</DependentUpon>
       <LastGenOutput>MysticToDoReminderDb.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Data\MysticToDoReminderDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MysticToDoReminderDb.edmx</DependentUpon>
+      <DependentUpon>MysticToDoReminderDB.edmx</DependentUpon>
       <LastGenOutput>MysticToDoReminderDb.cs</LastGenOutput>
     </Content>
     <Content Include="Data\Script\01_CreateTables.sql" />
     <Content Include="Data\Script\02_AddTabledata.sql" />
     <Content Include="Data\Script\03_ViewTableData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

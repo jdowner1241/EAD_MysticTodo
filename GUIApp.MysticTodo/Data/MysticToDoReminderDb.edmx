@@ -13,13 +13,14 @@
           <Property Name="Reminder_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Reminder_Description" Type="nvarchar" MaxLength="500" />
           <Property Name="Reminder_IsComplete" Type="bit" />
-          <Property Name="Reminder_HadAlarm" Type="bit" />
-          <Property Name="Reminder_ReminderActive" Type="bit" />
-          <Property Name="Reminder_DateTime" Type="datetime" />
+          <Property Name="Reminder_HasAlarm" Type="bit" />
+          <Property Name="Reminder_Date" Type="date" />
+          <Property Name="Reminder_Time" Type="time" Precision="7" />
           <Property Name="Reminder_IsPeriodic" Type="bit" />
           <Property Name="Reminder_PeriodicActive" Type="bit" />
           <Property Name="Reminder_PeriodicIntervalLabel" Type="int" />
-          <Property Name="Reminder_NextPeriodicDateTime" Type="datetime" />
+          <Property Name="Reminder_NextPeriodicDate" Type="date" />
+          <Property Name="Reminder_NextPeriodicTime" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="Timeframe">
           <Key>
@@ -62,13 +63,14 @@
           <Property Name="Reminder_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Reminder_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Reminder_IsComplete" Type="Boolean" />
-          <Property Name="Reminder_HadAlarm" Type="Boolean" />
-          <Property Name="Reminder_ReminderActive" Type="Boolean" />
-          <Property Name="Reminder_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Reminder_HasAlarm" Type="Boolean" />
+          <Property Name="Reminder_Date" Type="DateTime" Precision="0" />
+          <Property Name="Reminder_Time" Type="Time" Precision="7" />
           <Property Name="Reminder_IsPeriodic" Type="Boolean" />
           <Property Name="Reminder_PeriodicActive" Type="Boolean" />
           <Property Name="Reminder_PeriodicIntervalLabel" Type="Int32" />
-          <Property Name="Reminder_NextPeriodicDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Reminder_NextPeriodicDate" Type="DateTime" Precision="0" />
+          <Property Name="Reminder_NextPeriodicTime" Type="Time" Precision="7" />
           <NavigationProperty Name="Timeframe" Relationship="Self.FK__Reminder__Remind__4CA06362" FromRole="Reminder" ToRole="Timeframe" />
         </EntityType>
         <EntityType Name="Timeframe">
@@ -92,7 +94,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MysticToDo_DBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MysticToDoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Reminders" EntityType="Self.Reminder" />
           <EntitySet Name="Timeframes" EntityType="Self.Timeframe" />
           <AssociationSet Name="FK__Reminder__Remind__4CA06362" Association="Self.FK__Reminder__Remind__4CA06362">
@@ -105,7 +107,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MysticToDo_DBModelStoreContainer" CdmEntityContainer="MysticToDo_DBEntities1">
+        <EntityContainerMapping StorageEntityContainer="MysticToDo_DBModelStoreContainer" CdmEntityContainer="MysticToDoEntities1">
           <EntitySetMapping Name="Reminders">
             <EntityTypeMapping TypeName="MysticToDo_DBModel.Reminder">
               <MappingFragment StoreEntitySet="Reminder">
@@ -113,13 +115,14 @@
                 <ScalarProperty Name="Reminder_Name" ColumnName="Reminder_Name" />
                 <ScalarProperty Name="Reminder_Description" ColumnName="Reminder_Description" />
                 <ScalarProperty Name="Reminder_IsComplete" ColumnName="Reminder_IsComplete" />
-                <ScalarProperty Name="Reminder_HadAlarm" ColumnName="Reminder_HadAlarm" />
-                <ScalarProperty Name="Reminder_ReminderActive" ColumnName="Reminder_ReminderActive" />
-                <ScalarProperty Name="Reminder_DateTime" ColumnName="Reminder_DateTime" />
+                <ScalarProperty Name="Reminder_HasAlarm" ColumnName="Reminder_HasAlarm" />
+                <ScalarProperty Name="Reminder_Date" ColumnName="Reminder_Date" />
+                <ScalarProperty Name="Reminder_Time" ColumnName="Reminder_Time" />
                 <ScalarProperty Name="Reminder_IsPeriodic" ColumnName="Reminder_IsPeriodic" />
                 <ScalarProperty Name="Reminder_PeriodicActive" ColumnName="Reminder_PeriodicActive" />
                 <ScalarProperty Name="Reminder_PeriodicIntervalLabel" ColumnName="Reminder_PeriodicIntervalLabel" />
-                <ScalarProperty Name="Reminder_NextPeriodicDateTime" ColumnName="Reminder_NextPeriodicDateTime" />
+                <ScalarProperty Name="Reminder_NextPeriodicDate" ColumnName="Reminder_NextPeriodicDate" />
+                <ScalarProperty Name="Reminder_NextPeriodicTime" ColumnName="Reminder_NextPeriodicTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
