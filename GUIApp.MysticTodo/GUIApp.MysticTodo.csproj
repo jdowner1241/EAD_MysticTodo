@@ -134,6 +134,7 @@
     <Content Include="Data\Script\01_CreateTables.sql" />
     <Content Include="Data\Script\02_AddTabledata.sql" />
     <Content Include="Data\Script\03_ViewTableData.sql" />
+    <Content Include="Data\Script\04_ReCreateColumnesForReminderTable.sql" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
