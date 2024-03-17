@@ -52,6 +52,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -220,6 +222,16 @@
     <Content Include="Data\Script\02_AddTabledata.sql" />
     <Content Include="Data\Script\03_ViewTableData.sql" />
     <Content Include="Data\Script\04_ReCreateColumnesForReminderTable.sql" />
+    <Content Include="Data\WebMysticToDo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebMysticToDo.edmx</DependentUpon>
+      <LastGenOutput>WebMysticToDo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\WebMysticToDo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebMysticToDo.edmx</DependentUpon>
+      <LastGenOutput>WebMysticToDo.cs</LastGenOutput>
+    </Content>
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -252,6 +264,13 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Account\Web.config" />
+    <EntityDeploy Include="Data\WebMysticToDo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebMysticToDo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\WebMysticToDo.edmx.diagram">
+      <DependentUpon>WebMysticToDo.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -410,6 +429,27 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Reminder.cs">
+      <DependentUpon>WebMysticToDo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Timeframe.cs">
+      <DependentUpon>WebMysticToDo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WebMysticToDo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebMysticToDo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WebMysticToDo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebMysticToDo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\WebMysticToDo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebMysticToDo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
