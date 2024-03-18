@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -113,6 +114,8 @@ namespace GUIApp.MysticTodo
 
             //Store variable data in the database using an object 
             Reminder addReminder = new Reminder();
+            Timeframe setTimeframe = new Timeframe();
+
             addReminder.Reminder_IsComplete = false;
             addReminder.Reminder_Name = reminderName;
             addReminder.Reminder_Description = reminderDescription;
@@ -129,12 +132,41 @@ namespace GUIApp.MysticTodo
                 if (addReminder.Reminder_IsPeriodic == true ) 
                 {
                     addReminder.Reminder_PeriodicActive = true;
-                    addReminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm;
+                    addReminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm + 1;
+                   
 
 
-                    //Timeframe timeFrameSelection = new Timeframe();
-                    //timeFrameSelection.Timeframe_Key = reminderPerodicAlarm;
-                    //addReminder.Reminder_PeriodicIntervalLabel;
+                    var frequency = mysticToDoEntities1.Timeframes.Select(q => new { tkey = q.Timeframe_Key, tName = q.Timeframe_Name });
+                    dataGridView1.ReadOnly = false;
+                    dataGridView1.Columns[8].DataPropertyName = "Frequency";
+                    dataGridView1.Columns[8].HeaderText = "Changed";
+
+
+                    switch (addReminder.Reminder_PeriodicIntervalLabel)
+                    {
+                        case 1:
+                            addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(1));
+                            addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            //dataGridView1.Columns[8].DataPropertyName = setTimeframe.Timeframe_Name;
+
+
+                            break;
+                        case 2:
+                            addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(7));
+                            addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            break;
+                        case 3:
+                            addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddMonths(1));
+                            addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            break;
+                        case 4:
+                            addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddYears(1));
+                            addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            break;
+                        default:
+                            break;
+                    }
+
                 }
 
             }

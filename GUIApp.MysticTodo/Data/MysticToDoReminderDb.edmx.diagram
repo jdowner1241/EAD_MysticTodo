@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ee84e84bbdb849d48a44a30a1e7dbcc6" Name="Diagram1">
-        <EntityTypeShape EntityType="MysticToDo_DBModel.Reminder" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MysticToDo_DBModel.Timeframe" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <AssociationConnector Association="MysticToDo_DBModel.FK__Reminder__Remind__4CA06362" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MysticToDo_DBModel.Reminder" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="MysticToDo_DBModel.Timeframe" Width="1.5" PointX="0.75" PointY="1.875" />
+        <AssociationConnector Association="MysticToDo_DBModel.FK__Reminder__Remind__4CA06362" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

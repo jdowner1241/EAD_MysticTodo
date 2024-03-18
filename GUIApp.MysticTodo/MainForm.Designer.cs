@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TcMainTabControl = new System.Windows.Forms.TabControl();
             this.TpReminder = new System.Windows.Forms.TabPage();
             this.BSubmit = new System.Windows.Forms.Button();
@@ -43,8 +48,12 @@
             this.TbReminder = new System.Windows.Forms.TextBox();
             this.ScReminderPage = new System.Windows.Forms.SplitContainer();
             this.LbNewReminder = new System.Windows.Forms.Label();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.reminderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.LSearchReminders = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.TpCalender = new System.Windows.Forms.TabPage();
@@ -59,13 +68,23 @@
             this.TpmiEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.TpmiView = new System.Windows.Forms.ToolStripMenuItem();
             this.TpmiHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reminderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reminderIsCompleteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.reminderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reminderNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reminderDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reminder_HasAlarm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Reminder_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reminder_Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reminderIsPeriodicDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reminderFreqencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reminder_NextPeriodicDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Reminder_NextPeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TcMainTabControl.SuspendLayout();
             this.TpReminder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScReminderPage)).BeginInit();
@@ -73,10 +92,11 @@
             this.ScReminderPage.Panel2.SuspendLayout();
             this.ScReminderPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reminderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).BeginInit();
             this.MsFileMenu.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reminderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TcMainTabControl
@@ -98,7 +118,7 @@
             this.TcMainTabControl.Name = "TcMainTabControl";
             this.TcMainTabControl.SelectedIndex = 0;
             this.TcMainTabControl.ShowToolTips = true;
-            this.TcMainTabControl.Size = new System.Drawing.Size(1774, 1239);
+            this.TcMainTabControl.Size = new System.Drawing.Size(1769, 1292);
             this.TcMainTabControl.TabIndex = 0;
             // 
             // TpReminder
@@ -117,7 +137,7 @@
             this.TpReminder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpReminder.Name = "TpReminder";
             this.TpReminder.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpReminder.Size = new System.Drawing.Size(1739, 1231);
+            this.TpReminder.Size = new System.Drawing.Size(1734, 1284);
             this.TpReminder.TabIndex = 0;
             this.TpReminder.Text = "Reminder";
             this.TpReminder.UseVisualStyleBackColor = true;
@@ -143,7 +163,7 @@
             this.TbDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TbDescription.Multiline = true;
             this.TbDescription.Name = "TbDescription";
-            this.TbDescription.Size = new System.Drawing.Size(638, 94);
+            this.TbDescription.Size = new System.Drawing.Size(639, 94);
             this.TbDescription.TabIndex = 8;
             // 
             // LDescription
@@ -228,9 +248,8 @@
             // 
             // ScReminderPage
             // 
-            this.ScReminderPage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScReminderPage.Location = new System.Drawing.Point(7, 8);
+            this.ScReminderPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScReminderPage.Location = new System.Drawing.Point(3, 4);
             this.ScReminderPage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ScReminderPage.Name = "ScReminderPage";
             this.ScReminderPage.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -243,13 +262,18 @@
             // 
             // ScReminderPage.Panel2
             // 
+            this.ScReminderPage.Panel2.Controls.Add(this.vScrollBar1);
+            this.ScReminderPage.Panel2.Controls.Add(this.hScrollBar1);
             this.ScReminderPage.Panel2.Controls.Add(this.dataGridView1);
+            this.ScReminderPage.Panel2.Controls.Add(this.button3);
+            this.ScReminderPage.Panel2.Controls.Add(this.button2);
+            this.ScReminderPage.Panel2.Controls.Add(this.button1);
             this.ScReminderPage.Panel2.Controls.Add(this.LSearchReminders);
             this.ScReminderPage.Panel2.Controls.Add(this.textBox2);
             this.ScReminderPage.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ScReminderPage.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ScReminderPage.Size = new System.Drawing.Size(1725, 1214);
-            this.ScReminderPage.SplitterDistance = 348;
+            this.ScReminderPage.Size = new System.Drawing.Size(1728, 1276);
+            this.ScReminderPage.SplitterDistance = 365;
             this.ScReminderPage.SplitterWidth = 5;
             this.ScReminderPage.TabIndex = 10;
             // 
@@ -265,31 +289,79 @@
             this.LbNewReminder.Text = "Add New Reminder";
             this.LbNewReminder.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.vScrollBar1.Location = new System.Drawing.Point(1702, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(26, 885);
+            this.vScrollBar1.TabIndex = 14;
+            // 
+            // hScrollBar1
+            // 
+            this.hScrollBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.hScrollBar1.Location = new System.Drawing.Point(0, 885);
+            this.hScrollBar1.Name = "hScrollBar1";
+            this.hScrollBar1.Size = new System.Drawing.Size(1728, 21);
+            this.hScrollBar1.TabIndex = 13;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.reminderIsCompleteDataGridViewTextBoxColumn,
             this.reminderIdDataGridViewTextBoxColumn,
             this.reminderNameDataGridViewTextBoxColumn,
             this.reminderDescriptionDataGridViewTextBoxColumn,
+            this.Reminder_HasAlarm,
+            this.Reminder_Date,
+            this.Reminder_Time,
             this.reminderIsPeriodicDataGridViewTextBoxColumn,
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn,
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn});
+            this.reminderFreqencyDataGridViewTextBoxColumn,
+            this.Reminder_NextPeriodicDate,
+            this.Reminder_NextPeriodicTime});
             this.dataGridView1.DataSource = this.reminderBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(50, 102);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 115);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1618, 754);
+            this.dataGridView1.Size = new System.Drawing.Size(1731, 790);
             this.dataGridView1.TabIndex = 12;
             // 
-            // reminderBindingSource
+            // button3
             // 
-            this.reminderBindingSource.DataSource = typeof(GUIApp.MysticTodo.Data.Reminder);
+            this.button3.Location = new System.Drawing.Point(1539, 21);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(93, 27);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1538, 54);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 28);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1312, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(192, 38);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // LSearchReminders
             // 
@@ -306,7 +378,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox2.Location = new System.Drawing.Point(424, 19);
+            this.textBox2.Location = new System.Drawing.Point(352, 19);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(946, 29);
@@ -318,7 +390,7 @@
             this.TpCalender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpCalender.Name = "TpCalender";
             this.TpCalender.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpCalender.Size = new System.Drawing.Size(1739, 1231);
+            this.TpCalender.Size = new System.Drawing.Size(1734, 1284);
             this.TpCalender.TabIndex = 1;
             this.TpCalender.Text = "Calender";
             this.TpCalender.UseVisualStyleBackColor = true;
@@ -329,7 +401,7 @@
             this.TpTimeTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpTimeTable.Name = "TpTimeTable";
             this.TpTimeTable.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpTimeTable.Size = new System.Drawing.Size(1739, 1231);
+            this.TpTimeTable.Size = new System.Drawing.Size(1734, 1284);
             this.TpTimeTable.TabIndex = 2;
             this.TpTimeTable.Text = "TimeTable";
             this.TpTimeTable.UseVisualStyleBackColor = true;
@@ -340,7 +412,7 @@
             this.TpAlarm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpAlarm.Name = "TpAlarm";
             this.TpAlarm.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpAlarm.Size = new System.Drawing.Size(1739, 1231);
+            this.TpAlarm.Size = new System.Drawing.Size(1734, 1284);
             this.TpAlarm.TabIndex = 3;
             this.TpAlarm.Text = "Alarm";
             this.TpAlarm.UseVisualStyleBackColor = true;
@@ -351,7 +423,7 @@
             this.TpStopWatch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpStopWatch.Name = "TpStopWatch";
             this.TpStopWatch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpStopWatch.Size = new System.Drawing.Size(1739, 1231);
+            this.TpStopWatch.Size = new System.Drawing.Size(1734, 1284);
             this.TpStopWatch.TabIndex = 4;
             this.TpStopWatch.Text = "StopWatch";
             this.TpStopWatch.UseVisualStyleBackColor = true;
@@ -362,7 +434,7 @@
             this.TpTimer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TpTimer.Name = "TpTimer";
             this.TpTimer.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TpTimer.Size = new System.Drawing.Size(1739, 1231);
+            this.TpTimer.Size = new System.Drawing.Size(1734, 1284);
             this.TpTimer.TabIndex = 5;
             this.TpTimer.Text = "Timer";
             this.TpTimer.UseVisualStyleBackColor = true;
@@ -380,33 +452,78 @@
             this.MsFileMenu.Location = new System.Drawing.Point(0, 0);
             this.MsFileMenu.Name = "MsFileMenu";
             this.MsFileMenu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.MsFileMenu.Size = new System.Drawing.Size(1768, 33);
+            this.MsFileMenu.Size = new System.Drawing.Size(1763, 36);
             this.MsFileMenu.TabIndex = 1;
             this.MsFileMenu.Text = "File";
             // 
             // TsmiFile
             // 
             this.TsmiFile.Name = "TsmiFile";
-            this.TsmiFile.Size = new System.Drawing.Size(54, 29);
+            this.TsmiFile.Size = new System.Drawing.Size(54, 32);
             this.TsmiFile.Text = "File";
             // 
             // TpmiEdit
             // 
             this.TpmiEdit.Name = "TpmiEdit";
-            this.TpmiEdit.Size = new System.Drawing.Size(58, 29);
+            this.TpmiEdit.Size = new System.Drawing.Size(58, 32);
             this.TpmiEdit.Text = "Edit";
             // 
             // TpmiView
             // 
             this.TpmiView.Name = "TpmiView";
-            this.TpmiView.Size = new System.Drawing.Size(65, 29);
+            this.TpmiView.Size = new System.Drawing.Size(65, 32);
             this.TpmiView.Text = "View";
             // 
             // TpmiHelp
             // 
             this.TpmiHelp.Name = "TpmiHelp";
-            this.TpmiHelp.Size = new System.Drawing.Size(65, 29);
+            this.TpmiHelp.Size = new System.Drawing.Size(65, 32);
             this.TpmiHelp.Text = "Help";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripSplitButton1,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1341);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1763, 32);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(179, 25);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(45, 29);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 24);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Timeframe";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Timeframe";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // reminderBindingSource
+            // 
+            this.reminderBindingSource.DataSource = typeof(GUIApp.MysticTodo.Data.Reminder);
             // 
             // reminderIsCompleteDataGridViewTextBoxColumn
             // 
@@ -449,6 +566,39 @@
             this.reminderDescriptionDataGridViewTextBoxColumn.Name = "reminderDescriptionDataGridViewTextBoxColumn";
             this.reminderDescriptionDataGridViewTextBoxColumn.Width = 150;
             // 
+            // Reminder_HasAlarm
+            // 
+            this.Reminder_HasAlarm.DataPropertyName = "Reminder_HasAlarm";
+            this.Reminder_HasAlarm.HeaderText = "Alarm";
+            this.Reminder_HasAlarm.MinimumWidth = 8;
+            this.Reminder_HasAlarm.Name = "Reminder_HasAlarm";
+            this.Reminder_HasAlarm.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Reminder_HasAlarm.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Reminder_HasAlarm.Width = 150;
+            // 
+            // Reminder_Date
+            // 
+            this.Reminder_Date.DataPropertyName = "Reminder_Date";
+            dataGridViewCellStyle2.Format = "D";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Reminder_Date.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Reminder_Date.HeaderText = "Alarm Date";
+            this.Reminder_Date.MinimumWidth = 8;
+            this.Reminder_Date.Name = "Reminder_Date";
+            this.Reminder_Date.Width = 200;
+            // 
+            // Reminder_Time
+            // 
+            this.Reminder_Time.DataPropertyName = "Reminder_Time";
+            dataGridViewCellStyle3.Format = "t";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Reminder_Time.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Reminder_Time.HeaderText = "Alarm Time";
+            this.Reminder_Time.MinimumWidth = 8;
+            this.Reminder_Time.Name = "Reminder_Time";
+            this.Reminder_Time.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Reminder_Time.Width = 150;
+            // 
             // reminderIsPeriodicDataGridViewTextBoxColumn
             // 
             this.reminderIsPeriodicDataGridViewTextBoxColumn.DataPropertyName = "Reminder_IsPeriodic";
@@ -460,31 +610,45 @@
             this.reminderIsPeriodicDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.reminderIsPeriodicDataGridViewTextBoxColumn.Width = 70;
             // 
-            // reminderPeriodicActiveDataGridViewTextBoxColumn
+            // reminderFreqencyDataGridViewTextBoxColumn
             // 
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.DataPropertyName = "Reminder_PeriodicActive";
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.HeaderText = "PeriodActive";
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.Name = "reminderPeriodicActiveDataGridViewTextBoxColumn";
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.reminderPeriodicActiveDataGridViewTextBoxColumn.Width = 90;
+            this.reminderFreqencyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.reminderFreqencyDataGridViewTextBoxColumn.DataPropertyName = "Reminder_PeriodicIntervalLabel";
+            this.reminderFreqencyDataGridViewTextBoxColumn.HeaderText = "Freqency";
+            this.reminderFreqencyDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.reminderFreqencyDataGridViewTextBoxColumn.Name = "reminderFreqencyDataGridViewTextBoxColumn";
+            this.reminderFreqencyDataGridViewTextBoxColumn.Width = 128;
             // 
-            // reminderPeriodicIntervalLabelDataGridViewTextBoxColumn
+            // Reminder_NextPeriodicDate
             // 
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn.DataPropertyName = "Reminder_PeriodicIntervalLabel";
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn.HeaderText = "TimeFrame";
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn.Name = "reminderPeriodicIntervalLabelDataGridViewTextBoxColumn";
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.reminderPeriodicIntervalLabelDataGridViewTextBoxColumn.Width = 150;
+            this.Reminder_NextPeriodicDate.DataPropertyName = "Reminder_NextPeriodicDate";
+            dataGridViewCellStyle4.Format = "D";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Reminder_NextPeriodicDate.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Reminder_NextPeriodicDate.HeaderText = "Periodic Date";
+            this.Reminder_NextPeriodicDate.MinimumWidth = 8;
+            this.Reminder_NextPeriodicDate.Name = "Reminder_NextPeriodicDate";
+            this.Reminder_NextPeriodicDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Reminder_NextPeriodicDate.Width = 200;
+            // 
+            // Reminder_NextPeriodicTime
+            // 
+            this.Reminder_NextPeriodicTime.DataPropertyName = "Reminder_NextPeriodicTime";
+            dataGridViewCellStyle5.Format = "t";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Reminder_NextPeriodicTime.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Reminder_NextPeriodicTime.HeaderText = "Periodic Time";
+            this.Reminder_NextPeriodicTime.MinimumWidth = 8;
+            this.Reminder_NextPeriodicTime.Name = "Reminder_NextPeriodicTime";
+            this.Reminder_NextPeriodicTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Reminder_NextPeriodicTime.Width = 150;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1768, 1320);
+            this.ClientSize = new System.Drawing.Size(1763, 1373);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.TcMainTabControl);
             this.Controls.Add(this.MsFileMenu);
             this.IsMdiContainer = true;
@@ -503,11 +667,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ScReminderPage)).EndInit();
             this.ScReminderPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reminderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeframeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).EndInit();
             this.MsFileMenu.ResumeLayout(false);
             this.MsFileMenu.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reminderBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,19 +708,33 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.BindingSource mysticToDoDBEntitiesBindingSource;
         private System.Windows.Forms.BindingSource timeframeBindingSource;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource reminderBindingSource;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn reminderHadAlarmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn reminderHasAlarmDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn reminderReminderActiveDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reminderDateTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reminderNextPeriodicDateTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.HScrollBar hScrollBar1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn reminderIsCompleteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reminderIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reminderNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn reminderDescriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Reminder_HasAlarm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reminder_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reminder_Time;
         private System.Windows.Forms.DataGridViewCheckBoxColumn reminderIsPeriodicDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn reminderPeriodicActiveDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reminderPeriodicIntervalLabelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reminderFreqencyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reminder_NextPeriodicDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reminder_NextPeriodicTime;
     }
 }
 
