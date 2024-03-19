@@ -10,9 +10,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebAppRedo</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mystic To Do</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,12 +20,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">About</a>
                         </li>
-                    </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">Contact</a>
+                        </li>
+                        </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -36,10 +39,59 @@
             @RenderBody()
         </main>
     </div>
+        <title>Task Reminder</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
 
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Task Reminder</h2>
+        <table id="taskTable">
+            <tr>
+                <th>Task</th>
+                <th>Action</th>
+            </tr>
+            <!-- Tasks will be dynamically added here -->
+        </table>
+        <br>
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <button onclick="addTask()">Add Task</button>
+        <script>
+            function addTask() {
+                var task = document.getElementById("taskInput").value;
+                if (task === "") {
+                    alert("Please enter a task");
+                    return;
+                }
+                var table = document.getElementById("taskTable");
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = task;
+                cell2.innerHTML = "<button onclick='deleteTask(this)'>Delete</button>";
+                document.getElementById("taskInput").value = "";
+            }
+            function deleteTask(row) {
+                var rowIndex = row.parentNode.parentNode.rowIndex;
+                document.getElementById("taskTable").deleteRow(rowIndex);
+            }
+        </script>
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - WebAppRedo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - Mystic To Do - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
