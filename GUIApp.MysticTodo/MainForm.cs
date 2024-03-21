@@ -27,6 +27,8 @@ namespace GUIApp.MysticTodo
             mysticToDoEntities1 = new MysticToDoEntities1();
             DtpAlarmDate.Hide();
             CbPerodicAlarm.Hide();
+            gbReminderEditor.AutoSize = false;
+            gbReminderSearch.AutoSize = false;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -36,9 +38,36 @@ namespace GUIApp.MysticTodo
             CbPerodicAlarm.ValueMember = "Timeframe_Key";
             CbPerodicAlarm.DataSource = timeframe;
 
-            var reminders = mysticToDoEntities1.Reminders.ToList();
-            dataGridView1.DataSource = reminders;
-            dataGridView1.Refresh();
+          /*  var reminders = mysticToDoEntities1.Reminders.ToList();
+            gvReminderList.DataSource = reminders;
+            gvReminderList.Refresh();*/
+
+            var reminderTable = mysticToDoEntities1.Reminders
+                .Select(r => new
+                {
+                    id = r.Reminder_Id,
+                    active = r.Reminder_IsComplete,
+                    name = r.Reminder_Name,
+                    description = r.Reminder_Description,
+                    alarm = r.Reminder_HasAlarm,
+                    alarmDate = r.Reminder_Date,
+                    alarmTime = r.Reminder_Time,
+                    periodic = r.Reminder_IsPeriodic,
+                    periodicActive = r.Reminder_PeriodicActive,
+                    frequencyId = r.Reminder_PeriodicIntervalLabel,
+                    frequency = r.Timeframe.Timeframe_Name,
+                    periodicDate = r.Reminder_NextPeriodicDate,
+                    periodicTime = r.Reminder_NextPeriodicTime
+                }).ToList();
+            gvReminderList.DataSource = reminderTable;
+            
+
+            gvReminderList.Columns["frequencyId"].Visible = false;
+            gvReminderList.Columns["periodicActive"].Visible = false;
+
+            
+            gvReminderList.Refresh();
+
 
         }
 
@@ -116,6 +145,7 @@ namespace GUIApp.MysticTodo
             Reminder addReminder = new Reminder();
             Timeframe setTimeframe = new Timeframe();
 
+
             addReminder.Reminder_IsComplete = false;
             addReminder.Reminder_Name = reminderName;
             addReminder.Reminder_Description = reminderDescription;
@@ -137,9 +167,9 @@ namespace GUIApp.MysticTodo
 
 
                     var frequency = mysticToDoEntities1.Timeframes.Select(q => new { tkey = q.Timeframe_Key, tName = q.Timeframe_Name });
-                    dataGridView1.ReadOnly = false;
-                    dataGridView1.Columns[8].DataPropertyName = "Frequency";
-                    dataGridView1.Columns[8].HeaderText = "Changed";
+                    gvReminderList.ReadOnly = false;
+                    gvReminderList.Columns[8].DataPropertyName = "Frequency";
+                    gvReminderList.Columns[8].HeaderText = "Changed";
 
 
                     switch (addReminder.Reminder_PeriodicIntervalLabel)
@@ -175,9 +205,11 @@ namespace GUIApp.MysticTodo
             context.SaveChanges();
 
             //Rebind data
-            var reminders = mysticToDoEntities1.Reminders.ToList();
-            dataGridView1.DataSource = reminders;
-            dataGridView1.Refresh();
+            /*   var reminders = mysticToDoEntities1.Reminders.ToList();
+               gvReminderList.DataSource = reminders;
+               gvReminderList.Refresh();*/
+
+            gvReminderList.DataSource = context.Reminders;
         }
 
         private void BDelete_Click(object sender, EventArgs e)
@@ -213,6 +245,11 @@ namespace GUIApp.MysticTodo
                 // This will cancel the process. 
 
             }
+        }
+
+        private void ScReminderPage_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
