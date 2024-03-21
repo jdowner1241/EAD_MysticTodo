@@ -27,12 +27,25 @@ namespace GUIApp.MysticTodo
             mysticToDoEntities1 = new MysticToDoEntities1();
             DtpAlarmDate.Hide();
             CbPerodicAlarm.Hide();
-            gbReminderEditor.AutoSize = false;
+
+           /* gbReminderEditor.AutoSize = false;
             gbReminderSearch.AutoSize = false;
+            this.AutoScaleMode = AutoScaleMode.None;
+            TbReminder.AutoSize = false;
+            tbSearch.AutoSize = false;
+            gvReminderList.AutoSize = false;*/
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            gbReminderEditor.AutoSize = false;
+            gbReminderSearch.AutoSize = false;
+            //this.AutoScaleMode = AutoScaleMode.None;
+            TbReminder.AutoSize = false;
+            tbSearch.AutoSize = false;
+            gvReminderList.AutoSize = false;
+
+
             var timeframe = mysticToDoEntities1.Timeframes.ToList();
             CbPerodicAlarm.DisplayMember = "Timeframe_Name";
             CbPerodicAlarm.ValueMember = "Timeframe_Key";
@@ -68,7 +81,7 @@ namespace GUIApp.MysticTodo
             
             gvReminderList.Refresh();
 
-
+    
         }
 
         private void CebSetAlarm_CheckedChanged(object sender, EventArgs e)
@@ -166,19 +179,11 @@ namespace GUIApp.MysticTodo
                    
 
 
-                    var frequency = mysticToDoEntities1.Timeframes.Select(q => new { tkey = q.Timeframe_Key, tName = q.Timeframe_Name });
-                    gvReminderList.ReadOnly = false;
-                    gvReminderList.Columns[8].DataPropertyName = "Frequency";
-                    gvReminderList.Columns[8].HeaderText = "Changed";
-
-
                     switch (addReminder.Reminder_PeriodicIntervalLabel)
                     {
                         case 1:
                             addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(1));
                             addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
-                            //dataGridView1.Columns[8].DataPropertyName = setTimeframe.Timeframe_Name;
-
 
                             break;
                         case 2:
