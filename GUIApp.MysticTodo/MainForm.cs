@@ -179,5 +179,40 @@ namespace GUIApp.MysticTodo
             dataGridView1.DataSource = reminders;
             dataGridView1.Refresh();
         }
+
+        private void BDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmDeleting = MessageBox.Show("Do you want to continue with deleting this record?", "Confirmation", MessageBoxButtons.YesNo);
+            
+            if (confirmDeleting == DialogResult.Yes)
+            {
+                // User clicked Yes
+                // This will delete the record from the reminder list
+            }
+            else if (confirmDeleting == DialogResult.No)
+            {
+                // User click no
+                // This will cancel the process. 
+  
+            }
+
+        }
+
+        private void BUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmUpdating = MessageBox.Show("Do you want to continue with updating this record?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (confirmUpdating == DialogResult.Yes)
+            {
+                // User clicked Yes
+                // This will update the record from the reminder list
+            }
+            else if (confirmUpdating == DialogResult.No)
+            {
+                // User click no
+                // This will cancel the process. 
+
+            }
+        }
     }
 }
