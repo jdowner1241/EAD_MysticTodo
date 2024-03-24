@@ -74,6 +74,14 @@ namespace GUIApp.MysticTodo
             gvReminderTable.Columns["frequencyId"].Visible = false;
             gvReminderTable.Columns["periodicActive"].Visible = false;
 
+           
+
+/*           var filteredReminders = mysticTodoDatabase.Reminders.Select(q => q.Reminder_IsComplete == true);
+
+            var completedRemindersList = mysticTodoDatabase.Reminders.Clone();
+
+            foreach ()*/
+
             gvReminderTable.Refresh();
         }
 
@@ -134,8 +142,7 @@ namespace GUIApp.MysticTodo
             try
             {
                 //Store variable data in the database using an object 
-                Reminder addReminder = new Reminder();
-                //Timeframe setTimeframe = new Timeframe();
+                /*Reminder addReminder = new Reminder();
 
                 addReminder.Reminder_IsComplete = false;
                 addReminder.Reminder_Name = tbReminder.Text;
@@ -184,8 +191,10 @@ namespace GUIApp.MysticTodo
                                 break;
                         }
                     }
-                }
-                context.Reminders.Add(addReminder);
+                }*/
+                
+                
+                context.Reminders.Add(addReminderInfo());
                 context.SaveChanges();
             }
             catch
@@ -194,7 +203,8 @@ namespace GUIApp.MysticTodo
             };
 
             MessageBox.Show("Reminder Added!!!");
-            gvReminderTable.DataSource = context.Reminders;
+            refreshReminderTable();
+            clearFields();
         }
 
 
@@ -266,7 +276,7 @@ namespace GUIApp.MysticTodo
 
                             reminder.Reminder_Id = id.Value;
 
-                            mysticTodoDatabase.Reminders.AddOrUpdate(UseFieldInfo((int)id));
+                            mysticTodoDatabase.Reminders.AddOrUpdate(useReminderInfo((int)id));
                         }
                     }
                     mysticTodoDatabase.SaveChanges();
@@ -312,6 +322,8 @@ namespace GUIApp.MysticTodo
             gvReminderTable.DataSource = reminderList;
             gvReminderTable.Refresh();
         }
+
+
 
         private void bActiveTaskTab_Click(object sender, EventArgs e)
         {
@@ -397,7 +409,7 @@ namespace GUIApp.MysticTodo
 
 
 
-        private Reminder UseFieldInfo(int id)
+        private Reminder useReminderInfo(int id)
         {
             Reminder reminder = new Reminder();
 
@@ -450,9 +462,91 @@ namespace GUIApp.MysticTodo
         }
 
 
-        private void gvReminderTable_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+
+        private Reminder addReminderInfo()
         {
-           
+            Reminder reminder = new Reminder();
+
+            reminder.Reminder_Name = tbReminder.Text;
+            reminder.Reminder_Description = tbDescription.Text;
+            reminder.Reminder_HasAlarm = (Boolean)checkboxSetAlarm.Checked;
+
+            if (checkboxSetAlarm.Checked == true)
+            {
+                DateTime reminderAlarm = dtpAlarmDate.Value;
+                TimeSpan reminderAlarmTime = dtpAlarmDate.Value.TimeOfDay;
+
+                reminder.Reminder_Date = reminderAlarm;
+                reminder.Reminder_Time = reminderAlarmTime;
+
+                reminder.Reminder_IsPeriodic = (Boolean)checkboxPeriodicAlarm.Checked;
+                if (checkboxPeriodicAlarm.Checked == true)
+                {
+                    reminder.Reminder_PeriodicActive = true;
+                    int reminderPerodicAlarm = comboboxPerodicAlarm.SelectedIndex;
+                    reminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm + 1;
+
+                    //Adds the required repeat date
+                    switch (reminder.Reminder_PeriodicIntervalLabel)
+                    {
+                        case 1:
+                            reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(1));
+                            reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            break;
+                        case 2:
+                            reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(7));
+                            reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            break;
+                        case 3:
+                            reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddMonths(1));
+                            reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            break;
+                        case 4:
+                            reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddYears(1));
+                            reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            return reminder;
+        }
+
+
+
+        private void bClear_Click(object sender, EventArgs e)
+        {
+                tbReminder.Text = "";
+                tbDescription.Text = "";
+                checkboxSetAlarm.Checked = true;
+                dtpAlarmDate.Value = DateTime.Now;
+                dtpAlarmDate.Visible = false;
+                checkboxPeriodicAlarm.Checked = false;
+                comboboxPerodicAlarm.SelectedIndex = 0;
+                checkboxSetAlarm.Checked = false;
+        }
+
+
+
+        private void gvReminderTable_CellValuePushed(object sender, DataGridViewCellValueEventArgs e)
+        {
+
+        }
+
+
+
+        private void clearFields()
+        {
+            tbReminder.Text = "";
+            tbDescription.Text = "";
+            checkboxSetAlarm.Checked = true;
+            dtpAlarmDate.Value = DateTime.Now;
+            dtpAlarmDate.Visible = false;
+            checkboxPeriodicAlarm.Checked = false;
+            comboboxPerodicAlarm.SelectedIndex = 0;
+            checkboxSetAlarm.Checked = false;
         }
     }
 }

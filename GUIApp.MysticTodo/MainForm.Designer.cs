@@ -46,6 +46,7 @@
             this.toolStripProgressBar3 = new System.Windows.Forms.ToolStripProgressBar();
             this.ScReminderPage = new System.Windows.Forms.SplitContainer();
             this.gbReminderEditor = new System.Windows.Forms.GroupBox();
+            this.bClear = new System.Windows.Forms.Button();
             this.LbTitleReminder = new System.Windows.Forms.Label();
             this.tbReminder = new System.Windows.Forms.TextBox();
             this.LbNewReminder = new System.Windows.Forms.Label();
@@ -223,6 +224,7 @@
             this.gbReminderEditor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbReminderEditor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbReminderEditor.Controls.Add(this.bClear);
             this.gbReminderEditor.Controls.Add(this.LbTitleReminder);
             this.gbReminderEditor.Controls.Add(this.tbReminder);
             this.gbReminderEditor.Controls.Add(this.LbNewReminder);
@@ -243,6 +245,23 @@
             this.gbReminderEditor.Size = new System.Drawing.Size(1085, 217);
             this.gbReminderEditor.TabIndex = 18;
             this.gbReminderEditor.TabStop = false;
+            // 
+            // bClear
+            // 
+            this.bClear.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.bClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bClear.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bClear.Location = new System.Drawing.Point(540, 187);
+            this.bClear.Margin = new System.Windows.Forms.Padding(2);
+            this.bClear.Name = "bClear";
+            this.bClear.Size = new System.Drawing.Size(107, 30);
+            this.bClear.TabIndex = 31;
+            this.bClear.Text = "Clear";
+            this.bClear.UseVisualStyleBackColor = false;
+            this.bClear.Click += new System.EventHandler(this.bClear_Click);
             // 
             // LbTitleReminder
             // 
@@ -358,7 +377,7 @@
             this.tbDescription.Margin = new System.Windows.Forms.Padding(2);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(228, 85);
+            this.tbDescription.Size = new System.Drawing.Size(228, 89);
             this.tbDescription.TabIndex = 26;
             // 
             // LDescription
@@ -393,6 +412,7 @@
             this.BSubmit.TabIndex = 27;
             this.BSubmit.Text = "Submit";
             this.BSubmit.UseVisualStyleBackColor = false;
+            this.BSubmit.Click += new System.EventHandler(this.BSubmit_Click);
             // 
             // BUpdate
             // 
@@ -401,7 +421,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BUpdate.BackColor = System.Drawing.Color.LawnGreen;
             this.BUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BUpdate.Location = new System.Drawing.Point(918, 128);
+            this.BUpdate.Location = new System.Drawing.Point(919, 136);
             this.BUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.BUpdate.Name = "BUpdate";
             this.BUpdate.Size = new System.Drawing.Size(168, 34);
@@ -417,7 +437,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BDelete.BackColor = System.Drawing.Color.IndianRed;
             this.BDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BDelete.Location = new System.Drawing.Point(917, 176);
+            this.BDelete.Location = new System.Drawing.Point(919, 184);
             this.BDelete.Margin = new System.Windows.Forms.Padding(2);
             this.BDelete.Name = "BDelete";
             this.BDelete.Size = new System.Drawing.Size(168, 36);
@@ -470,7 +490,7 @@
             this.gvReminderTable.RowTemplate.Height = 28;
             this.gvReminderTable.Size = new System.Drawing.Size(1070, 417);
             this.gvReminderTable.TabIndex = 19;
-            this.gvReminderTable.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.gvReminderTable_RowStateChanged);
+            this.gvReminderTable.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.gvReminderTable_CellValuePushed);
             this.gvReminderTable.SelectionChanged += new System.EventHandler(this.gvReminderTable_SelectionChanged);
             this.gvReminderTable.DoubleClick += new System.EventHandler(this.gvReminderList_DoubleClick);
             // 
@@ -1132,6 +1152,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.Label lGridViewTitleActive;
         private System.Windows.Forms.Label lGridViewTitleCompleted;
+        private System.Windows.Forms.Button bClear;
     }
 }
 
