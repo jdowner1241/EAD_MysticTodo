@@ -52,37 +52,12 @@ namespace GUIApp.MysticTodo
             comboboxPerodicAlarm.ValueMember = "Timeframe_Key";
             comboboxPerodicAlarm.DataSource = timeframe;
 
-            var reminderList = mysticTodoDatabase.Reminders
-                .Select(r => new
-                {
-                    id = r.Reminder_Id,
-                    active = r.Reminder_IsComplete,
-                    name = r.Reminder_Name,
-                    description = r.Reminder_Description,
-                    alarm = r.Reminder_HasAlarm,
-                    alarmDate = r.Reminder_Date,
-                    alarmTime = r.Reminder_Time,
-                    periodic = r.Reminder_IsPeriodic,
-                    periodicActive = r.Reminder_PeriodicActive,
-                    frequencyId = r.Reminder_PeriodicIntervalLabel,
-                    frequency = r.Timeframe.Timeframe_Name,
-                    periodicDate = r.Reminder_NextPeriodicDate,
-                    periodicTime = r.Reminder_NextPeriodicTime
-                }).ToList();
-            gvReminderTable.DataSource = reminderList;
+            refreshActiveReminderTable();
+            refreshInActiveReminderTable();
 
             gvReminderTable.Columns["frequencyId"].Visible = false;
             gvReminderTable.Columns["periodicActive"].Visible = false;
 
-           
-
-/*           var filteredReminders = mysticTodoDatabase.Reminders.Select(q => q.Reminder_IsComplete == true);
-
-            var completedRemindersList = mysticTodoDatabase.Reminders.Clone();
-
-            foreach ()*/
-
-            gvReminderTable.Refresh();
         }
 
 
@@ -140,60 +115,7 @@ namespace GUIApp.MysticTodo
             MysticToDoEntities1 context = new MysticToDoEntities1();
 
             try
-            {
-                //Store variable data in the database using an object 
-                /*Reminder addReminder = new Reminder();
-
-                addReminder.Reminder_IsComplete = false;
-                addReminder.Reminder_Name = tbReminder.Text;
-                addReminder.Reminder_Description = tbDescription.Text;
-
-                addReminder.Reminder_HasAlarm = Convert.ToBoolean(checkboxSetAlarm.Checked);
-
-
-                if (addReminder.Reminder_HasAlarm == true)
-                {
-                    DateTime reminderAlarm = dtpAlarmDate.Value;
-                    TimeSpan reminderAlarmTime = dtpAlarmDate.Value.TimeOfDay;
-
-                    addReminder.Reminder_Date = reminderAlarm;
-                    addReminder.Reminder_Time = reminderAlarmTime;
-                    addReminder.Reminder_PeriodicActive = true;
-
-                    addReminder.Reminder_IsPeriodic = Convert.ToBoolean(checkboxPeriodicAlarm.Checked);
-
-                    if (addReminder.Reminder_IsPeriodic == true)
-                    {
-                        addReminder.Reminder_PeriodicActive = true;
-                        int reminderPerodicAlarm = comboboxPerodicAlarm.SelectedIndex;
-                        addReminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm + 1;
-
-                        //Adds the required repeat date
-                        switch (addReminder.Reminder_PeriodicIntervalLabel)
-                        {
-                            case 1:
-                                addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(1));
-                                addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
-                                break;
-                            case 2:
-                                addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(7));
-                                addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
-                                break;
-                            case 3:
-                                addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddMonths(1));
-                                addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
-                                break;
-                            case 4:
-                                addReminder.Reminder_NextPeriodicDate = (reminderAlarm.AddYears(1));
-                                addReminder.Reminder_NextPeriodicTime = reminderAlarmTime;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }*/
-                
-                
+            {               
                 context.Reminders.Add(addReminderInfo());
                 context.SaveChanges();
             }
@@ -203,7 +125,8 @@ namespace GUIApp.MysticTodo
             };
 
             MessageBox.Show("Reminder Added!!!");
-            refreshReminderTable();
+            refreshActiveReminderTable();
+            refreshInActiveReminderTable();
             clearFields();
         }
 
@@ -218,6 +141,12 @@ namespace GUIApp.MysticTodo
                 // This will delete the record from the reminder list
                 try
                 {
+                    if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
+                    {
+                        //update code to delete items
+                    }
+
+
                     if (gvReminderTable.SelectedRows.Count > 0 && gvReminderTable.SelectedRows[0].Cells.Count > 0)
                     {
                         // Access the selected row and its cells
@@ -242,7 +171,7 @@ namespace GUIApp.MysticTodo
                     MessageBox.Show(Convert.ToString(ex));
                 }
 
-                refreshReminderTable();
+                refreshActiveReminderTable();
             }
             else if (confirmDeleting == DialogResult.No)
             {
@@ -260,10 +189,16 @@ namespace GUIApp.MysticTodo
 
             if (confirmUpdating == DialogResult.Yes)
             {
+
                 // User clicked Yes
                 // This will update the record from the reminder list
                 try
                 {
+                    if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
+                    {
+                        MessageBox.Show("You can only edit Uncompleted Reminders");
+                    }
+
                     if (gvReminderTable.SelectedRows.Count > 0 && gvReminderTable.SelectedRows[0].Cells.Count > 0)
                     {
                         // Access the selected row and its cells
@@ -278,9 +213,10 @@ namespace GUIApp.MysticTodo
 
                             mysticTodoDatabase.Reminders.AddOrUpdate(useReminderInfo((int)id));
                         }
+                        MessageBox.Show("Reminder Updated!!!");
                     }
                     mysticTodoDatabase.SaveChanges();
-                    MessageBox.Show("Reminder Updated!!!");
+                    
 
                 }
                 catch (Exception ex)
@@ -288,7 +224,8 @@ namespace GUIApp.MysticTodo
                     MessageBox.Show(Convert.ToString(ex));
                 }
 
-                refreshReminderTable();
+                refreshActiveReminderTable(); 
+                refreshInActiveReminderTable();
             }
             else if (confirmUpdating == DialogResult.No)
             {
@@ -300,30 +237,54 @@ namespace GUIApp.MysticTodo
 
 
 
-        private void refreshReminderTable()
+        private void refreshActiveReminderTable()
         {
-            var reminderList = mysticTodoDatabase.Reminders
-                .Select(r => new
-                {
-                    id = r.Reminder_Id,
-                    active = r.Reminder_IsComplete,
-                    name = r.Reminder_Name,
-                    description = r.Reminder_Description,
-                    alarm = r.Reminder_HasAlarm,
-                    alarmDate = r.Reminder_Date,
-                    alarmTime = r.Reminder_Time,
-                    periodic = r.Reminder_IsPeriodic,
-                    periodicActive = r.Reminder_PeriodicActive,
-                    frequencyId = r.Reminder_PeriodicIntervalLabel,
-                    frequency = r.Timeframe.Timeframe_Name,
-                    periodicDate = r.Reminder_NextPeriodicDate,
-                    periodicTime = r.Reminder_NextPeriodicTime
-                }).ToList();
-            gvReminderTable.DataSource = reminderList;
+            var activeReminderList = mysticTodoDatabase.Reminders
+            .Where(r => r.Reminder_IsComplete == false) // Filter by Reminder_IsComplete
+            .Select(r => new
+            {
+                id = r.Reminder_Id,
+                active = r.Reminder_IsComplete,
+                name = r.Reminder_Name,
+                description = r.Reminder_Description,
+                alarm = r.Reminder_HasAlarm,
+                alarmDate = r.Reminder_Date,
+                alarmTime = r.Reminder_Time,
+                periodic = r.Reminder_IsPeriodic,
+                periodicActive = r.Reminder_PeriodicActive,
+                frequencyId = r.Reminder_PeriodicIntervalLabel,
+                frequency = r.Timeframe.Timeframe_Name,
+                periodicDate = r.Reminder_NextPeriodicDate,
+                periodicTime = r.Reminder_NextPeriodicTime
+            }).ToList();
+            gvReminderTable.DataSource = activeReminderList;
             gvReminderTable.Refresh();
         }
 
 
+        private void refreshInActiveReminderTable()
+        {
+            var inactiveReminderList = mysticTodoDatabase.Reminders
+            .Where(r => r.Reminder_IsComplete == true) // Filter by Reminder_IsComplete
+            .Select(r => new
+            {
+                id = r.Reminder_Id,
+                active = r.Reminder_IsComplete,
+                name = r.Reminder_Name,
+                description = r.Reminder_Description,
+                alarm = r.Reminder_HasAlarm,
+                alarmDate = r.Reminder_Date,
+                alarmTime = r.Reminder_Time,
+                periodic = r.Reminder_IsPeriodic,
+                periodicActive = r.Reminder_PeriodicActive,
+                frequencyId = r.Reminder_PeriodicIntervalLabel,
+                frequency = r.Timeframe.Timeframe_Name,
+                periodicDate = r.Reminder_NextPeriodicDate,
+                periodicTime = r.Reminder_NextPeriodicTime
+            }).ToList();
+            gvInactiveReminderTable.DataSource = inactiveReminderList;
+            gvInactiveReminderTable.Refresh();
+        }
 
         private void bActiveTaskTab_Click(object sender, EventArgs e)
         {
@@ -386,6 +347,35 @@ namespace GUIApp.MysticTodo
 
 
 
+        private void gvInactiveReminderTable_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
+                {
+                    // Access the selected row and its cells
+                    var id = (int)gvInactiveReminderTable.SelectedRows[0].Cells["gvinactiveId"].Value as int?;
+
+                    if (id.HasValue)
+                    {
+                        //query database for record
+                        var reminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == id);
+
+                        //display record in the entry section
+                        populateFeilds(reminder);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
+        }
+
+
+
+
         private void populateFeilds(Reminder reminder)
         {
             tbReminder.Text = reminder.Reminder_Name;
@@ -402,7 +392,7 @@ namespace GUIApp.MysticTodo
                 checkboxPeriodicAlarm.Checked = reminder.Reminder_IsPeriodic ?? false;
                 if (checkboxPeriodicAlarm.Checked == true)
                 {
-                    comboboxPerodicAlarm.SelectedIndex = (int)reminder.Reminder_PeriodicIntervalLabel;
+                    comboboxPerodicAlarm.SelectedIndex = (int)reminder.Reminder_PeriodicIntervalLabel -1;
                 }
             }
         }
@@ -414,6 +404,7 @@ namespace GUIApp.MysticTodo
             Reminder reminder = new Reminder();
 
             reminder.Reminder_Id = id;
+            reminder.Reminder_IsComplete = false;
             reminder.Reminder_Name = tbReminder.Text;
             reminder.Reminder_Description = tbDescription.Text;
             reminder.Reminder_HasAlarm = (Boolean)checkboxSetAlarm.Checked;
@@ -468,6 +459,7 @@ namespace GUIApp.MysticTodo
             Reminder reminder = new Reminder();
 
             reminder.Reminder_Name = tbReminder.Text;
+            reminder.Reminder_IsComplete = false;
             reminder.Reminder_Description = tbDescription.Text;
             reminder.Reminder_HasAlarm = (Boolean)checkboxSetAlarm.Checked;
 
@@ -548,5 +540,78 @@ namespace GUIApp.MysticTodo
             comboboxPerodicAlarm.SelectedIndex = 0;
             checkboxSetAlarm.Checked = false;
         }
+
+
+
+        private void gvReminderTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Ensure valid cell
+            {
+                if (gvReminderTable.Columns[e.ColumnIndex].Name == "gvActive")
+                {
+                    var idCell = gvReminderTable.Rows[e.RowIndex].Cells["gvId"];
+                    if (idCell.Value != null && int.TryParse(idCell.Value.ToString(), out int id))
+                    {
+                        // Query database for record
+                        var reminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == id);
+
+                        if (reminder != null)
+                        {
+                            // Update the active status to true
+                            reminder.Reminder_IsComplete = true;
+
+                            // Update the database using the id
+                            mysticTodoDatabase.Reminders.AddOrUpdate(reminder);
+                            mysticTodoDatabase.SaveChanges();
+                            MessageBox.Show("Task added to complete list!!!");
+                        }
+                    }
+
+                    // Commit the edit to update the underlying data source
+                    gvReminderTable.EndEdit();
+
+                }
+            }
+            refreshActiveReminderTable(); // You can refresh the table after saving changes
+            refreshInActiveReminderTable();
+        }
+
+
+
+        private void gvInactiveReminderTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Ensure valid cell
+            {
+                if (gvInactiveReminderTable.Columns[e.ColumnIndex].Name == "gvinactiveActive")
+                {
+                    var idCell = gvInactiveReminderTable.Rows[e.RowIndex].Cells["gvinactiveId"];
+                    if (idCell.Value != null && int.TryParse(idCell.Value.ToString(), out int id))
+                    {
+                        // Query database for record
+                        var reminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == id);
+
+                        if (reminder != null)
+                        {
+                            // Update the active status to true
+                            reminder.Reminder_IsComplete = false;
+
+                            // Update the database using the id
+                            mysticTodoDatabase.Reminders.AddOrUpdate(reminder);
+                            mysticTodoDatabase.SaveChanges();
+                            MessageBox.Show("Task added to Incomplete list!!!");
+                        }
+                    }
+
+                    // Commit the edit to update the underlying data source
+                    gvInactiveReminderTable.EndEdit();
+
+                }
+            }
+            // You can refresh the table after saving changes
+            refreshInActiveReminderTable(); 
+            refreshActiveReminderTable(); 
+            
+        }
+
     }
 }
