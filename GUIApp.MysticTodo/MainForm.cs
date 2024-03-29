@@ -122,6 +122,33 @@ namespace GUIApp.MysticTodo
         }
         //
         //
+        private void gvSearchReminderTable_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (gvSearchReminderTable.SelectedRows.Count > 0 && gvSearchReminderTable.SelectedRows[0].Cells.Count > 0)
+                {
+                    // Access the selected row and its cells
+                    var id = (int)gvSearchReminderTable.SelectedRows[0].Cells["gvSearchId"].Value as int?;
+
+                    if (id.HasValue)
+                    {
+                        //query database for record
+                        var reminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == id);
+
+                        //display record in the entry section
+                        populateFeilds(reminder);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
+        }
+        //
+        //
         private void gvReminderTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Ensure valid cell
@@ -148,11 +175,12 @@ namespace GUIApp.MysticTodo
 
                     // Commit the edit to update the underlying data source
                     gvReminderTable.EndEdit();
-
+                    refreshActiveReminderTable(); // You can refresh the table after saving changes
+                    refreshInActiveReminderTable();
+                    refreshSearchReminderTable();
                 }
             }
-            refreshActiveReminderTable(); // You can refresh the table after saving changes
-            refreshInActiveReminderTable();
+          
         }
         //
         //
@@ -176,19 +204,62 @@ namespace GUIApp.MysticTodo
                             // Update the database using the id
                             mysticTodoDatabase.Reminders.AddOrUpdate(reminder);
                             mysticTodoDatabase.SaveChanges();
-                            MessageBox.Show("Task added to Incomplete list!!!");
+                            MessageBox.Show("Task added to active list!!!");
                         }
                     }
 
                     // Commit the edit to update the underlying data source
                     gvInactiveReminderTable.EndEdit();
-
+                    // You can refresh the table after saving changes
+                    refreshInActiveReminderTable();
+                    refreshActiveReminderTable();
+                    refreshSearchReminderTable();
                 }
             }
-            // You can refresh the table after saving changes
-            refreshInActiveReminderTable();
-            refreshActiveReminderTable();
+        }
+        //
+        //
+        private void gvSearchReminderTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Ensure valid cell
+            {
+                if (gvSearchReminderTable.Columns[e.ColumnIndex].Name == "gvSearchActive")
+                {
+                    var idCell = gvSearchReminderTable.Rows[e.RowIndex].Cells["gvSearchId"];
+                    if (idCell.Value != null && int.TryParse(idCell.Value.ToString(), out int id))
+                    {
+                        // Query database for record
+                        var reminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == id);
 
+                        if (reminder != null)
+                        {
+                            // Update the active status to true
+                            if(reminder.Reminder_IsComplete == true)
+                            {
+                                reminder.Reminder_IsComplete = false;
+                                MessageBox.Show("Task added to active list!!!");
+                            }
+                            else
+                            {
+                                reminder.Reminder_IsComplete = true;
+                                MessageBox.Show("Task added to complete list!!!");
+                            }
+                            // Update the database using the id
+                            mysticTodoDatabase.Reminders.AddOrUpdate(reminder);
+                            mysticTodoDatabase.SaveChanges();
+                           
+                        }
+                    }
+
+                    // Commit the edit to update the underlying data source
+                    gvSearchReminderTable.EndEdit();
+                    // You can refresh the table after saving changes
+                    refreshSearchReminderTable();
+                    refreshInActiveReminderTable();
+                    refreshActiveReminderTable();
+                    
+                }
+            }
         }
         // 
         // Events: Input fields

@@ -1114,6 +1114,8 @@
             this.gvSearchReminderTable.RowTemplate.Height = 28;
             this.gvSearchReminderTable.Size = new System.Drawing.Size(1070, 417);
             this.gvSearchReminderTable.TabIndex = 35;
+            this.gvSearchReminderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSearchReminderTable_CellContentClick);
+            this.gvSearchReminderTable.SelectionChanged += new System.EventHandler(this.gvSearchReminderTable_SelectionChanged);
             // 
             // gvSearchId
             // 
