@@ -29,15 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TcMainTabControl = new System.Windows.Forms.TabControl();
             this.TpReminder = new System.Windows.Forms.TabPage();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
@@ -74,6 +78,17 @@
             this.gvPeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lGridViewTitleActive = new System.Windows.Forms.Label();
             this.gvInactiveReminderTable = new System.Windows.Forms.DataGridView();
+            this.gvinactiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvinactiveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveAlarm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvinactiveAlarmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveAlarmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactivePeriodic = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvinactivePeriodicFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactivePeriodicDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactivePeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbReminderSearch = new System.Windows.Forms.GroupBox();
             this.bInActiveTaskTab = new System.Windows.Forms.Button();
             this.bActiveTaskTab = new System.Windows.Forms.Button();
@@ -97,17 +112,20 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gvinactiveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveAlarm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gvinactiveAlarmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveAlarmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactivePeriodic = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gvinactivePeriodicFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactivePeriodicDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactivePeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bSearchTaskTab = new System.Windows.Forms.Button();
+            this.lGridViewTitleSearch = new System.Windows.Forms.Label();
+            this.gvSearchReminderTable = new System.Windows.Forms.DataGridView();
+            this.gvSearchId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSearchActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvSearchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSearchDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSearchAlarm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvSearchAlarmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSearchAlarmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSearchPeriodic = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvSearchPeriodicFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSearchPeriodicDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvSearchPeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reminderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TcMainTabControl.SuspendLayout();
             this.TpReminder.SuspendLayout();
@@ -124,6 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mysticToDoDBEntitiesBindingSource)).BeginInit();
             this.MsFileMenu.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSearchReminderTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reminderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,6 +226,8 @@
             // 
             this.ScReminderPage.Panel2.AutoScroll = true;
             this.ScReminderPage.Panel2.AutoScrollMargin = new System.Drawing.Size(20, 20);
+            this.ScReminderPage.Panel2.Controls.Add(this.gvSearchReminderTable);
+            this.ScReminderPage.Panel2.Controls.Add(this.lGridViewTitleSearch);
             this.ScReminderPage.Panel2.Controls.Add(this.lGridViewTitleCompleted);
             this.ScReminderPage.Panel2.Controls.Add(this.gvReminderTable);
             this.ScReminderPage.Panel2.Controls.Add(this.lGridViewTitleActive);
@@ -491,7 +512,6 @@
             this.gvReminderTable.Size = new System.Drawing.Size(1070, 417);
             this.gvReminderTable.TabIndex = 19;
             this.gvReminderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvReminderTable_CellContentClick);
-            this.gvReminderTable.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.gvReminderTable_CellValuePushed);
             this.gvReminderTable.SelectionChanged += new System.EventHandler(this.gvReminderTable_SelectionChanged);
             this.gvReminderTable.DoubleClick += new System.EventHandler(this.gvReminderList_DoubleClick);
             // 
@@ -552,9 +572,9 @@
             // 
             this.gvAlarmDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.gvAlarmDate.DataPropertyName = "alarmDate";
-            dataGridViewCellStyle1.Format = "D";
-            dataGridViewCellStyle1.NullValue = null;
-            this.gvAlarmDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Format = "D";
+            dataGridViewCellStyle5.NullValue = null;
+            this.gvAlarmDate.DefaultCellStyle = dataGridViewCellStyle5;
             this.gvAlarmDate.HeaderText = "Alarm Date";
             this.gvAlarmDate.MaxInputLength = 200;
             this.gvAlarmDate.MinimumWidth = 8;
@@ -566,9 +586,9 @@
             // 
             this.gvAlarmTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.gvAlarmTime.DataPropertyName = "alarmTime";
-            dataGridViewCellStyle2.Format = "t";
-            dataGridViewCellStyle2.NullValue = null;
-            this.gvAlarmTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "t";
+            dataGridViewCellStyle6.NullValue = null;
+            this.gvAlarmTime.DefaultCellStyle = dataGridViewCellStyle6;
             this.gvAlarmTime.HeaderText = "Alarm Time";
             this.gvAlarmTime.MaxInputLength = 150;
             this.gvAlarmTime.MinimumWidth = 8;
@@ -601,9 +621,9 @@
             // 
             this.gvPeriodicDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.gvPeriodicDate.DataPropertyName = "periodicDate";
-            dataGridViewCellStyle3.Format = "D";
-            dataGridViewCellStyle3.NullValue = null;
-            this.gvPeriodicDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Format = "D";
+            dataGridViewCellStyle7.NullValue = null;
+            this.gvPeriodicDate.DefaultCellStyle = dataGridViewCellStyle7;
             this.gvPeriodicDate.HeaderText = "Periodic Date";
             this.gvPeriodicDate.MaxInputLength = 200;
             this.gvPeriodicDate.MinimumWidth = 8;
@@ -615,9 +635,9 @@
             // 
             this.gvPeriodicTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.gvPeriodicTime.DataPropertyName = "periodicTime";
-            dataGridViewCellStyle4.Format = "t";
-            dataGridViewCellStyle4.NullValue = null;
-            this.gvPeriodicTime.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Format = "t";
+            dataGridViewCellStyle8.NullValue = null;
+            this.gvPeriodicTime.DefaultCellStyle = dataGridViewCellStyle8;
             this.gvPeriodicTime.HeaderText = "Periodic Time";
             this.gvPeriodicTime.MaxInputLength = 150;
             this.gvPeriodicTime.MinimumWidth = 8;
@@ -672,9 +692,140 @@
             this.gvInactiveReminderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvInactiveReminderTable_CellContentClick);
             this.gvInactiveReminderTable.SelectionChanged += new System.EventHandler(this.gvInactiveReminderTable_SelectionChanged);
             // 
+            // gvinactiveId
+            // 
+            this.gvinactiveId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveId.DataPropertyName = "id";
+            this.gvinactiveId.HeaderText = "ID";
+            this.gvinactiveId.MaxInputLength = 150;
+            this.gvinactiveId.MinimumWidth = 8;
+            this.gvinactiveId.Name = "gvinactiveId";
+            this.gvinactiveId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveId.Width = 50;
+            // 
+            // gvinactiveActive
+            // 
+            this.gvinactiveActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveActive.DataPropertyName = "active";
+            this.gvinactiveActive.HeaderText = "Active";
+            this.gvinactiveActive.MinimumWidth = 8;
+            this.gvinactiveActive.Name = "gvinactiveActive";
+            this.gvinactiveActive.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveActive.Width = 55;
+            // 
+            // gvinactiveName
+            // 
+            this.gvinactiveName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactiveName.DataPropertyName = "name";
+            this.gvinactiveName.HeaderText = "Name";
+            this.gvinactiveName.MaxInputLength = 200;
+            this.gvinactiveName.MinimumWidth = 8;
+            this.gvinactiveName.Name = "gvinactiveName";
+            this.gvinactiveName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactiveName.Width = 69;
+            // 
+            // gvinactiveDescription
+            // 
+            this.gvinactiveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactiveDescription.DataPropertyName = "description";
+            this.gvinactiveDescription.HeaderText = "Description";
+            this.gvinactiveDescription.MaxInputLength = 200;
+            this.gvinactiveDescription.MinimumWidth = 8;
+            this.gvinactiveDescription.Name = "gvinactiveDescription";
+            this.gvinactiveDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactiveDescription.Width = 108;
+            // 
+            // gvinactiveAlarm
+            // 
+            this.gvinactiveAlarm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveAlarm.DataPropertyName = "alarm";
+            this.gvinactiveAlarm.HeaderText = "Alarm";
+            this.gvinactiveAlarm.MinimumWidth = 8;
+            this.gvinactiveAlarm.Name = "gvinactiveAlarm";
+            this.gvinactiveAlarm.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveAlarm.Width = 54;
+            // 
+            // gvinactiveAlarmDate
+            // 
+            this.gvinactiveAlarmDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactiveAlarmDate.DataPropertyName = "alarmDate";
+            dataGridViewCellStyle9.Format = "D";
+            dataGridViewCellStyle9.NullValue = null;
+            this.gvinactiveAlarmDate.DefaultCellStyle = dataGridViewCellStyle9;
+            this.gvinactiveAlarmDate.HeaderText = "Alarm Date";
+            this.gvinactiveAlarmDate.MaxInputLength = 200;
+            this.gvinactiveAlarmDate.MinimumWidth = 8;
+            this.gvinactiveAlarmDate.Name = "gvinactiveAlarmDate";
+            this.gvinactiveAlarmDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactiveAlarmDate.Width = 107;
+            // 
+            // gvinactiveAlarmTime
+            // 
+            this.gvinactiveAlarmTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveAlarmTime.DataPropertyName = "alarmTime";
+            dataGridViewCellStyle10.Format = "t";
+            dataGridViewCellStyle10.NullValue = null;
+            this.gvinactiveAlarmTime.DefaultCellStyle = dataGridViewCellStyle10;
+            this.gvinactiveAlarmTime.HeaderText = "Alarm Time";
+            this.gvinactiveAlarmTime.MaxInputLength = 150;
+            this.gvinactiveAlarmTime.MinimumWidth = 8;
+            this.gvinactiveAlarmTime.Name = "gvinactiveAlarmTime";
+            this.gvinactiveAlarmTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveAlarmTime.Width = 111;
+            // 
+            // gvinactivePeriodic
+            // 
+            this.gvinactivePeriodic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactivePeriodic.DataPropertyName = "periodic";
+            this.gvinactivePeriodic.HeaderText = "Periodic";
+            this.gvinactivePeriodic.MinimumWidth = 8;
+            this.gvinactivePeriodic.Name = "gvinactivePeriodic";
+            this.gvinactivePeriodic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactivePeriodic.Width = 68;
+            // 
+            // gvinactivePeriodicFrequency
+            // 
+            this.gvinactivePeriodicFrequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactivePeriodicFrequency.DataPropertyName = "frequency";
+            this.gvinactivePeriodicFrequency.HeaderText = "Frequency";
+            this.gvinactivePeriodicFrequency.MaxInputLength = 150;
+            this.gvinactivePeriodicFrequency.MinimumWidth = 8;
+            this.gvinactivePeriodicFrequency.Name = "gvinactivePeriodicFrequency";
+            this.gvinactivePeriodicFrequency.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactivePeriodicFrequency.Width = 101;
+            // 
+            // gvinactivePeriodicDate
+            // 
+            this.gvinactivePeriodicDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactivePeriodicDate.DataPropertyName = "periodicDate";
+            dataGridViewCellStyle11.Format = "D";
+            dataGridViewCellStyle11.NullValue = null;
+            this.gvinactivePeriodicDate.DefaultCellStyle = dataGridViewCellStyle11;
+            this.gvinactivePeriodicDate.HeaderText = "Periodic Date";
+            this.gvinactivePeriodicDate.MaxInputLength = 200;
+            this.gvinactivePeriodicDate.MinimumWidth = 8;
+            this.gvinactivePeriodicDate.Name = "gvinactivePeriodicDate";
+            this.gvinactivePeriodicDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactivePeriodicDate.Width = 121;
+            // 
+            // gvinactivePeriodicTime
+            // 
+            this.gvinactivePeriodicTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactivePeriodicTime.DataPropertyName = "periodicTime";
+            dataGridViewCellStyle12.Format = "t";
+            dataGridViewCellStyle12.NullValue = null;
+            this.gvinactivePeriodicTime.DefaultCellStyle = dataGridViewCellStyle12;
+            this.gvinactivePeriodicTime.HeaderText = "Periodic Time";
+            this.gvinactivePeriodicTime.MaxInputLength = 150;
+            this.gvinactivePeriodicTime.MinimumWidth = 8;
+            this.gvinactivePeriodicTime.Name = "gvinactivePeriodicTime";
+            this.gvinactivePeriodicTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactivePeriodicTime.Width = 125;
+            // 
             // gbReminderSearch
             // 
             this.gbReminderSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.gbReminderSearch.Controls.Add(this.bSearchTaskTab);
             this.gbReminderSearch.Controls.Add(this.bInActiveTaskTab);
             this.gbReminderSearch.Controls.Add(this.bActiveTaskTab);
             this.gbReminderSearch.Controls.Add(this.BSearch);
@@ -696,7 +847,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bInActiveTaskTab.BackColor = System.Drawing.Color.PeachPuff;
             this.bInActiveTaskTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bInActiveTaskTab.Location = new System.Drawing.Point(533, 73);
+            this.bInActiveTaskTab.Location = new System.Drawing.Point(495, 73);
             this.bInActiveTaskTab.Margin = new System.Windows.Forms.Padding(2);
             this.bInActiveTaskTab.Name = "bInActiveTaskTab";
             this.bInActiveTaskTab.Size = new System.Drawing.Size(164, 34);
@@ -712,7 +863,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bActiveTaskTab.BackColor = System.Drawing.Color.PeachPuff;
             this.bActiveTaskTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bActiveTaskTab.Location = new System.Drawing.Point(359, 73);
+            this.bActiveTaskTab.Location = new System.Drawing.Point(311, 73);
             this.bActiveTaskTab.Margin = new System.Windows.Forms.Padding(2);
             this.bActiveTaskTab.Name = "bActiveTaskTab";
             this.bActiveTaskTab.Size = new System.Drawing.Size(164, 34);
@@ -732,6 +883,7 @@
             this.BSearch.TabIndex = 18;
             this.BSearch.Text = "Search";
             this.BSearch.UseVisualStyleBackColor = false;
+            this.BSearch.Click += new System.EventHandler(this.BSearch_Click);
             // 
             // LSearchReminders
             // 
@@ -902,135 +1054,196 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 150;
             // 
-            // gvinactiveId
+            // bSearchTaskTab
             // 
-            this.gvinactiveId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveId.DataPropertyName = "id";
-            this.gvinactiveId.HeaderText = "ID";
-            this.gvinactiveId.MaxInputLength = 150;
-            this.gvinactiveId.MinimumWidth = 8;
-            this.gvinactiveId.Name = "gvinactiveId";
-            this.gvinactiveId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveId.Width = 50;
+            this.bSearchTaskTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSearchTaskTab.BackColor = System.Drawing.Color.PeachPuff;
+            this.bSearchTaskTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bSearchTaskTab.Location = new System.Drawing.Point(678, 73);
+            this.bSearchTaskTab.Margin = new System.Windows.Forms.Padding(2);
+            this.bSearchTaskTab.Name = "bSearchTaskTab";
+            this.bSearchTaskTab.Size = new System.Drawing.Size(164, 34);
+            this.bSearchTaskTab.TabIndex = 32;
+            this.bSearchTaskTab.Text = "Search Task";
+            this.bSearchTaskTab.UseVisualStyleBackColor = false;
+            this.bSearchTaskTab.Click += new System.EventHandler(this.bSearchTaskTab_Click);
             // 
-            // gvinactiveActive
+            // lGridViewTitleSearch
             // 
-            this.gvinactiveActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveActive.DataPropertyName = "active";
-            this.gvinactiveActive.HeaderText = "Active";
-            this.gvinactiveActive.MinimumWidth = 8;
-            this.gvinactiveActive.Name = "gvinactiveActive";
-            this.gvinactiveActive.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveActive.Width = 55;
+            this.lGridViewTitleSearch.AutoSize = true;
+            this.lGridViewTitleSearch.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lGridViewTitleSearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lGridViewTitleSearch.Font = new System.Drawing.Font("CaslonOpnface BT", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lGridViewTitleSearch.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lGridViewTitleSearch.Location = new System.Drawing.Point(63, 109);
+            this.lGridViewTitleSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lGridViewTitleSearch.Name = "lGridViewTitleSearch";
+            this.lGridViewTitleSearch.Size = new System.Drawing.Size(182, 29);
+            this.lGridViewTitleSearch.TabIndex = 34;
+            this.lGridViewTitleSearch.Text = "Search Reminders";
+            this.lGridViewTitleSearch.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // gvinactiveName
+            // gvSearchReminderTable
             // 
-            this.gvinactiveName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactiveName.DataPropertyName = "name";
-            this.gvinactiveName.HeaderText = "Name";
-            this.gvinactiveName.MaxInputLength = 200;
-            this.gvinactiveName.MinimumWidth = 8;
-            this.gvinactiveName.Name = "gvinactiveName";
-            this.gvinactiveName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactiveName.Width = 69;
+            this.gvSearchReminderTable.AllowUserToOrderColumns = true;
+            this.gvSearchReminderTable.AllowUserToResizeColumns = false;
+            this.gvSearchReminderTable.AllowUserToResizeRows = false;
+            this.gvSearchReminderTable.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gvSearchReminderTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.gvSearchReminderTable.ColumnHeadersHeight = 34;
+            this.gvSearchReminderTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gvSearchId,
+            this.gvSearchActive,
+            this.gvSearchName,
+            this.gvSearchDescription,
+            this.gvSearchAlarm,
+            this.gvSearchAlarmDate,
+            this.gvSearchAlarmTime,
+            this.gvSearchPeriodic,
+            this.gvSearchPeriodicFrequency,
+            this.gvSearchPeriodicDate,
+            this.gvSearchPeriodicTime});
+            this.gvSearchReminderTable.Location = new System.Drawing.Point(69, 136);
+            this.gvSearchReminderTable.Margin = new System.Windows.Forms.Padding(2);
+            this.gvSearchReminderTable.MaximumSize = new System.Drawing.Size(1070, 434);
+            this.gvSearchReminderTable.Name = "gvSearchReminderTable";
+            this.gvSearchReminderTable.RowHeadersWidth = 62;
+            this.gvSearchReminderTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gvSearchReminderTable.RowTemplate.Height = 28;
+            this.gvSearchReminderTable.Size = new System.Drawing.Size(1070, 417);
+            this.gvSearchReminderTable.TabIndex = 35;
             // 
-            // gvinactiveDescription
+            // gvSearchId
             // 
-            this.gvinactiveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactiveDescription.DataPropertyName = "description";
-            this.gvinactiveDescription.HeaderText = "Description";
-            this.gvinactiveDescription.MaxInputLength = 200;
-            this.gvinactiveDescription.MinimumWidth = 8;
-            this.gvinactiveDescription.Name = "gvinactiveDescription";
-            this.gvinactiveDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactiveDescription.Width = 108;
+            this.gvSearchId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvSearchId.DataPropertyName = "id";
+            this.gvSearchId.HeaderText = "ID";
+            this.gvSearchId.MaxInputLength = 150;
+            this.gvSearchId.MinimumWidth = 8;
+            this.gvSearchId.Name = "gvSearchId";
+            this.gvSearchId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvSearchId.Width = 50;
             // 
-            // gvinactiveAlarm
+            // gvSearchActive
             // 
-            this.gvinactiveAlarm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveAlarm.DataPropertyName = "alarm";
-            this.gvinactiveAlarm.HeaderText = "Alarm";
-            this.gvinactiveAlarm.MinimumWidth = 8;
-            this.gvinactiveAlarm.Name = "gvinactiveAlarm";
-            this.gvinactiveAlarm.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveAlarm.Width = 54;
+            this.gvSearchActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvSearchActive.DataPropertyName = "active";
+            this.gvSearchActive.HeaderText = "Active";
+            this.gvSearchActive.MinimumWidth = 8;
+            this.gvSearchActive.Name = "gvSearchActive";
+            this.gvSearchActive.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvSearchActive.Width = 55;
             // 
-            // gvinactiveAlarmDate
+            // gvSearchName
             // 
-            this.gvinactiveAlarmDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactiveAlarmDate.DataPropertyName = "alarmDate";
-            dataGridViewCellStyle5.Format = "D";
-            dataGridViewCellStyle5.NullValue = null;
-            this.gvinactiveAlarmDate.DefaultCellStyle = dataGridViewCellStyle5;
-            this.gvinactiveAlarmDate.HeaderText = "Alarm Date";
-            this.gvinactiveAlarmDate.MaxInputLength = 200;
-            this.gvinactiveAlarmDate.MinimumWidth = 8;
-            this.gvinactiveAlarmDate.Name = "gvinactiveAlarmDate";
-            this.gvinactiveAlarmDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactiveAlarmDate.Width = 107;
+            this.gvSearchName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvSearchName.DataPropertyName = "name";
+            this.gvSearchName.HeaderText = "Name";
+            this.gvSearchName.MaxInputLength = 200;
+            this.gvSearchName.MinimumWidth = 8;
+            this.gvSearchName.Name = "gvSearchName";
+            this.gvSearchName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvSearchName.Width = 69;
             // 
-            // gvinactiveAlarmTime
+            // gvSearchDescription
             // 
-            this.gvinactiveAlarmTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveAlarmTime.DataPropertyName = "alarmTime";
-            dataGridViewCellStyle6.Format = "t";
-            dataGridViewCellStyle6.NullValue = null;
-            this.gvinactiveAlarmTime.DefaultCellStyle = dataGridViewCellStyle6;
-            this.gvinactiveAlarmTime.HeaderText = "Alarm Time";
-            this.gvinactiveAlarmTime.MaxInputLength = 150;
-            this.gvinactiveAlarmTime.MinimumWidth = 8;
-            this.gvinactiveAlarmTime.Name = "gvinactiveAlarmTime";
-            this.gvinactiveAlarmTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveAlarmTime.Width = 111;
+            this.gvSearchDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvSearchDescription.DataPropertyName = "description";
+            this.gvSearchDescription.HeaderText = "Description";
+            this.gvSearchDescription.MaxInputLength = 200;
+            this.gvSearchDescription.MinimumWidth = 8;
+            this.gvSearchDescription.Name = "gvSearchDescription";
+            this.gvSearchDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvSearchDescription.Width = 108;
             // 
-            // gvinactivePeriodic
+            // gvSearchAlarm
             // 
-            this.gvinactivePeriodic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactivePeriodic.DataPropertyName = "periodic";
-            this.gvinactivePeriodic.HeaderText = "Periodic";
-            this.gvinactivePeriodic.MinimumWidth = 8;
-            this.gvinactivePeriodic.Name = "gvinactivePeriodic";
-            this.gvinactivePeriodic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactivePeriodic.Width = 68;
+            this.gvSearchAlarm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvSearchAlarm.DataPropertyName = "alarm";
+            this.gvSearchAlarm.HeaderText = "Alarm";
+            this.gvSearchAlarm.MinimumWidth = 8;
+            this.gvSearchAlarm.Name = "gvSearchAlarm";
+            this.gvSearchAlarm.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvSearchAlarm.Width = 54;
             // 
-            // gvinactivePeriodicFrequency
+            // gvSearchAlarmDate
             // 
-            this.gvinactivePeriodicFrequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactivePeriodicFrequency.DataPropertyName = "frequency";
-            this.gvinactivePeriodicFrequency.HeaderText = "Frequency";
-            this.gvinactivePeriodicFrequency.MaxInputLength = 150;
-            this.gvinactivePeriodicFrequency.MinimumWidth = 8;
-            this.gvinactivePeriodicFrequency.Name = "gvinactivePeriodicFrequency";
-            this.gvinactivePeriodicFrequency.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactivePeriodicFrequency.Width = 101;
+            this.gvSearchAlarmDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvSearchAlarmDate.DataPropertyName = "alarmDate";
+            dataGridViewCellStyle1.Format = "D";
+            dataGridViewCellStyle1.NullValue = null;
+            this.gvSearchAlarmDate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.gvSearchAlarmDate.HeaderText = "Alarm Date";
+            this.gvSearchAlarmDate.MaxInputLength = 200;
+            this.gvSearchAlarmDate.MinimumWidth = 8;
+            this.gvSearchAlarmDate.Name = "gvSearchAlarmDate";
+            this.gvSearchAlarmDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvSearchAlarmDate.Width = 107;
             // 
-            // gvinactivePeriodicDate
+            // gvSearchAlarmTime
             // 
-            this.gvinactivePeriodicDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactivePeriodicDate.DataPropertyName = "periodicDate";
-            dataGridViewCellStyle7.Format = "D";
-            dataGridViewCellStyle7.NullValue = null;
-            this.gvinactivePeriodicDate.DefaultCellStyle = dataGridViewCellStyle7;
-            this.gvinactivePeriodicDate.HeaderText = "Periodic Date";
-            this.gvinactivePeriodicDate.MaxInputLength = 200;
-            this.gvinactivePeriodicDate.MinimumWidth = 8;
-            this.gvinactivePeriodicDate.Name = "gvinactivePeriodicDate";
-            this.gvinactivePeriodicDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactivePeriodicDate.Width = 121;
+            this.gvSearchAlarmTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvSearchAlarmTime.DataPropertyName = "alarmTime";
+            dataGridViewCellStyle2.Format = "t";
+            dataGridViewCellStyle2.NullValue = null;
+            this.gvSearchAlarmTime.DefaultCellStyle = dataGridViewCellStyle2;
+            this.gvSearchAlarmTime.HeaderText = "Alarm Time";
+            this.gvSearchAlarmTime.MaxInputLength = 150;
+            this.gvSearchAlarmTime.MinimumWidth = 8;
+            this.gvSearchAlarmTime.Name = "gvSearchAlarmTime";
+            this.gvSearchAlarmTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvSearchAlarmTime.Width = 111;
             // 
-            // gvinactivePeriodicTime
+            // gvSearchPeriodic
             // 
-            this.gvinactivePeriodicTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactivePeriodicTime.DataPropertyName = "periodicTime";
-            dataGridViewCellStyle8.Format = "t";
-            dataGridViewCellStyle8.NullValue = null;
-            this.gvinactivePeriodicTime.DefaultCellStyle = dataGridViewCellStyle8;
-            this.gvinactivePeriodicTime.HeaderText = "Periodic Time";
-            this.gvinactivePeriodicTime.MaxInputLength = 150;
-            this.gvinactivePeriodicTime.MinimumWidth = 8;
-            this.gvinactivePeriodicTime.Name = "gvinactivePeriodicTime";
-            this.gvinactivePeriodicTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactivePeriodicTime.Width = 125;
+            this.gvSearchPeriodic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvSearchPeriodic.DataPropertyName = "periodic";
+            this.gvSearchPeriodic.HeaderText = "Periodic";
+            this.gvSearchPeriodic.MinimumWidth = 8;
+            this.gvSearchPeriodic.Name = "gvSearchPeriodic";
+            this.gvSearchPeriodic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvSearchPeriodic.Width = 68;
+            // 
+            // gvSearchPeriodicFrequency
+            // 
+            this.gvSearchPeriodicFrequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvSearchPeriodicFrequency.DataPropertyName = "frequency";
+            this.gvSearchPeriodicFrequency.HeaderText = "Frequency";
+            this.gvSearchPeriodicFrequency.MaxInputLength = 150;
+            this.gvSearchPeriodicFrequency.MinimumWidth = 8;
+            this.gvSearchPeriodicFrequency.Name = "gvSearchPeriodicFrequency";
+            this.gvSearchPeriodicFrequency.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvSearchPeriodicFrequency.Width = 101;
+            // 
+            // gvSearchPeriodicDate
+            // 
+            this.gvSearchPeriodicDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvSearchPeriodicDate.DataPropertyName = "periodicDate";
+            dataGridViewCellStyle3.Format = "D";
+            dataGridViewCellStyle3.NullValue = null;
+            this.gvSearchPeriodicDate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gvSearchPeriodicDate.HeaderText = "Periodic Date";
+            this.gvSearchPeriodicDate.MaxInputLength = 200;
+            this.gvSearchPeriodicDate.MinimumWidth = 8;
+            this.gvSearchPeriodicDate.Name = "gvSearchPeriodicDate";
+            this.gvSearchPeriodicDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvSearchPeriodicDate.Width = 121;
+            // 
+            // gvSearchPeriodicTime
+            // 
+            this.gvSearchPeriodicTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvSearchPeriodicTime.DataPropertyName = "periodicTime";
+            dataGridViewCellStyle4.Format = "t";
+            dataGridViewCellStyle4.NullValue = null;
+            this.gvSearchPeriodicTime.DefaultCellStyle = dataGridViewCellStyle4;
+            this.gvSearchPeriodicTime.HeaderText = "Periodic Time";
+            this.gvSearchPeriodicTime.MaxInputLength = 150;
+            this.gvSearchPeriodicTime.MinimumWidth = 8;
+            this.gvSearchPeriodicTime.Name = "gvSearchPeriodicTime";
+            this.gvSearchPeriodicTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvSearchPeriodicTime.Width = 125;
             // 
             // reminderBindingSource
             // 
@@ -1073,6 +1286,7 @@
             this.MsFileMenu.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSearchReminderTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reminderBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1156,6 +1370,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gvinactivePeriodicFrequency;
         private System.Windows.Forms.DataGridViewTextBoxColumn gvinactivePeriodicDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn gvinactivePeriodicTime;
+        private System.Windows.Forms.Button bSearchTaskTab;
+        private System.Windows.Forms.Label lGridViewTitleSearch;
+        private System.Windows.Forms.DataGridView gvSearchReminderTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchId;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gvSearchActive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchDescription;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gvSearchAlarm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchAlarmDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchAlarmTime;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn gvSearchPeriodic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchPeriodicFrequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchPeriodicDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gvSearchPeriodicTime;
     }
 }
 
