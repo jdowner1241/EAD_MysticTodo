@@ -14,6 +14,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUIApp.MysticTodo
 {
@@ -261,6 +262,20 @@ namespace GUIApp.MysticTodo
                 }
             }
         }
+        //
+        //
+        private void tbSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbSearch.Text))
+            {
+                selectSearchTaskTab();
+                refreshSearchReminderTable(tbSearch.Text.ToString());
+            }
+            else
+            {
+                refreshSearchReminderTable();
+            }
+        }
         // 
         // Events: Input fields
         // 
@@ -498,7 +513,8 @@ namespace GUIApp.MysticTodo
         //
         private void BSearch_Click(object sender, EventArgs e)
         {
-
+            selectSearchTaskTab();
+            refreshSearchReminderTable(tbSearch.Text.ToString());
         }
         //
         //
@@ -630,7 +646,7 @@ namespace GUIApp.MysticTodo
         {
 
             var searchReminderList = mysticTodoDatabase.Reminders
-            .Where(r => r.Reminder_Name == searchTerm) // Filter by Reminder_IsComplete
+            .Where(r => r.Reminder_Name.Contains(searchTerm)) // Filter by Reminder_IsComplete
             .Select(r => new
             {
                 id = r.Reminder_Id,
@@ -649,6 +665,23 @@ namespace GUIApp.MysticTodo
             }).ToList();
             gvSearchReminderTable.DataSource = searchReminderList;
             gvSearchReminderTable.Refresh();
+        }
+        //
+        //
+        private void selectSearchTaskTab()
+        {
+            if (!gvSearchReminderTable.Visible)
+            {
+                gvSearchReminderTable.Visible = true;
+                lGridViewTitleSearch.Visible = true;
+                gvReminderTable.Visible = false;
+                lGridViewTitleActive.Visible = false;
+                gvInactiveReminderTable.Visible = false;
+                lGridViewTitleCompleted.Visible = false;
+
+
+                currentTable = (int)tableStatus.searchtable;
+            }
         }
         // 
         // Custom methods: Feilds
@@ -806,5 +839,6 @@ namespace GUIApp.MysticTodo
         {
 
         }
+
     }
 }
