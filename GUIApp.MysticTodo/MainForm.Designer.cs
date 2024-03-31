@@ -498,6 +498,7 @@
             this.gvSearchReminderTable.TabIndex = 35;
             this.gvSearchReminderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSearchReminderTable_CellContentClick);
             this.gvSearchReminderTable.SelectionChanged += new System.EventHandler(this.gvSearchReminderTable_SelectionChanged);
+            this.gvSearchReminderTable.DoubleClick += new System.EventHandler(this.gvSearchReminderTable_DoubleClick);
             // 
             // gvSearchId
             // 
@@ -868,6 +869,7 @@
             this.gvInactiveReminderTable.TabIndex = 20;
             this.gvInactiveReminderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvInactiveReminderTable_CellContentClick);
             this.gvInactiveReminderTable.SelectionChanged += new System.EventHandler(this.gvInactiveReminderTable_SelectionChanged);
+            this.gvInactiveReminderTable.DoubleClick += new System.EventHandler(this.gvInactiveReminderTable_DoubleClick);
             // 
             // gvinactiveId
             // 
