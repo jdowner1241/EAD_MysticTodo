@@ -132,6 +132,17 @@
       <h2>Task Reminder</h2>
        <input type="text" id="taskInput" placeholder="Enter task">
        <button onclick="addTask()">Add Task</button>
+       <input type="text" id="taskDescription" placeholder=":Enter description">
+       <button onclick="adddDescription()">Add Description</button>
+       <a id="lHasAlarm">Alarm </a>
+       <input type="checkbox" id="hasAlarm" />
+       <input type="date" id="alarmDate" />
+       <input type="time" id="alarmTime" />
+        <a id="lPeriodic">Periodic </a>
+        <input type="checkbox" id="periodic" />
+        <input type="date" id="periodicDate" />
+        <input type="time" id="periodicTime" />
+
         <table id="taskTable">
              <table class="table table-bordered">
                 <thead class="thead-dark">
