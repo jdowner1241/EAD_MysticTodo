@@ -4,9 +4,40 @@ namespace WebAppRedo.Models
 {
     public class upgradeId
     {
-        public string Id { get; set; } = string.Empty;
-        [Required(ErrorMessage = "Please enter a description")]
-        public string Description { get; set; } = string.Empty;
-        
+        public int id { get; set; }
+
+        [Required(ErrorMessage = "Please enter a Task Name")]
+        public string name { get; set; }
+
+        public string description { get; set; } = string.Empty;
+
+        public Boolean isActived { get; set; }
+
+        public Boolean hasAlarms { get; set; }
+
+        public DateTime? alarmTime { get; set; } 
+        public DateTime? alarmDate { get; set; } 
+
+        public Boolean periodic { get; set; }
+
+        public DateTime? periodicDate {  get; set; } 
+        public DateTime? periodicTime { get;set; } 
+
+
+        /*private Boolean hasAlarm = false;
+        private DateTime? alarmTime;
+
+        public void getAlarmTime() { }
+        public void setAlarmTime()
+        {
+            if (hasAlarm == true)
+            {
+                
+            }
+                  
+        }*/
+
+
+
     }
 }
