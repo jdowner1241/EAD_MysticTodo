@@ -1,5 +1,4 @@
-﻿﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,7 +9,34 @@
     <link rel="stylesheet" href="~/WebAppRedo.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <head1>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3" style="background-color: #0c2536; background-image: linear-gradient(160deg, #0c2536 0%, #0c29ca 100%);">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mystic To Do</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grows-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" 
+                                asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">Contact</a>
+                            </li>
+                        </ul>
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!--<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mystic To Do</a>
@@ -29,69 +55,145 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">Contact</a>
                         </li>
-                    </ul>
+                        </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
-    </header>
+    </header>-->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    
-<head>
-    <title>Task Reminder</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+        <title>Task Reminder</title>
 
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <h2>Task Reminder</h2>
-    <table id="taskTable">
-        <tr>
-            <th>Task</th>
-            <th>Action</th>
-        </tr>
-        <!-- Tasks will be dynamically added here -->
-    </table>
-    <br>
-    <input type="text" id="taskInput" placeholder="Enter task">
-    <button onclick="addTask()">Add Task</button>
-    <script>
-        function addTask() {
-            var task = document.getElementById("taskInput").value;
-            if (task === "") {
-                alert("Please enter a task");
-                return;
+        <style>
+            .rakkas-regular h2 {
+                font-family: "Rakkas", serif;
+                font-weight: 400;
+                font-style: normal;
             }
-            var table = document.getElementById("taskTable");
-            var row = table.insertRow(-1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            cell1.innerHTML = task;
-            cell2.innerHTML = "<button onclick='deleteTask(this)'>Delete</button>";
-            document.getElementById("taskInput").value = "";
-        }
-        function deleteTask(row) {
-            var rowIndex = row.parentNode.parentNode.rowIndex;
-            document.getElementById("taskTable").deleteRow(rowIndex);
-        }
-    </script>
-</body>
+
+            h2{
+                margin-left:50px;
+                margin-bottom:30px;
+
+            }
+            input{
+                margin-left:50px;
+                margin-bottom: 30px;
+                border:none;
+
+                
+            }
+
+             table {
+                width:90%;
+                border-collapse: collapse;
+                margin-right: 50px;
+                margin-left 
+            } 
+
+
+
+
+             th, td {
+              border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                width: 2px; 
+
+            }
+
+            tr:nth-child(even) {
+                background: white;
+                width: 23px; 
+            } 
+ 
+
+            #taskTable{
+                 margin-left: 50px;
+                 margin-bottom: 30px;
+
+            }
+            body{
+                background-color: #1ad0f4;
+            }
+            button{
+                background-color: #43a1d0;
+                border-radius:7px;
+                border-block:none;
+
+            }
+        </style>
+    </head1>
+    <body1>
+      <h2>Task Reminder</h2>
+       <input type="text" id="taskInput" placeholder="Enter task">
+       <button onclick="addTask()">Add Task</button>
+        <table id="taskTable">
+             <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Active</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Alarm</th>
+                        <th>Alarm Date</th>
+                        <th>Alarm Time</th>
+                        <th>Periodic</th>
+                        <th>Frequency</th>
+                        <th>Periodic Date</th>
+                        <th>Periodic Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="checkbox" checked></td>
+                        <td>Task 1</td>
+                        <td>Description 1</td>
+                        <td><input type="checkbox"></td>
+                        <td>2024-03-28</td>
+                        <td>08:00 AM</td>
+                        <td><input type="checkbox"></td>
+                        <td>Daily</td>
+                        <td>2024-03-28</td>
+                        <td>08:00 AM</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+           @*  <tr>
+                <th>Task</th>
+                <th>Action</th>
+            </tr> *@
+            <!-- Tasks will be dynamically added here -->
+        </table>
+        <br>
+        
+        <script>
+            function addTask() {
+                var task = document.getElementById("taskInput").value;
+                if (task === "") {
+                    alert("Please enter a task");
+                    return;
+                }
+                var table = document.getElementById("taskTable");
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = task;
+                cell2.innerHTML = "<button onclick='deleteTask(this)'>Delete</button>";
+                document.getElementById("taskInput").value = "";
+            }
+            function deleteTask(row) {
+                var rowIndex = row.parentNode.parentNode.rowIndex;
+                document.getElementById("taskTable").deleteRow(rowIndex);
+            }
+        </script>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; @DateTime.Now.Year - Mystic To Do - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -101,5 +203,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+   </body1>
 </body>
 </html>
