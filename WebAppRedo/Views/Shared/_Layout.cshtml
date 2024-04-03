@@ -19,7 +19,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+                        <ul class="navbar-nav flex-grows-1">
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Home" 
                                 asp-action="Index">Home</a>
@@ -67,6 +67,7 @@
         </main>
     </div>
         <title>Task Reminder</title>
+
         <style>
             .rakkas-regular h2 {
                 font-family: "Rakkas", serif;
@@ -87,24 +88,30 @@
                 
             }
 
-            table {
-                width: 100%;
+             table {
+                width:90%;
                 border-collapse: collapse;
                 margin-right: 50px;
-                margin-left
-            }
+                margin-left 
+            } 
 
-            th, td {
-                border: 1px solid #dddddd;
+
+
+
+             th, td {
+              border: 1px solid #dddddd;
                 text-align: left;
                 padding: 8px;
-                margin-left:8px;
+                width: 2px; 
+
             }
 
             tr:nth-child(even) {
-                background:white;
-                width:234px;
-            }
+                background: white;
+                width: 23px; 
+            } 
+ 
+
             #taskTable{
                  margin-left: 50px;
                  margin-bottom: 30px;
@@ -126,10 +133,44 @@
        <input type="text" id="taskInput" placeholder="Enter task">
        <button onclick="addTask()">Add Task</button>
         <table id="taskTable">
-            <tr>
+
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Active</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Alarm</th>
+                        <th>Alarm Date</th>
+                        <th>Alarm Time</th>
+                        <th>Periodic</th>
+                        <th>Frequency</th>
+                        <th>Periodic Date</th>
+                        <th>Periodic Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="checkbox" checked></td>
+                        <td>Task 1</td>
+                        <td>Description 1</td>
+                        <td><input type="checkbox"></td>
+                        <td>2024-03-28</td>
+                        <td>08:00 AM</td>
+                        <td><input type="checkbox"></td>
+                        <td>Daily</td>
+                        <td>2024-03-28</td>
+                        <td>08:00 AM</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+           @*  <tr>
                 <th>Task</th>
                 <th>Action</th>
-            </tr>
+            </tr> *@
             <!-- Tasks will be dynamically added here -->
         </table>
         <br>

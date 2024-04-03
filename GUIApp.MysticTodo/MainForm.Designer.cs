@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TcMainTabControl = new System.Windows.Forms.TabControl();
             this.TpReminder = new System.Windows.Forms.TabPage();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
@@ -74,6 +74,17 @@
             this.gvPeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lGridViewTitleActive = new System.Windows.Forms.Label();
             this.gvInactiveReminderTable = new System.Windows.Forms.DataGridView();
+            this.gvinactiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvinactiveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveAlarm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvinactiveAlarmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactiveAlarmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactivePeriodic = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.gvinactivePeriodicFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactivePeriodicDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvinactivePeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbReminderSearch = new System.Windows.Forms.GroupBox();
             this.bInActiveTaskTab = new System.Windows.Forms.Button();
             this.bActiveTaskTab = new System.Windows.Forms.Button();
@@ -97,17 +108,6 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gvinactiveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveAlarm = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gvinactiveAlarmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactiveAlarmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactivePeriodic = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.gvinactivePeriodicFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactivePeriodicDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvinactivePeriodicTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reminderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TcMainTabControl.SuspendLayout();
             this.TpReminder.SuspendLayout();
@@ -136,25 +136,25 @@
             this.TcMainTabControl.Controls.Add(this.TpAlarm);
             this.TcMainTabControl.Controls.Add(this.TpStopWatch);
             this.TcMainTabControl.Controls.Add(this.TpTimer);
-            this.TcMainTabControl.Font = new System.Drawing.Font("Modern No. 20", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TcMainTabControl.Location = new System.Drawing.Point(0, 29);
-            this.TcMainTabControl.Margin = new System.Windows.Forms.Padding(2);
+            this.TcMainTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TcMainTabControl.Location = new System.Drawing.Point(0, 36);
+            this.TcMainTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TcMainTabControl.Multiline = true;
             this.TcMainTabControl.Name = "TcMainTabControl";
             this.TcMainTabControl.SelectedIndex = 0;
             this.TcMainTabControl.ShowToolTips = true;
-            this.TcMainTabControl.Size = new System.Drawing.Size(1181, 916);
+            this.TcMainTabControl.Size = new System.Drawing.Size(1575, 1127);
             this.TcMainTabControl.TabIndex = 0;
             // 
             // TpReminder
             // 
             this.TpReminder.Controls.Add(this.statusStrip2);
             this.TpReminder.Controls.Add(this.ScReminderPage);
-            this.TpReminder.Location = new System.Drawing.Point(23, 4);
-            this.TpReminder.Margin = new System.Windows.Forms.Padding(2);
+            this.TpReminder.Location = new System.Drawing.Point(29, 4);
+            this.TpReminder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpReminder.Name = "TpReminder";
-            this.TpReminder.Padding = new System.Windows.Forms.Padding(2);
-            this.TpReminder.Size = new System.Drawing.Size(1154, 908);
+            this.TpReminder.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TpReminder.Size = new System.Drawing.Size(1542, 1119);
             this.TpReminder.TabIndex = 0;
             this.TpReminder.Text = "Reminder";
             this.TpReminder.UseVisualStyleBackColor = true;
@@ -166,34 +166,34 @@
             this.toolStripProgressBar2,
             this.toolStripStatusLabel2,
             this.toolStripProgressBar3});
-            this.statusStrip2.Location = new System.Drawing.Point(2, 880);
+            this.statusStrip2.Location = new System.Drawing.Point(3, 1084);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip2.Size = new System.Drawing.Size(1150, 26);
+            this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
+            this.statusStrip2.Size = new System.Drawing.Size(1536, 33);
             this.statusStrip2.TabIndex = 17;
             this.statusStrip2.Text = "statusStrip2";
             // 
             // toolStripProgressBar2
             // 
             this.toolStripProgressBar2.Name = "toolStripProgressBar2";
-            this.toolStripProgressBar2.Size = new System.Drawing.Size(75, 20);
+            this.toolStripProgressBar2.Size = new System.Drawing.Size(100, 25);
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 21);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(151, 27);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
             // toolStripProgressBar3
             // 
             this.toolStripProgressBar3.Name = "toolStripProgressBar3";
-            this.toolStripProgressBar3.Size = new System.Drawing.Size(75, 20);
+            this.toolStripProgressBar3.Size = new System.Drawing.Size(100, 25);
             // 
             // ScReminderPage
             // 
             this.ScReminderPage.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ScReminderPage.Location = new System.Drawing.Point(-35, 5);
-            this.ScReminderPage.Margin = new System.Windows.Forms.Padding(2);
+            this.ScReminderPage.Location = new System.Drawing.Point(-47, 6);
+            this.ScReminderPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ScReminderPage.Name = "ScReminderPage";
             this.ScReminderPage.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -201,6 +201,7 @@
             // 
             this.ScReminderPage.Panel1.BackColor = System.Drawing.Color.Silver;
             this.ScReminderPage.Panel1.Controls.Add(this.gbReminderEditor);
+            this.ScReminderPage.Panel1.Controls.Add(this.LbNewReminder);
             this.ScReminderPage.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // ScReminderPage.Panel2
@@ -214,9 +215,8 @@
             this.ScReminderPage.Panel2.Controls.Add(this.gbReminderSearch);
             this.ScReminderPage.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ScReminderPage.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ScReminderPage.Size = new System.Drawing.Size(1230, 888);
-            this.ScReminderPage.SplitterDistance = 318;
-            this.ScReminderPage.SplitterWidth = 3;
+            this.ScReminderPage.Size = new System.Drawing.Size(1640, 1093);
+            this.ScReminderPage.SplitterDistance = 391;
             this.ScReminderPage.TabIndex = 10;
             // 
             // gbReminderEditor
@@ -227,7 +227,6 @@
             this.gbReminderEditor.Controls.Add(this.bClear);
             this.gbReminderEditor.Controls.Add(this.LbTitleReminder);
             this.gbReminderEditor.Controls.Add(this.tbReminder);
-            this.gbReminderEditor.Controls.Add(this.LbNewReminder);
             this.gbReminderEditor.Controls.Add(this.checkboxPeriodicAlarm);
             this.gbReminderEditor.Controls.Add(this.checkboxSetAlarm);
             this.gbReminderEditor.Controls.Add(this.dtpAlarmDate);
@@ -237,12 +236,12 @@
             this.gbReminderEditor.Controls.Add(this.BSubmit);
             this.gbReminderEditor.Controls.Add(this.BUpdate);
             this.gbReminderEditor.Controls.Add(this.BDelete);
-            this.gbReminderEditor.Location = new System.Drawing.Point(52, 49);
-            this.gbReminderEditor.Margin = new System.Windows.Forms.Padding(2);
-            this.gbReminderEditor.MaximumSize = new System.Drawing.Size(1088, 217);
+            this.gbReminderEditor.Location = new System.Drawing.Point(69, 60);
+            this.gbReminderEditor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbReminderEditor.MaximumSize = new System.Drawing.Size(1451, 267);
             this.gbReminderEditor.Name = "gbReminderEditor";
-            this.gbReminderEditor.Padding = new System.Windows.Forms.Padding(2);
-            this.gbReminderEditor.Size = new System.Drawing.Size(1085, 217);
+            this.gbReminderEditor.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbReminderEditor.Size = new System.Drawing.Size(1447, 267);
             this.gbReminderEditor.TabIndex = 18;
             this.gbReminderEditor.TabStop = false;
             // 
@@ -253,11 +252,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.bClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bClear.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bClear.Location = new System.Drawing.Point(540, 187);
-            this.bClear.Margin = new System.Windows.Forms.Padding(2);
+            this.bClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bClear.Location = new System.Drawing.Point(720, 230);
+            this.bClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bClear.Name = "bClear";
-            this.bClear.Size = new System.Drawing.Size(107, 30);
+            this.bClear.Size = new System.Drawing.Size(143, 37);
             this.bClear.TabIndex = 31;
             this.bClear.Text = "Clear";
             this.bClear.UseVisualStyleBackColor = false;
@@ -271,11 +270,10 @@
             this.LbTitleReminder.AutoSize = true;
             this.LbTitleReminder.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.LbTitleReminder.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LbTitleReminder.Font = new System.Drawing.Font("Stencil BT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbTitleReminder.Location = new System.Drawing.Point(445, 8);
-            this.LbTitleReminder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LbTitleReminder.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbTitleReminder.Location = new System.Drawing.Point(593, 10);
             this.LbTitleReminder.Name = "LbTitleReminder";
-            this.LbTitleReminder.Size = new System.Drawing.Size(185, 39);
+            this.LbTitleReminder.Size = new System.Drawing.Size(192, 46);
             this.LbTitleReminder.TabIndex = 19;
             this.LbTitleReminder.Text = "Reminder";
             this.LbTitleReminder.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -284,12 +282,12 @@
             // 
             this.tbReminder.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbReminder.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tbReminder.Location = new System.Drawing.Point(255, 78);
-            this.tbReminder.Margin = new System.Windows.Forms.Padding(2);
-            this.tbReminder.MaximumSize = new System.Drawing.Size(632, 29);
+            this.tbReminder.Location = new System.Drawing.Point(340, 96);
+            this.tbReminder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbReminder.MaximumSize = new System.Drawing.Size(841, 29);
             this.tbReminder.MaxLength = 842;
             this.tbReminder.Name = "tbReminder";
-            this.tbReminder.Size = new System.Drawing.Size(632, 22);
+            this.tbReminder.Size = new System.Drawing.Size(841, 26);
             this.tbReminder.TabIndex = 18;
             this.tbReminder.WordWrap = false;
             // 
@@ -300,11 +298,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LbNewReminder.AutoSize = true;
             this.LbNewReminder.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LbNewReminder.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbNewReminder.Location = new System.Drawing.Point(2, 78);
-            this.LbNewReminder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LbNewReminder.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LbNewReminder.Location = new System.Drawing.Point(53, 13);
             this.LbNewReminder.Name = "LbNewReminder";
-            this.LbNewReminder.Size = new System.Drawing.Size(207, 25);
+            this.LbNewReminder.Size = new System.Drawing.Size(274, 36);
             this.LbNewReminder.TabIndex = 20;
             this.LbNewReminder.Text = "Add New Reminder";
             this.LbNewReminder.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -316,10 +313,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkboxPeriodicAlarm.AutoSize = true;
             this.checkboxPeriodicAlarm.BackColor = System.Drawing.Color.Silver;
-            this.checkboxPeriodicAlarm.Location = new System.Drawing.Point(98, 192);
-            this.checkboxPeriodicAlarm.Margin = new System.Windows.Forms.Padding(2);
+            this.checkboxPeriodicAlarm.Location = new System.Drawing.Point(131, 236);
+            this.checkboxPeriodicAlarm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkboxPeriodicAlarm.Name = "checkboxPeriodicAlarm";
-            this.checkboxPeriodicAlarm.Size = new System.Drawing.Size(126, 20);
+            this.checkboxPeriodicAlarm.Size = new System.Drawing.Size(155, 24);
             this.checkboxPeriodicAlarm.TabIndex = 22;
             this.checkboxPeriodicAlarm.Text = "Periodic Alarm";
             this.checkboxPeriodicAlarm.UseVisualStyleBackColor = false;
@@ -332,10 +329,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkboxSetAlarm.AutoSize = true;
             this.checkboxSetAlarm.BackColor = System.Drawing.Color.Silver;
-            this.checkboxSetAlarm.Location = new System.Drawing.Point(133, 144);
-            this.checkboxSetAlarm.Margin = new System.Windows.Forms.Padding(2);
+            this.checkboxSetAlarm.Location = new System.Drawing.Point(177, 177);
+            this.checkboxSetAlarm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkboxSetAlarm.Name = "checkboxSetAlarm";
-            this.checkboxSetAlarm.Size = new System.Drawing.Size(91, 20);
+            this.checkboxSetAlarm.Size = new System.Drawing.Size(114, 24);
             this.checkboxSetAlarm.TabIndex = 21;
             this.checkboxSetAlarm.Text = "Set Alarm";
             this.checkboxSetAlarm.UseVisualStyleBackColor = false;
@@ -346,11 +343,11 @@
             this.dtpAlarmDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpAlarmDate.Location = new System.Drawing.Point(255, 140);
-            this.dtpAlarmDate.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpAlarmDate.MaximumSize = new System.Drawing.Size(258, 29);
+            this.dtpAlarmDate.Location = new System.Drawing.Point(340, 172);
+            this.dtpAlarmDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpAlarmDate.MaximumSize = new System.Drawing.Size(343, 29);
             this.dtpAlarmDate.Name = "dtpAlarmDate";
-            this.dtpAlarmDate.Size = new System.Drawing.Size(258, 22);
+            this.dtpAlarmDate.Size = new System.Drawing.Size(343, 26);
             this.dtpAlarmDate.TabIndex = 23;
             // 
             // comboboxPerodicAlarm
@@ -361,10 +358,10 @@
             this.comboboxPerodicAlarm.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.comboboxPerodicAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboboxPerodicAlarm.FormattingEnabled = true;
-            this.comboboxPerodicAlarm.Location = new System.Drawing.Point(258, 189);
-            this.comboboxPerodicAlarm.Margin = new System.Windows.Forms.Padding(2);
+            this.comboboxPerodicAlarm.Location = new System.Drawing.Point(344, 233);
+            this.comboboxPerodicAlarm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboboxPerodicAlarm.Name = "comboboxPerodicAlarm";
-            this.comboboxPerodicAlarm.Size = new System.Drawing.Size(254, 23);
+            this.comboboxPerodicAlarm.Size = new System.Drawing.Size(337, 28);
             this.comboboxPerodicAlarm.TabIndex = 24;
             // 
             // tbDescription
@@ -373,11 +370,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDescription.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tbDescription.Location = new System.Drawing.Point(660, 128);
-            this.tbDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.tbDescription.Location = new System.Drawing.Point(880, 158);
+            this.tbDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(228, 89);
+            this.tbDescription.Size = new System.Drawing.Size(303, 109);
             this.tbDescription.TabIndex = 26;
             // 
             // LDescription
@@ -388,11 +385,10 @@
             this.LDescription.AutoSize = true;
             this.LDescription.BackColor = System.Drawing.Color.Silver;
             this.LDescription.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LDescription.Font = new System.Drawing.Font("Modern No. 20", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LDescription.Location = new System.Drawing.Point(536, 140);
-            this.LDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LDescription.Location = new System.Drawing.Point(715, 172);
             this.LDescription.Name = "LDescription";
-            this.LDescription.Size = new System.Drawing.Size(111, 21);
+            this.LDescription.Size = new System.Drawing.Size(146, 29);
             this.LDescription.TabIndex = 25;
             this.LDescription.Text = "Description";
             this.LDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -404,11 +400,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.BSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BSubmit.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BSubmit.Location = new System.Drawing.Point(919, 78);
-            this.BSubmit.Margin = new System.Windows.Forms.Padding(2);
+            this.BSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BSubmit.Location = new System.Drawing.Point(1225, 96);
+            this.BSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BSubmit.Name = "BSubmit";
-            this.BSubmit.Size = new System.Drawing.Size(168, 42);
+            this.BSubmit.Size = new System.Drawing.Size(224, 52);
             this.BSubmit.TabIndex = 27;
             this.BSubmit.Text = "Submit";
             this.BSubmit.UseVisualStyleBackColor = false;
@@ -421,10 +417,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BUpdate.BackColor = System.Drawing.Color.LawnGreen;
             this.BUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BUpdate.Location = new System.Drawing.Point(919, 136);
-            this.BUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.BUpdate.Location = new System.Drawing.Point(1225, 167);
+            this.BUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BUpdate.Name = "BUpdate";
-            this.BUpdate.Size = new System.Drawing.Size(168, 34);
+            this.BUpdate.Size = new System.Drawing.Size(224, 42);
             this.BUpdate.TabIndex = 29;
             this.BUpdate.Text = "Update";
             this.BUpdate.UseVisualStyleBackColor = false;
@@ -437,10 +433,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BDelete.BackColor = System.Drawing.Color.IndianRed;
             this.BDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BDelete.Location = new System.Drawing.Point(919, 184);
-            this.BDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.BDelete.Location = new System.Drawing.Point(1225, 226);
+            this.BDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BDelete.Name = "BDelete";
-            this.BDelete.Size = new System.Drawing.Size(168, 36);
+            this.BDelete.Size = new System.Drawing.Size(224, 44);
             this.BDelete.TabIndex = 28;
             this.BDelete.Text = "Delete";
             this.BDelete.UseVisualStyleBackColor = false;
@@ -451,12 +447,11 @@
             this.lGridViewTitleCompleted.AutoSize = true;
             this.lGridViewTitleCompleted.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lGridViewTitleCompleted.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lGridViewTitleCompleted.Font = new System.Drawing.Font("CaslonOpnface BT", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lGridViewTitleCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lGridViewTitleCompleted.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lGridViewTitleCompleted.Location = new System.Drawing.Point(63, 109);
-            this.lGridViewTitleCompleted.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lGridViewTitleCompleted.Location = new System.Drawing.Point(84, 134);
             this.lGridViewTitleCompleted.Name = "lGridViewTitleCompleted";
-            this.lGridViewTitleCompleted.Size = new System.Drawing.Size(216, 29);
+            this.lGridViewTitleCompleted.Size = new System.Drawing.Size(308, 36);
             this.lGridViewTitleCompleted.TabIndex = 33;
             this.lGridViewTitleCompleted.Text = "Completed Reminders";
             this.lGridViewTitleCompleted.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -481,14 +476,14 @@
             this.gvPeriodicFrequency,
             this.gvPeriodicDate,
             this.gvPeriodicTime});
-            this.gvReminderTable.Location = new System.Drawing.Point(67, 135);
-            this.gvReminderTable.Margin = new System.Windows.Forms.Padding(2);
-            this.gvReminderTable.MaximumSize = new System.Drawing.Size(1070, 434);
+            this.gvReminderTable.Location = new System.Drawing.Point(89, 166);
+            this.gvReminderTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gvReminderTable.MaximumSize = new System.Drawing.Size(1427, 534);
             this.gvReminderTable.Name = "gvReminderTable";
             this.gvReminderTable.RowHeadersWidth = 62;
             this.gvReminderTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gvReminderTable.RowTemplate.Height = 28;
-            this.gvReminderTable.Size = new System.Drawing.Size(1070, 417);
+            this.gvReminderTable.Size = new System.Drawing.Size(1427, 513);
             this.gvReminderTable.TabIndex = 19;
             this.gvReminderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvReminderTable_CellContentClick);
             this.gvReminderTable.CellValuePushed += new System.Windows.Forms.DataGridViewCellValueEventHandler(this.gvReminderTable_CellValuePushed);
@@ -504,7 +499,7 @@
             this.gvId.MinimumWidth = 8;
             this.gvId.Name = "gvId";
             this.gvId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvId.Width = 50;
+            this.gvId.Width = 57;
             // 
             // gvActive
             // 
@@ -514,7 +509,7 @@
             this.gvActive.MinimumWidth = 8;
             this.gvActive.Name = "gvActive";
             this.gvActive.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvActive.Width = 55;
+            this.gvActive.Width = 67;
             // 
             // gvName
             // 
@@ -525,7 +520,7 @@
             this.gvName.MinimumWidth = 8;
             this.gvName.Name = "gvName";
             this.gvName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvName.Width = 69;
+            this.gvName.Width = 86;
             // 
             // gvDescription
             // 
@@ -536,7 +531,7 @@
             this.gvDescription.MinimumWidth = 8;
             this.gvDescription.Name = "gvDescription";
             this.gvDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvDescription.Width = 108;
+            this.gvDescription.Width = 135;
             // 
             // gvAlarm
             // 
@@ -546,35 +541,35 @@
             this.gvAlarm.MinimumWidth = 8;
             this.gvAlarm.Name = "gvAlarm";
             this.gvAlarm.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvAlarm.Width = 54;
+            this.gvAlarm.Width = 64;
             // 
             // gvAlarmDate
             // 
             this.gvAlarmDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.gvAlarmDate.DataPropertyName = "alarmDate";
-            dataGridViewCellStyle1.Format = "D";
-            dataGridViewCellStyle1.NullValue = null;
-            this.gvAlarmDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Format = "D";
+            dataGridViewCellStyle9.NullValue = null;
+            this.gvAlarmDate.DefaultCellStyle = dataGridViewCellStyle9;
             this.gvAlarmDate.HeaderText = "Alarm Date";
             this.gvAlarmDate.MaxInputLength = 200;
             this.gvAlarmDate.MinimumWidth = 8;
             this.gvAlarmDate.Name = "gvAlarmDate";
             this.gvAlarmDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvAlarmDate.Width = 107;
+            this.gvAlarmDate.Width = 133;
             // 
             // gvAlarmTime
             // 
             this.gvAlarmTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.gvAlarmTime.DataPropertyName = "alarmTime";
-            dataGridViewCellStyle2.Format = "t";
-            dataGridViewCellStyle2.NullValue = null;
-            this.gvAlarmTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "t";
+            dataGridViewCellStyle10.NullValue = null;
+            this.gvAlarmTime.DefaultCellStyle = dataGridViewCellStyle10;
             this.gvAlarmTime.HeaderText = "Alarm Time";
             this.gvAlarmTime.MaxInputLength = 150;
             this.gvAlarmTime.MinimumWidth = 8;
             this.gvAlarmTime.Name = "gvAlarmTime";
             this.gvAlarmTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvAlarmTime.Width = 111;
+            this.gvAlarmTime.Width = 134;
             // 
             // gvPeriodic
             // 
@@ -584,7 +579,7 @@
             this.gvPeriodic.MinimumWidth = 8;
             this.gvPeriodic.Name = "gvPeriodic";
             this.gvPeriodic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvPeriodic.Width = 68;
+            this.gvPeriodic.Width = 84;
             // 
             // gvPeriodicFrequency
             // 
@@ -595,47 +590,46 @@
             this.gvPeriodicFrequency.MinimumWidth = 8;
             this.gvPeriodicFrequency.Name = "gvPeriodicFrequency";
             this.gvPeriodicFrequency.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvPeriodicFrequency.Width = 101;
+            this.gvPeriodicFrequency.Width = 125;
             // 
             // gvPeriodicDate
             // 
             this.gvPeriodicDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.gvPeriodicDate.DataPropertyName = "periodicDate";
-            dataGridViewCellStyle3.Format = "D";
-            dataGridViewCellStyle3.NullValue = null;
-            this.gvPeriodicDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Format = "D";
+            dataGridViewCellStyle11.NullValue = null;
+            this.gvPeriodicDate.DefaultCellStyle = dataGridViewCellStyle11;
             this.gvPeriodicDate.HeaderText = "Periodic Date";
             this.gvPeriodicDate.MaxInputLength = 200;
             this.gvPeriodicDate.MinimumWidth = 8;
             this.gvPeriodicDate.Name = "gvPeriodicDate";
             this.gvPeriodicDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvPeriodicDate.Width = 121;
+            this.gvPeriodicDate.Width = 153;
             // 
             // gvPeriodicTime
             // 
             this.gvPeriodicTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.gvPeriodicTime.DataPropertyName = "periodicTime";
-            dataGridViewCellStyle4.Format = "t";
-            dataGridViewCellStyle4.NullValue = null;
-            this.gvPeriodicTime.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Format = "t";
+            dataGridViewCellStyle12.NullValue = null;
+            this.gvPeriodicTime.DefaultCellStyle = dataGridViewCellStyle12;
             this.gvPeriodicTime.HeaderText = "Periodic Time";
             this.gvPeriodicTime.MaxInputLength = 150;
             this.gvPeriodicTime.MinimumWidth = 8;
             this.gvPeriodicTime.Name = "gvPeriodicTime";
             this.gvPeriodicTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvPeriodicTime.Width = 125;
+            this.gvPeriodicTime.Width = 154;
             // 
             // lGridViewTitleActive
             // 
             this.lGridViewTitleActive.AutoSize = true;
             this.lGridViewTitleActive.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lGridViewTitleActive.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lGridViewTitleActive.Font = new System.Drawing.Font("CaslonOpnface BT", 18F, System.Drawing.FontStyle.Italic);
+            this.lGridViewTitleActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic);
             this.lGridViewTitleActive.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lGridViewTitleActive.Location = new System.Drawing.Point(63, 109);
-            this.lGridViewTitleActive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lGridViewTitleActive.Location = new System.Drawing.Point(84, 134);
             this.lGridViewTitleActive.Name = "lGridViewTitleActive";
-            this.lGridViewTitleActive.Size = new System.Drawing.Size(179, 29);
+            this.lGridViewTitleActive.Size = new System.Drawing.Size(248, 36);
             this.lGridViewTitleActive.TabIndex = 32;
             this.lGridViewTitleActive.Text = "Active Reminders";
             this.lGridViewTitleActive.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -660,17 +654,147 @@
             this.gvinactivePeriodicFrequency,
             this.gvinactivePeriodicDate,
             this.gvinactivePeriodicTime});
-            this.gvInactiveReminderTable.Location = new System.Drawing.Point(67, 136);
-            this.gvInactiveReminderTable.Margin = new System.Windows.Forms.Padding(2);
-            this.gvInactiveReminderTable.MaximumSize = new System.Drawing.Size(1070, 434);
+            this.gvInactiveReminderTable.Location = new System.Drawing.Point(89, 167);
+            this.gvInactiveReminderTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gvInactiveReminderTable.MaximumSize = new System.Drawing.Size(1427, 534);
             this.gvInactiveReminderTable.Name = "gvInactiveReminderTable";
             this.gvInactiveReminderTable.RowHeadersWidth = 62;
             this.gvInactiveReminderTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gvInactiveReminderTable.RowTemplate.Height = 28;
-            this.gvInactiveReminderTable.Size = new System.Drawing.Size(1070, 417);
+            this.gvInactiveReminderTable.Size = new System.Drawing.Size(1427, 513);
             this.gvInactiveReminderTable.TabIndex = 20;
             this.gvInactiveReminderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvInactiveReminderTable_CellContentClick);
             this.gvInactiveReminderTable.SelectionChanged += new System.EventHandler(this.gvInactiveReminderTable_SelectionChanged);
+            // 
+            // gvinactiveId
+            // 
+            this.gvinactiveId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveId.DataPropertyName = "id";
+            this.gvinactiveId.HeaderText = "ID";
+            this.gvinactiveId.MaxInputLength = 150;
+            this.gvinactiveId.MinimumWidth = 8;
+            this.gvinactiveId.Name = "gvinactiveId";
+            this.gvinactiveId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveId.Width = 57;
+            // 
+            // gvinactiveActive
+            // 
+            this.gvinactiveActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveActive.DataPropertyName = "active";
+            this.gvinactiveActive.HeaderText = "Active";
+            this.gvinactiveActive.MinimumWidth = 8;
+            this.gvinactiveActive.Name = "gvinactiveActive";
+            this.gvinactiveActive.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveActive.Width = 67;
+            // 
+            // gvinactiveName
+            // 
+            this.gvinactiveName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactiveName.DataPropertyName = "name";
+            this.gvinactiveName.HeaderText = "Name";
+            this.gvinactiveName.MaxInputLength = 200;
+            this.gvinactiveName.MinimumWidth = 8;
+            this.gvinactiveName.Name = "gvinactiveName";
+            this.gvinactiveName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactiveName.Width = 86;
+            // 
+            // gvinactiveDescription
+            // 
+            this.gvinactiveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactiveDescription.DataPropertyName = "description";
+            this.gvinactiveDescription.HeaderText = "Description";
+            this.gvinactiveDescription.MaxInputLength = 200;
+            this.gvinactiveDescription.MinimumWidth = 8;
+            this.gvinactiveDescription.Name = "gvinactiveDescription";
+            this.gvinactiveDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactiveDescription.Width = 135;
+            // 
+            // gvinactiveAlarm
+            // 
+            this.gvinactiveAlarm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveAlarm.DataPropertyName = "alarm";
+            this.gvinactiveAlarm.HeaderText = "Alarm";
+            this.gvinactiveAlarm.MinimumWidth = 8;
+            this.gvinactiveAlarm.Name = "gvinactiveAlarm";
+            this.gvinactiveAlarm.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveAlarm.Width = 64;
+            // 
+            // gvinactiveAlarmDate
+            // 
+            this.gvinactiveAlarmDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactiveAlarmDate.DataPropertyName = "alarmDate";
+            dataGridViewCellStyle13.Format = "D";
+            dataGridViewCellStyle13.NullValue = null;
+            this.gvinactiveAlarmDate.DefaultCellStyle = dataGridViewCellStyle13;
+            this.gvinactiveAlarmDate.HeaderText = "Alarm Date";
+            this.gvinactiveAlarmDate.MaxInputLength = 200;
+            this.gvinactiveAlarmDate.MinimumWidth = 8;
+            this.gvinactiveAlarmDate.Name = "gvinactiveAlarmDate";
+            this.gvinactiveAlarmDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactiveAlarmDate.Width = 133;
+            // 
+            // gvinactiveAlarmTime
+            // 
+            this.gvinactiveAlarmTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactiveAlarmTime.DataPropertyName = "alarmTime";
+            dataGridViewCellStyle14.Format = "t";
+            dataGridViewCellStyle14.NullValue = null;
+            this.gvinactiveAlarmTime.DefaultCellStyle = dataGridViewCellStyle14;
+            this.gvinactiveAlarmTime.HeaderText = "Alarm Time";
+            this.gvinactiveAlarmTime.MaxInputLength = 150;
+            this.gvinactiveAlarmTime.MinimumWidth = 8;
+            this.gvinactiveAlarmTime.Name = "gvinactiveAlarmTime";
+            this.gvinactiveAlarmTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactiveAlarmTime.Width = 134;
+            // 
+            // gvinactivePeriodic
+            // 
+            this.gvinactivePeriodic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactivePeriodic.DataPropertyName = "periodic";
+            this.gvinactivePeriodic.HeaderText = "Periodic";
+            this.gvinactivePeriodic.MinimumWidth = 8;
+            this.gvinactivePeriodic.Name = "gvinactivePeriodic";
+            this.gvinactivePeriodic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactivePeriodic.Width = 84;
+            // 
+            // gvinactivePeriodicFrequency
+            // 
+            this.gvinactivePeriodicFrequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactivePeriodicFrequency.DataPropertyName = "frequency";
+            this.gvinactivePeriodicFrequency.HeaderText = "Frequency";
+            this.gvinactivePeriodicFrequency.MaxInputLength = 150;
+            this.gvinactivePeriodicFrequency.MinimumWidth = 8;
+            this.gvinactivePeriodicFrequency.Name = "gvinactivePeriodicFrequency";
+            this.gvinactivePeriodicFrequency.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactivePeriodicFrequency.Width = 125;
+            // 
+            // gvinactivePeriodicDate
+            // 
+            this.gvinactivePeriodicDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.gvinactivePeriodicDate.DataPropertyName = "periodicDate";
+            dataGridViewCellStyle15.Format = "D";
+            dataGridViewCellStyle15.NullValue = null;
+            this.gvinactivePeriodicDate.DefaultCellStyle = dataGridViewCellStyle15;
+            this.gvinactivePeriodicDate.HeaderText = "Periodic Date";
+            this.gvinactivePeriodicDate.MaxInputLength = 200;
+            this.gvinactivePeriodicDate.MinimumWidth = 8;
+            this.gvinactivePeriodicDate.Name = "gvinactivePeriodicDate";
+            this.gvinactivePeriodicDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvinactivePeriodicDate.Width = 153;
+            // 
+            // gvinactivePeriodicTime
+            // 
+            this.gvinactivePeriodicTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.gvinactivePeriodicTime.DataPropertyName = "periodicTime";
+            dataGridViewCellStyle16.Format = "t";
+            dataGridViewCellStyle16.NullValue = null;
+            this.gvinactivePeriodicTime.DefaultCellStyle = dataGridViewCellStyle16;
+            this.gvinactivePeriodicTime.HeaderText = "Periodic Time";
+            this.gvinactivePeriodicTime.MaxInputLength = 150;
+            this.gvinactivePeriodicTime.MinimumWidth = 8;
+            this.gvinactivePeriodicTime.Name = "gvinactivePeriodicTime";
+            this.gvinactivePeriodicTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvinactivePeriodicTime.Width = 154;
             // 
             // gbReminderSearch
             // 
@@ -680,12 +804,12 @@
             this.gbReminderSearch.Controls.Add(this.BSearch);
             this.gbReminderSearch.Controls.Add(this.LSearchReminders);
             this.gbReminderSearch.Controls.Add(this.tbSearch);
-            this.gbReminderSearch.Location = new System.Drawing.Point(59, 12);
-            this.gbReminderSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.gbReminderSearch.MaximumSize = new System.Drawing.Size(1085, 111);
+            this.gbReminderSearch.Location = new System.Drawing.Point(79, 15);
+            this.gbReminderSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbReminderSearch.MaximumSize = new System.Drawing.Size(1447, 137);
             this.gbReminderSearch.Name = "gbReminderSearch";
-            this.gbReminderSearch.Padding = new System.Windows.Forms.Padding(2);
-            this.gbReminderSearch.Size = new System.Drawing.Size(1085, 111);
+            this.gbReminderSearch.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbReminderSearch.Size = new System.Drawing.Size(1447, 137);
             this.gbReminderSearch.TabIndex = 18;
             this.gbReminderSearch.TabStop = false;
             // 
@@ -696,10 +820,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bInActiveTaskTab.BackColor = System.Drawing.Color.PeachPuff;
             this.bInActiveTaskTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bInActiveTaskTab.Location = new System.Drawing.Point(533, 73);
-            this.bInActiveTaskTab.Margin = new System.Windows.Forms.Padding(2);
+            this.bInActiveTaskTab.Location = new System.Drawing.Point(711, 90);
+            this.bInActiveTaskTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bInActiveTaskTab.Name = "bInActiveTaskTab";
-            this.bInActiveTaskTab.Size = new System.Drawing.Size(164, 34);
+            this.bInActiveTaskTab.Size = new System.Drawing.Size(219, 42);
             this.bInActiveTaskTab.TabIndex = 31;
             this.bInActiveTaskTab.Text = "Completed Task";
             this.bInActiveTaskTab.UseVisualStyleBackColor = false;
@@ -712,10 +836,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bActiveTaskTab.BackColor = System.Drawing.Color.PeachPuff;
             this.bActiveTaskTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bActiveTaskTab.Location = new System.Drawing.Point(359, 73);
-            this.bActiveTaskTab.Margin = new System.Windows.Forms.Padding(2);
+            this.bActiveTaskTab.Location = new System.Drawing.Point(479, 90);
+            this.bActiveTaskTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bActiveTaskTab.Name = "bActiveTaskTab";
-            this.bActiveTaskTab.Size = new System.Drawing.Size(164, 34);
+            this.bActiveTaskTab.Size = new System.Drawing.Size(219, 42);
             this.bActiveTaskTab.TabIndex = 30;
             this.bActiveTaskTab.Text = "Active Task";
             this.bActiveTaskTab.UseVisualStyleBackColor = false;
@@ -725,10 +849,10 @@
             // 
             this.BSearch.BackColor = System.Drawing.Color.LightBlue;
             this.BSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BSearch.Location = new System.Drawing.Point(915, 24);
-            this.BSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.BSearch.Location = new System.Drawing.Point(1220, 30);
+            this.BSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BSearch.Name = "BSearch";
-            this.BSearch.Size = new System.Drawing.Size(170, 31);
+            this.BSearch.Size = new System.Drawing.Size(227, 38);
             this.BSearch.TabIndex = 18;
             this.BSearch.Text = "Search";
             this.BSearch.UseVisualStyleBackColor = false;
@@ -737,11 +861,10 @@
             // 
             this.LSearchReminders.AutoSize = true;
             this.LSearchReminders.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LSearchReminders.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LSearchReminders.Location = new System.Drawing.Point(10, 23);
-            this.LSearchReminders.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LSearchReminders.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LSearchReminders.Location = new System.Drawing.Point(13, 28);
             this.LSearchReminders.Name = "LSearchReminders";
-            this.LSearchReminders.Size = new System.Drawing.Size(190, 25);
+            this.LSearchReminders.Size = new System.Drawing.Size(260, 36);
             this.LSearchReminders.TabIndex = 16;
             this.LSearchReminders.Text = "Search Reminders";
             this.LSearchReminders.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -753,66 +876,66 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSearch.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tbSearch.HideSelection = false;
-            this.tbSearch.Location = new System.Drawing.Point(251, 24);
-            this.tbSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.tbSearch.MaximumSize = new System.Drawing.Size(630, 29);
+            this.tbSearch.Location = new System.Drawing.Point(335, 30);
+            this.tbSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbSearch.MaximumSize = new System.Drawing.Size(839, 29);
             this.tbSearch.MaxLength = 838;
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(630, 22);
+            this.tbSearch.Size = new System.Drawing.Size(839, 26);
             this.tbSearch.TabIndex = 17;
             this.tbSearch.WordWrap = false;
             // 
             // TpCalender
             // 
-            this.TpCalender.Location = new System.Drawing.Point(23, 4);
-            this.TpCalender.Margin = new System.Windows.Forms.Padding(2);
+            this.TpCalender.Location = new System.Drawing.Point(29, 4);
+            this.TpCalender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpCalender.Name = "TpCalender";
-            this.TpCalender.Padding = new System.Windows.Forms.Padding(2);
-            this.TpCalender.Size = new System.Drawing.Size(1154, 908);
+            this.TpCalender.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TpCalender.Size = new System.Drawing.Size(1542, 1119);
             this.TpCalender.TabIndex = 1;
             this.TpCalender.Text = "Calender";
             this.TpCalender.UseVisualStyleBackColor = true;
             // 
             // TpTimeTable
             // 
-            this.TpTimeTable.Location = new System.Drawing.Point(23, 4);
-            this.TpTimeTable.Margin = new System.Windows.Forms.Padding(2);
+            this.TpTimeTable.Location = new System.Drawing.Point(29, 4);
+            this.TpTimeTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpTimeTable.Name = "TpTimeTable";
-            this.TpTimeTable.Padding = new System.Windows.Forms.Padding(2);
-            this.TpTimeTable.Size = new System.Drawing.Size(1154, 908);
+            this.TpTimeTable.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TpTimeTable.Size = new System.Drawing.Size(1542, 1119);
             this.TpTimeTable.TabIndex = 2;
             this.TpTimeTable.Text = "TimeTable";
             this.TpTimeTable.UseVisualStyleBackColor = true;
             // 
             // TpAlarm
             // 
-            this.TpAlarm.Location = new System.Drawing.Point(23, 4);
-            this.TpAlarm.Margin = new System.Windows.Forms.Padding(2);
+            this.TpAlarm.Location = new System.Drawing.Point(29, 4);
+            this.TpAlarm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpAlarm.Name = "TpAlarm";
-            this.TpAlarm.Padding = new System.Windows.Forms.Padding(2);
-            this.TpAlarm.Size = new System.Drawing.Size(1154, 908);
+            this.TpAlarm.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TpAlarm.Size = new System.Drawing.Size(1542, 1119);
             this.TpAlarm.TabIndex = 3;
             this.TpAlarm.Text = "Alarm";
             this.TpAlarm.UseVisualStyleBackColor = true;
             // 
             // TpStopWatch
             // 
-            this.TpStopWatch.Location = new System.Drawing.Point(23, 4);
-            this.TpStopWatch.Margin = new System.Windows.Forms.Padding(2);
+            this.TpStopWatch.Location = new System.Drawing.Point(29, 4);
+            this.TpStopWatch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpStopWatch.Name = "TpStopWatch";
-            this.TpStopWatch.Padding = new System.Windows.Forms.Padding(2);
-            this.TpStopWatch.Size = new System.Drawing.Size(1154, 908);
+            this.TpStopWatch.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TpStopWatch.Size = new System.Drawing.Size(1542, 1119);
             this.TpStopWatch.TabIndex = 4;
             this.TpStopWatch.Text = "StopWatch";
             this.TpStopWatch.UseVisualStyleBackColor = true;
             // 
             // TpTimer
             // 
-            this.TpTimer.Location = new System.Drawing.Point(23, 4);
-            this.TpTimer.Margin = new System.Windows.Forms.Padding(2);
+            this.TpTimer.Location = new System.Drawing.Point(29, 4);
+            this.TpTimer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpTimer.Name = "TpTimer";
-            this.TpTimer.Padding = new System.Windows.Forms.Padding(2);
-            this.TpTimer.Size = new System.Drawing.Size(1154, 908);
+            this.TpTimer.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TpTimer.Size = new System.Drawing.Size(1542, 1119);
             this.TpTimer.TabIndex = 5;
             this.TpTimer.Text = "Timer";
             this.TpTimer.UseVisualStyleBackColor = true;
@@ -828,33 +951,33 @@
             this.TpmiHelp});
             this.MsFileMenu.Location = new System.Drawing.Point(0, 0);
             this.MsFileMenu.Name = "MsFileMenu";
-            this.MsFileMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.MsFileMenu.Size = new System.Drawing.Size(1177, 24);
+            this.MsFileMenu.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.MsFileMenu.Size = new System.Drawing.Size(1569, 28);
             this.MsFileMenu.TabIndex = 1;
             this.MsFileMenu.Text = "File";
             // 
             // TsmiFile
             // 
             this.TsmiFile.Name = "TsmiFile";
-            this.TsmiFile.Size = new System.Drawing.Size(37, 20);
+            this.TsmiFile.Size = new System.Drawing.Size(46, 24);
             this.TsmiFile.Text = "File";
             // 
             // TpmiEdit
             // 
             this.TpmiEdit.Name = "TpmiEdit";
-            this.TpmiEdit.Size = new System.Drawing.Size(39, 20);
+            this.TpmiEdit.Size = new System.Drawing.Size(49, 24);
             this.TpmiEdit.Text = "Edit";
             // 
             // TpmiView
             // 
             this.TpmiView.Name = "TpmiView";
-            this.TpmiView.Size = new System.Drawing.Size(44, 20);
+            this.TpmiView.Size = new System.Drawing.Size(55, 24);
             this.TpmiView.Text = "View";
             // 
             // TpmiHelp
             // 
             this.TpmiHelp.Name = "TpmiHelp";
-            this.TpmiHelp.Size = new System.Drawing.Size(44, 20);
+            this.TpmiHelp.Size = new System.Drawing.Size(55, 24);
             this.TpmiHelp.Text = "Help";
             // 
             // statusStrip1
@@ -867,17 +990,17 @@
             this.toolStripStatusLabel1,
             this.toolStripSplitButton1,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 1354);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1668);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 9, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(239, 89);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(300, 108);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 84);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 102);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // toolStripSplitButton1
@@ -886,13 +1009,13 @@
             this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(40, 87);
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(43, 106);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(67, 83);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(89, 100);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -902,152 +1025,22 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 150;
             // 
-            // gvinactiveId
-            // 
-            this.gvinactiveId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveId.DataPropertyName = "id";
-            this.gvinactiveId.HeaderText = "ID";
-            this.gvinactiveId.MaxInputLength = 150;
-            this.gvinactiveId.MinimumWidth = 8;
-            this.gvinactiveId.Name = "gvinactiveId";
-            this.gvinactiveId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveId.Width = 50;
-            // 
-            // gvinactiveActive
-            // 
-            this.gvinactiveActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveActive.DataPropertyName = "active";
-            this.gvinactiveActive.HeaderText = "Active";
-            this.gvinactiveActive.MinimumWidth = 8;
-            this.gvinactiveActive.Name = "gvinactiveActive";
-            this.gvinactiveActive.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveActive.Width = 55;
-            // 
-            // gvinactiveName
-            // 
-            this.gvinactiveName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactiveName.DataPropertyName = "name";
-            this.gvinactiveName.HeaderText = "Name";
-            this.gvinactiveName.MaxInputLength = 200;
-            this.gvinactiveName.MinimumWidth = 8;
-            this.gvinactiveName.Name = "gvinactiveName";
-            this.gvinactiveName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactiveName.Width = 69;
-            // 
-            // gvinactiveDescription
-            // 
-            this.gvinactiveDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactiveDescription.DataPropertyName = "description";
-            this.gvinactiveDescription.HeaderText = "Description";
-            this.gvinactiveDescription.MaxInputLength = 200;
-            this.gvinactiveDescription.MinimumWidth = 8;
-            this.gvinactiveDescription.Name = "gvinactiveDescription";
-            this.gvinactiveDescription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactiveDescription.Width = 108;
-            // 
-            // gvinactiveAlarm
-            // 
-            this.gvinactiveAlarm.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveAlarm.DataPropertyName = "alarm";
-            this.gvinactiveAlarm.HeaderText = "Alarm";
-            this.gvinactiveAlarm.MinimumWidth = 8;
-            this.gvinactiveAlarm.Name = "gvinactiveAlarm";
-            this.gvinactiveAlarm.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveAlarm.Width = 54;
-            // 
-            // gvinactiveAlarmDate
-            // 
-            this.gvinactiveAlarmDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactiveAlarmDate.DataPropertyName = "alarmDate";
-            dataGridViewCellStyle5.Format = "D";
-            dataGridViewCellStyle5.NullValue = null;
-            this.gvinactiveAlarmDate.DefaultCellStyle = dataGridViewCellStyle5;
-            this.gvinactiveAlarmDate.HeaderText = "Alarm Date";
-            this.gvinactiveAlarmDate.MaxInputLength = 200;
-            this.gvinactiveAlarmDate.MinimumWidth = 8;
-            this.gvinactiveAlarmDate.Name = "gvinactiveAlarmDate";
-            this.gvinactiveAlarmDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactiveAlarmDate.Width = 107;
-            // 
-            // gvinactiveAlarmTime
-            // 
-            this.gvinactiveAlarmTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactiveAlarmTime.DataPropertyName = "alarmTime";
-            dataGridViewCellStyle6.Format = "t";
-            dataGridViewCellStyle6.NullValue = null;
-            this.gvinactiveAlarmTime.DefaultCellStyle = dataGridViewCellStyle6;
-            this.gvinactiveAlarmTime.HeaderText = "Alarm Time";
-            this.gvinactiveAlarmTime.MaxInputLength = 150;
-            this.gvinactiveAlarmTime.MinimumWidth = 8;
-            this.gvinactiveAlarmTime.Name = "gvinactiveAlarmTime";
-            this.gvinactiveAlarmTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactiveAlarmTime.Width = 111;
-            // 
-            // gvinactivePeriodic
-            // 
-            this.gvinactivePeriodic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactivePeriodic.DataPropertyName = "periodic";
-            this.gvinactivePeriodic.HeaderText = "Periodic";
-            this.gvinactivePeriodic.MinimumWidth = 8;
-            this.gvinactivePeriodic.Name = "gvinactivePeriodic";
-            this.gvinactivePeriodic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactivePeriodic.Width = 68;
-            // 
-            // gvinactivePeriodicFrequency
-            // 
-            this.gvinactivePeriodicFrequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactivePeriodicFrequency.DataPropertyName = "frequency";
-            this.gvinactivePeriodicFrequency.HeaderText = "Frequency";
-            this.gvinactivePeriodicFrequency.MaxInputLength = 150;
-            this.gvinactivePeriodicFrequency.MinimumWidth = 8;
-            this.gvinactivePeriodicFrequency.Name = "gvinactivePeriodicFrequency";
-            this.gvinactivePeriodicFrequency.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactivePeriodicFrequency.Width = 101;
-            // 
-            // gvinactivePeriodicDate
-            // 
-            this.gvinactivePeriodicDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.gvinactivePeriodicDate.DataPropertyName = "periodicDate";
-            dataGridViewCellStyle7.Format = "D";
-            dataGridViewCellStyle7.NullValue = null;
-            this.gvinactivePeriodicDate.DefaultCellStyle = dataGridViewCellStyle7;
-            this.gvinactivePeriodicDate.HeaderText = "Periodic Date";
-            this.gvinactivePeriodicDate.MaxInputLength = 200;
-            this.gvinactivePeriodicDate.MinimumWidth = 8;
-            this.gvinactivePeriodicDate.Name = "gvinactivePeriodicDate";
-            this.gvinactivePeriodicDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvinactivePeriodicDate.Width = 121;
-            // 
-            // gvinactivePeriodicTime
-            // 
-            this.gvinactivePeriodicTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.gvinactivePeriodicTime.DataPropertyName = "periodicTime";
-            dataGridViewCellStyle8.Format = "t";
-            dataGridViewCellStyle8.NullValue = null;
-            this.gvinactivePeriodicTime.DefaultCellStyle = dataGridViewCellStyle8;
-            this.gvinactivePeriodicTime.HeaderText = "Periodic Time";
-            this.gvinactivePeriodicTime.MaxInputLength = 150;
-            this.gvinactivePeriodicTime.MinimumWidth = 8;
-            this.gvinactivePeriodicTime.Name = "gvinactivePeriodicTime";
-            this.gvinactivePeriodicTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvinactivePeriodicTime.Width = 125;
-            // 
             // reminderBindingSource
             // 
             this.reminderBindingSource.DataSource = typeof(GUIApp.MysticTodo.Data.Reminder);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1177, 942);
+            this.ClientSize = new System.Drawing.Size(1569, 1055);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.TcMainTabControl);
             this.Controls.Add(this.MsFileMenu);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MsFileMenu;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "MysticToDo";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1057,6 +1050,7 @@
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             this.ScReminderPage.Panel1.ResumeLayout(false);
+            this.ScReminderPage.Panel1.PerformLayout();
             this.ScReminderPage.Panel2.ResumeLayout(false);
             this.ScReminderPage.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScReminderPage)).EndInit();
