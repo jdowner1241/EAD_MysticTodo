@@ -9,5 +9,8 @@ namespace WebAppRedo.Data
             : base(options)
         {
         }
+
+        public DbSet<Reminder> Reminders { get; set; }
+        public DbSet<TimeFrame> TimeFrames { get; set; }
     }
 }
