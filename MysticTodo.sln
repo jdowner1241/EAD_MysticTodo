@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIApp.MysticTodo", "GUIApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.MysiticToDo", "WebApp.MysiticToDo\WebApp.MysiticToDo.csproj", "{362D4374-7CF3-4264-8FCC-30C96B1EEA87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppRedo", "WebAppRedo\WebAppRedo.csproj", "{655B263C-00E2-444B-8444-C86DAC81C1F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppRedo", "WebAppRedo\WebAppRedo.csproj", "{655B263C-00E2-444B-8444-C86DAC81C1F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
