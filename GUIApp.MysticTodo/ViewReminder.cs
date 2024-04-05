@@ -69,11 +69,19 @@ namespace GUIApp.MysticTodo
 
             if(reminder.Reminder_HasAlarm == true)
             {
+                dtpAlarmTimeViewer.Format = DateTimePickerFormat.Custom;
+                dtpAlarmTimeViewer.CustomFormat = "HH:mm";
+                dtpAlarmTimeViewer.ShowUpDown = true;
+
                 dtpAlarmDateViewer.Value = (DateTime)reminder.Reminder_Date;
                 dtpAlarmTimeViewer.Value = (DateTime)(reminder.Reminder_Date + reminder.Reminder_Time);
 
                 if(reminder.Reminder_IsPeriodic == true)
                 {
+                    dtpPeriodicTimeViewer.Format = DateTimePickerFormat.Custom;
+                    dtpPeriodicTimeViewer.CustomFormat = "HH:mm";
+                    dtpPeriodicTimeViewer.ShowUpDown = true;
+
                     dtpPeriodicDateViewer.Value = (DateTime)reminder.Reminder_NextPeriodicDate;
                     dtpPeriodicTimeViewer.Value = (DateTime)(reminder.Reminder_NextPeriodicDate + reminder.Reminder_NextPeriodicTime);
                     tbPeriodicViewer.Text = reminder.Timeframe.Timeframe_Name.ToString();

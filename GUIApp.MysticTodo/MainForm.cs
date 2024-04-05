@@ -844,7 +844,7 @@ namespace GUIApp.MysticTodo
             if (checkboxSetAlarm.Checked == true)
             {
                 DateTime reminderAlarm = dtpAlarmDate.Value;
-                TimeSpan reminderAlarmTime = dtpAlarmTime.Value.TimeOfDay;
+                TimeSpan reminderAlarmTime = (dtpAlarmTime.Value) - (dtpAlarmTime.Value.Date);
 
                 reminder.Reminder_Date = reminderAlarm;
                 reminder.Reminder_Time = reminderAlarmTime;
@@ -897,7 +897,7 @@ namespace GUIApp.MysticTodo
             if (checkboxSetAlarm.Checked == true)
             {
                 DateTime reminderAlarm = dtpAlarmDate.Value;
-                TimeSpan reminderAlarmTime = dtpAlarmTime.Value.TimeOfDay;
+                TimeSpan reminderAlarmTime = (dtpAlarmTime.Value)-(dtpAlarmTime.Value.Date);
 
                 reminder.Reminder_Date = reminderAlarm;
                 reminder.Reminder_Time = reminderAlarmTime;
