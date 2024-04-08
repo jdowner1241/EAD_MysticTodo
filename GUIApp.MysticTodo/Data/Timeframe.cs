@@ -22,7 +22,6 @@ namespace GUIApp.MysticTodo.Data
     
         public int Timeframe_Key { get; set; }
         public string Timeframe_Name { get; set; }
-        public string TimeFrame_IntervalCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reminder> Reminders { get; set; }

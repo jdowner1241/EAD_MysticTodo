@@ -20,12 +20,12 @@ namespace GUIApp.MysticTodo.Data
         public Nullable<bool> Reminder_IsComplete { get; set; }
         public Nullable<bool> Reminder_HasAlarm { get; set; }
         public Nullable<System.DateTime> Reminder_Date { get; set; }
-        public Nullable<System.TimeSpan> Reminder_Time { get; set; }
+        public Nullable<System.DateTime> Reminder_Time { get; set; }
         public Nullable<bool> Reminder_IsPeriodic { get; set; }
         public Nullable<bool> Reminder_PeriodicActive { get; set; }
         public Nullable<int> Reminder_PeriodicIntervalLabel { get; set; }
         public Nullable<System.DateTime> Reminder_NextPeriodicDate { get; set; }
-        public Nullable<System.TimeSpan> Reminder_NextPeriodicTime { get; set; }
+        public Nullable<System.DateTime> Reminder_NextPeriodicTime { get; set; }
     
         public virtual Timeframe Timeframe { get; set; }
     }
