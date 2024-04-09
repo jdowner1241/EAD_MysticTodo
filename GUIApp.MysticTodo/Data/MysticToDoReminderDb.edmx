@@ -15,12 +15,12 @@
           <Property Name="Reminder_IsComplete" Type="bit" />
           <Property Name="Reminder_HasAlarm" Type="bit" />
           <Property Name="Reminder_Date" Type="date" />
-          <Property Name="Reminder_Time" Type="time" Precision="7" />
+          <Property Name="Reminder_Time" Type="datetime" />
           <Property Name="Reminder_IsPeriodic" Type="bit" />
           <Property Name="Reminder_PeriodicActive" Type="bit" />
           <Property Name="Reminder_PeriodicIntervalLabel" Type="int" />
           <Property Name="Reminder_NextPeriodicDate" Type="date" />
-          <Property Name="Reminder_NextPeriodicTime" Type="time" Precision="7" />
+          <Property Name="Reminder_NextPeriodicTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Timeframe">
           <Key>
@@ -28,7 +28,6 @@
           </Key>
           <Property Name="Timeframe_Key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Timeframe_Name" Type="nvarchar" MaxLength="10" />
-          <Property Name="TimeFrame_IntervalCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6013: The table/view 'MysticToDo_DB.dbo.ViewFreqency' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -77,12 +76,12 @@ warning 6013: The table/view 'MysticToDo_DB.dbo.ViewFreqency' does not have a pr
           <Property Name="Reminder_IsComplete" Type="Boolean" />
           <Property Name="Reminder_HasAlarm" Type="Boolean" />
           <Property Name="Reminder_Date" Type="DateTime" Precision="0" />
-          <Property Name="Reminder_Time" Type="Time" Precision="7" />
+          <Property Name="Reminder_Time" Type="DateTime" Precision="3" />
           <Property Name="Reminder_IsPeriodic" Type="Boolean" />
           <Property Name="Reminder_PeriodicActive" Type="Boolean" />
           <Property Name="Reminder_PeriodicIntervalLabel" Type="Int32" />
           <Property Name="Reminder_NextPeriodicDate" Type="DateTime" Precision="0" />
-          <Property Name="Reminder_NextPeriodicTime" Type="Time" Precision="7" />
+          <Property Name="Reminder_NextPeriodicTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Timeframe" Relationship="MysticToDo_DBModel.FK__Reminder__Remind__4CA06362" FromRole="Reminder" ToRole="Timeframe" />
         </EntityType>
         <EntityType Name="Timeframe">
@@ -91,7 +90,6 @@ warning 6013: The table/view 'MysticToDo_DB.dbo.ViewFreqency' does not have a pr
           </Key>
           <Property Name="Timeframe_Key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Timeframe_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="TimeFrame_IntervalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Reminders" Relationship="MysticToDo_DBModel.FK__Reminder__Remind__4CA06362" FromRole="Timeframe" ToRole="Reminder" />
         </EntityType>
         <Association Name="FK__Reminder__Remind__4CA06362">
@@ -133,7 +131,6 @@ warning 6013: The table/view 'MysticToDo_DB.dbo.ViewFreqency' does not have a pr
           <EntitySetMapping Name="Timeframes">
             <EntityTypeMapping TypeName="MysticToDo_DBModel.Timeframe">
               <MappingFragment StoreEntitySet="Timeframe">
-                <ScalarProperty Name="TimeFrame_IntervalCode" ColumnName="TimeFrame_IntervalCode" />
                 <ScalarProperty Name="Timeframe_Name" ColumnName="Timeframe_Name" />
                 <ScalarProperty Name="Timeframe_Key" ColumnName="Timeframe_Key" />
               </MappingFragment>

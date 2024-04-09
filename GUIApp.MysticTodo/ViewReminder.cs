@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,10 +32,10 @@ namespace GUIApp.MysticTodo
             if (form != null)
             {
                form.Close();
-               refreshViewer(Id);
+               //refreshViewer(Id);
             }
-            //form.Show();
             refreshViewer(Id);
+
 
         }
 
@@ -69,34 +71,50 @@ namespace GUIApp.MysticTodo
 
             if(reminder.Reminder_HasAlarm == true)
             {
-                dtpAlarmDateViewer.Value = (DateTime)reminder.Reminder_Date;
-                dtpAlarmTimeViewer.Value = (DateTime)(reminder.Reminder_Date + reminder.Reminder_Time);
+                DateTime alarmDate = reminder.Reminder_Date.Value;
+                tbAlarmDateViewer.Text = alarmDate.ToString("dddd, dd MMMM yyyy");
+                tbAlarmDateViewer.ReadOnly = true;
 
-                if(reminder.Reminder_IsPeriodic == true)
+                DateTime alarmTime = (DateTime)reminder.Reminder_Time;
+                string formatedAlarmTime = alarmTime.ToString("hh:mm tt");
+                tbAlarmTimeViewer.Text = formatedAlarmTime;
+                tbAlarmTimeViewer.ReadOnly = true;
+
+                if (reminder.Reminder_IsPeriodic == true)
                 {
-                    dtpPeriodicDateViewer.Value = (DateTime)reminder.Reminder_NextPeriodicDate;
-                    dtpPeriodicTimeViewer.Value = (DateTime)(reminder.Reminder_NextPeriodicDate + reminder.Reminder_NextPeriodicTime);
-                    tbPeriodicViewer.Text = reminder.Timeframe.Timeframe_Name.ToString();
+                    DateTime periodDate = reminder.Reminder_NextPeriodicDate.Value;
+                    tbPeriodicDateViewer.Text = periodDate.ToString("dddd, dd MMMM yyyy");
+                    tbPeriodicDateViewer.ReadOnly = true;
 
+                    DateTime periodicTime = (DateTime)reminder.Reminder_Time;
+                    string formatedPeriodicTime = periodicTime.ToString("hh:mm tt");
+                    tbPeriodicTimeViewer.Text = formatedPeriodicTime;
+                    tbPeriodicTimeViewer.ReadOnly = true;
+
+                    tbPeriodicViewer.Text = reminder.Timeframe.Timeframe_Name;
+                    tbPeriodicViewer.ReadOnly = true;
                 }
                 else
                 {
                     lPeriodicViewer.Hide();
                     lNextAlarmViewer.Hide();
-                    dtpPeriodicDateViewer.Hide();
-                    dtpPeriodicTimeViewer.Hide();
+                    tbPeriodicDateViewer.Hide();
+                    //dtpPeriodicTimeViewer.Hide();
+                    tbPeriodicTimeViewer.Hide();
                     tbPeriodicViewer.Hide();
                 }
             }else
             {
                 lAlarmViewer.Hide();
-                dtpAlarmDateViewer.Hide();
-                dtpAlarmTimeViewer.Hide();
+                tbAlarmDateViewer.Hide();
+                //dtpAlarmTimeViewer.Hide();
+                tbAlarmTimeViewer.Hide();
 
                 lPeriodicViewer.Hide();
                 lNextAlarmViewer.Hide();
-                dtpPeriodicDateViewer.Hide();
-                dtpPeriodicTimeViewer.Hide();
+                tbPeriodicDateViewer.Hide();
+                //dtpPeriodicTimeViewer.Hide();
+                tbPeriodicTimeViewer.Hide();
                 tbPeriodicViewer.Hide();
             }
 

@@ -6,6 +6,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -35,11 +36,13 @@ namespace GUIApp.MysticTodo
             InitializeComponent();
             mysticTodoDatabase = new MysticToDoEntities1();
             dtpAlarmDate.Hide();
+            dtpAlarmTime.Hide();
             comboboxPerodicAlarm.Hide();
             gvInactiveReminderTable.Visible = false;
             lGridViewTitleCompleted.Visible = false;
             gvSearchReminderTable.Visible = false;
             lGridViewTitleSearch.Visible = false;
+            lGridViewTitleAllReminders.Visible = false;
             currentTable = (int)tableStatus.activeTable;
         }
         // 
@@ -47,12 +50,12 @@ namespace GUIApp.MysticTodo
         // 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            gbReminderEditor.AutoSize = false;
-            gbReminderSearch.AutoSize = false;
+            //gbReminderEditor.AutoSize = false;
+            //gbReminderSearch.AutoSize = false;
             //this.AutoScaleMode = AutoScaleMode.None;
-            tbReminder.AutoSize = false;
-            tbSearch.AutoSize = false;
-            gvReminderTable.AutoSize = false;
+            //tbReminder.AutoSize = false;
+            //tbSearch.AutoSize = false;
+            //gvReminderTable.AutoSize = false;
 
             var timeframe = mysticTodoDatabase.Timeframes.ToList();
             comboboxPerodicAlarm.DisplayMember = "Timeframe_Name";
@@ -62,9 +65,6 @@ namespace GUIApp.MysticTodo
             refreshActiveReminderTable();
             refreshInActiveReminderTable();
             refreshSearchReminderTable();
-
-            gvReminderTable.Columns["frequencyId"].Visible = false;
-            gvReminderTable.Columns["periodicActive"].Visible = false;
 
         }
         // 
@@ -372,10 +372,21 @@ namespace GUIApp.MysticTodo
             if (!checkboxSetAlarm.Checked)
             {
                 dtpAlarmDate.Hide();
+                dtpAlarmTime.Hide();
+                if (checkboxPeriodicAlarm.Checked)
+                {
+                    checkboxSetAlarm.Checked = true;
+                    checkboxPeriodicAlarm.Checked = false;
+                    checkboxSetAlarm.Checked = false;
+                }
             }
             else
             {
                 dtpAlarmDate.Show();
+                dtpAlarmTime.Show();
+                dtpAlarmTime.Format = DateTimePickerFormat.Custom;
+                dtpAlarmTime.CustomFormat = "HH:mm";
+                dtpAlarmTime.ShowUpDown = true;
             }
         }
         // 
@@ -593,6 +604,8 @@ namespace GUIApp.MysticTodo
             checkboxSetAlarm.Checked = true;
             dtpAlarmDate.Value = DateTime.Now;
             dtpAlarmDate.Visible = false;
+            dtpAlarmTime.Value = DateTime.Now;
+            dtpAlarmTime.Visible = false;
             checkboxPeriodicAlarm.Checked = false;
             comboboxPerodicAlarm.SelectedIndex = 0;
             checkboxSetAlarm.Checked = false;
@@ -638,12 +651,13 @@ namespace GUIApp.MysticTodo
         }
         //
         //
-        private void bSearchTaskTab_Click(object sender, EventArgs e)
+        private void bAllTaskTab_Click(object sender, EventArgs e)
         {
             if (!gvSearchReminderTable.Visible)
             {
                 gvSearchReminderTable.Visible = true;
-                lGridViewTitleSearch.Visible = true;
+                lGridViewTitleSearch.Visible = false;
+                lGridViewTitleAllReminders.Visible = true;
                 gvReminderTable.Visible = false;
                 lGridViewTitleActive.Visible = false;
                 gvInactiveReminderTable.Visible = false;
@@ -677,6 +691,17 @@ namespace GUIApp.MysticTodo
                 periodicTime = r.Reminder_NextPeriodicTime
             }).ToList();
             gvReminderTable.DataSource = activeReminderList;
+
+            gvReminderTable.Columns["gvDescription"].Visible = false;
+            gvReminderTable.Columns["gvPeriodicDate"].Visible = false;
+            gvReminderTable.Columns["gvPeriodicTime"].Visible = false;
+            gvReminderTable.Columns["gvPeriodicTime"].Visible = false;
+            gvReminderTable.Columns["frequencyId"].Visible = false;
+            gvReminderTable.Columns["periodicActive"].Visible = false;
+
+            gvReminderTable.Columns["gvAlarmDate"].DefaultCellStyle.Format = "dd MMMM yyyy";
+            gvReminderTable.Columns["gvAlarmTime"].DefaultCellStyle.Format = "hh:mm tt";
+
             gvReminderTable.Refresh();
         }
         //
@@ -702,6 +727,16 @@ namespace GUIApp.MysticTodo
                 periodicTime = r.Reminder_NextPeriodicTime
             }).ToList();
             gvInactiveReminderTable.DataSource = inactiveReminderList;
+
+            gvInactiveReminderTable.Columns["gvinactiveDescription"].Visible = false;
+            gvInactiveReminderTable.Columns["gvinactivePeriodicDate"].Visible = false;
+            gvInactiveReminderTable.Columns["gvinactivePeriodicTime"].Visible = false;
+            gvInactiveReminderTable.Columns["frequencyId"].Visible = false;
+            gvInactiveReminderTable.Columns["periodicActive"].Visible = false;
+
+            gvInactiveReminderTable.Columns["gvinactiveAlarmDate"].DefaultCellStyle.Format = "dd MMMM yyyy";
+            gvInactiveReminderTable.Columns["gvinactiveAlarmTime"].DefaultCellStyle.Format = "hh:mm tt";
+
             gvInactiveReminderTable.Refresh();
         }
         //
@@ -726,6 +761,16 @@ namespace GUIApp.MysticTodo
                 periodicTime = r.Reminder_NextPeriodicTime
             }).ToList();
             gvSearchReminderTable.DataSource = searchReminderList;
+
+            gvSearchReminderTable.Columns["gvSearchDescription"].Visible = false;
+            gvSearchReminderTable.Columns["gvSearchPeriodicDate"].Visible = false;
+            gvSearchReminderTable.Columns["gvSearchPeriodicTime"].Visible = false;
+            gvSearchReminderTable.Columns["frequencyId"].Visible = false;
+            gvSearchReminderTable.Columns["periodicActive"].Visible = false;
+
+            gvSearchReminderTable.Columns["gvSearchAlarmDate"].DefaultCellStyle.Format = "dd MMMM yyyy";
+            gvSearchReminderTable.Columns["gvSearchAlarmTime"].DefaultCellStyle.Format = "hh:mm tt";
+
             gvSearchReminderTable.Refresh();
         }
         //
@@ -752,6 +797,17 @@ namespace GUIApp.MysticTodo
                 periodicTime = r.Reminder_NextPeriodicTime
             }).ToList();
             gvSearchReminderTable.DataSource = searchReminderList;
+
+            gvSearchReminderTable.Columns["gvSearchDescription"].Visible = false;
+            gvSearchReminderTable.Columns["gvSearchPeriodicDate"].Visible = false;
+            gvSearchReminderTable.Columns["gvSearchPeriodicTime"].Visible = false;
+            gvSearchReminderTable.Columns["frequencyId"].Visible = false;
+            gvSearchReminderTable.Columns["periodicActive"].Visible = false;
+
+            gvSearchReminderTable.Columns["gvSearchAlarmDate"].DefaultCellStyle.Format = "dd MMMM yyyy";
+            gvSearchReminderTable.Columns["gvSearchAlarmTime"].DefaultCellStyle.Format = "hh:mm tt";
+
+
             gvSearchReminderTable.Refresh();
         }
         //
@@ -782,17 +838,38 @@ namespace GUIApp.MysticTodo
 
             if (checkboxSetAlarm.Checked == true)
             {
-                DateTime? reminderAlarm = dtpAlarmDate.Value;
-                TimeSpan? reminderAlarmTime = dtpAlarmDate.Value.TimeOfDay;
+                DateTime reminderAlarm = reminder.Reminder_Date.Value;
+                dtpAlarmDate.Format = DateTimePickerFormat.Custom;
+                dtpAlarmDate.CustomFormat = "dd MMMM yyyy";
+                dtpAlarmDate.Value = reminderAlarm;
+                DateTime alarmDateTime = (DateTime)reminder.Reminder_Time;
+                dtpAlarmTime.Format = DateTimePickerFormat.Custom;
+                dtpAlarmTime.CustomFormat = "hh:mm tt";
+                dtpAlarmTime.Value = alarmDateTime;
 
-                DateTime? reminderAlarmDateTime = (DateTime)(reminder.Reminder_Date + reminder.Reminder_Time);
 
                 checkboxPeriodicAlarm.Checked = reminder.Reminder_IsPeriodic ?? false;
                 if (checkboxPeriodicAlarm.Checked == true)
                 {
                     comboboxPerodicAlarm.SelectedIndex = (int)reminder.Reminder_PeriodicIntervalLabel - 1;
                 }
+                else
+                {
+                    comboboxPerodicAlarm.Hide();
+                    checkboxPeriodicAlarm.Checked = false;
+                    
+                }
             }
+            else
+            {
+                dtpAlarmDate.Hide();
+                dtpAlarmTime.Hide();
+                comboboxPerodicAlarm.Hide();
+                checkboxSetAlarm.Checked = true;
+                checkboxPeriodicAlarm.Checked = false;
+                checkboxSetAlarm.Checked = false;
+            }
+
         }
         //
         //
@@ -809,7 +886,7 @@ namespace GUIApp.MysticTodo
             if (checkboxSetAlarm.Checked == true)
             {
                 DateTime reminderAlarm = dtpAlarmDate.Value;
-                TimeSpan reminderAlarmTime = dtpAlarmDate.Value.TimeOfDay;
+                DateTime reminderAlarmTime = (DateTime)dtpAlarmTime.Value;
 
                 reminder.Reminder_Date = reminderAlarm;
                 reminder.Reminder_Time = reminderAlarmTime;
@@ -862,7 +939,7 @@ namespace GUIApp.MysticTodo
             if (checkboxSetAlarm.Checked == true)
             {
                 DateTime reminderAlarm = dtpAlarmDate.Value;
-                TimeSpan reminderAlarmTime = dtpAlarmDate.Value.TimeOfDay;
+                DateTime reminderAlarmTime = dtpAlarmTime.Value;
 
                 reminder.Reminder_Date = reminderAlarm;
                 reminder.Reminder_Time = reminderAlarmTime;
@@ -910,6 +987,8 @@ namespace GUIApp.MysticTodo
             checkboxSetAlarm.Checked = true;
             dtpAlarmDate.Value = DateTime.Now;
             dtpAlarmDate.Visible = false;
+            dtpAlarmTime.Value = DateTime.Now;
+            dtpAlarmTime.Visible = false;
             checkboxPeriodicAlarm.Checked = false;
             comboboxPerodicAlarm.SelectedIndex = 0;
             checkboxSetAlarm.Checked = false;
@@ -921,9 +1000,39 @@ namespace GUIApp.MysticTodo
         {
             throw new NotImplementedException();
         }
+
+        private void gvInactiveReminderTable_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvInactiveReminderTable_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvSearchReminderTable_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvSearchReminderTable_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvReminderTable_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gvReminderTable_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
         //
         //
- 
+
 
     }
 }
