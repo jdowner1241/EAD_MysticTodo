@@ -626,11 +626,11 @@ namespace GUIApp.MysticTodo
         //
         private void BDelete_Click(object sender, EventArgs e)
         {
-            DialogResult confirmDeleting = MessageBox.Show("Do you want to continue with deleting this record?", "Confirmation", MessageBoxButtons.YesNo);
+            List<int> idRemoveList = new List<int>();
+            DialogResult confirmDeleting = MessageBox.Show("Do you want to continue with deleting this/these records?", "Confirmation", MessageBoxButtons.YesNo);
             if (confirmDeleting == DialogResult.Yes)
-            {
-                // User clicked Yes
-                // This will delete the record from the reminder list
+                {
+                // Records will be deleted
                 try
                 {
                     switch (currentTable)
@@ -638,48 +638,117 @@ namespace GUIApp.MysticTodo
                         case (int)tableStatus.activeTable:
                             if (gvReminderTable.SelectedRows.Count > 0 && gvReminderTable.SelectedRows[0].Cells.Count > 0)
                             {
-                                // Access the selected row and its cells
-                                // Try to update this to allow mutiple rows to be deleted in the future.
-                                int? id = (int)gvReminderTable.SelectedRows[0].Cells["gvId"].Value as int?;
-
-                                if (id.HasValue)
+                                // Select mutiple rows from the gvReminderTable
+                                foreach (DataGridViewRow selectedRow in gvReminderTable.SelectedRows)
                                 {
-                                    //query database for record
-                                    var deleteReminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == id);
+                                    int? id = selectedRow.Cells["gvId"].Value as int?;
 
-                                    deleteReminder.Reminder_Id = id.Value;
-                                    mysticTodoDatabase.Reminders.Remove(deleteReminder);
+                                    if (id.HasValue)
+                                    {
+                                        // Add ud ti a array to be deplayed 
+                                        idRemoveList.Add(id.Value);
+
+                                        // Query database for record
+                                        var deleteReminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == id);
+
+                                        if (deleteReminder != null)
+                                        {
+                                            mysticTodoDatabase.Reminders.Remove(deleteReminder);
+                                        }
+                                    }
                                 }
                             }
                             mysticTodoDatabase.SaveChanges();
-                            MessageBox.Show("Reminder Deleted!!!");
+                           
+                            string deletedIDs = "Deleted Reminders :\n";
+
+                            foreach (int id in idRemoveList)
+                            {
+                                deletedIDs += ($"\nID : {id}");
+                            }
+                            MessageBox.Show(deletedIDs);
+
                             refreshActiveReminderTable();
                             refreshInActiveReminderTable();
+                            refreshSearchReminderTable();
                             break;
 
                         case (int)tableStatus.completedTable:
                             if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
                             {
-                                //update code to delete items
-                                int? inactiveId = (int)gvInactiveReminderTable.SelectedRows[0].Cells["gvinactiveId"].Value as int?;
-
-                                if (inactiveId.HasValue)
+                                // Select mutiple rows from the gvInactiveReminderTable
+                                foreach (DataGridViewRow selectedRow in gvInactiveReminderTable.SelectedRows)
                                 {
-                                    //query database for record
-                                    var deleteInactiveReminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == inactiveId);
+                                    int? inactiveId = selectedRow.Cells["gvinactiveId"].Value as int?;
 
-                                    deleteInactiveReminder.Reminder_Id = inactiveId.Value;
-                                    mysticTodoDatabase.Reminders.Remove(deleteInactiveReminder);
+                                    if (inactiveId.HasValue)
+                                    {
+                                        // Add ud ti a array to be deplayed 
+                                        idRemoveList.Add(inactiveId.Value);
+
+                                        // Query database for record
+                                        var deleteReminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == inactiveId);
+
+                                        if (deleteReminder != null)
+                                        {
+                                            mysticTodoDatabase.Reminders.Remove(deleteReminder);
+                                        }
+                                    }
                                 }
                             }
                             mysticTodoDatabase.SaveChanges();
-                            MessageBox.Show("Reminder Deleted!!!");
+    
+                            string inactiveDeletedIDs = "Deleted Reminders :\n";
+
+                            foreach (int id in idRemoveList)
+                            {
+                                inactiveDeletedIDs += ($"\nID : {id}");
+                            }
+                            MessageBox.Show(inactiveDeletedIDs);
+
+
                             refreshActiveReminderTable();
                             refreshInActiveReminderTable();
+                            refreshSearchReminderTable();
                             break;
 
                         case (int)tableStatus.searchtable:
-                            MessageBox.Show("This button cannot be used from the search results table!!!");
+                            if (gvSearchReminderTable.SelectedRows.Count > 0 && gvSearchReminderTable.SelectedRows[0].Cells.Count > 0)
+                            {
+                                // Select mutiple rows from the gvInactiveReminderTable
+                                foreach (DataGridViewRow selectedRow in gvSearchReminderTable.SelectedRows)
+                                {
+                                    int? searchId = selectedRow.Cells["gvSearchId"].Value as int?;
+
+                                    if (searchId.HasValue)
+                                    {
+                                        // Add ud ti a array to be deplayed 
+                                        idRemoveList.Add(searchId.Value);
+
+                                        // Query database for record
+                                        var deleteReminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == searchId);
+
+                                        if (deleteReminder != null)
+                                        {
+                                            mysticTodoDatabase.Reminders.Remove(deleteReminder);
+                                        }
+                                    }
+                                }
+                            }
+                            mysticTodoDatabase.SaveChanges();
+
+                            string searchDeletedIDs = "Deleted Reminders :\n";
+
+                            foreach (int id in idRemoveList)
+                            {
+                                searchDeletedIDs += ($"\nID : {id}");
+                            }
+                            MessageBox.Show(searchDeletedIDs);
+
+
+                            refreshActiveReminderTable();
+                            refreshInActiveReminderTable();
+                            refreshSearchReminderTable();
                             break;
 
                         default:
@@ -733,6 +802,7 @@ namespace GUIApp.MysticTodo
                 lGridViewTitleCompleted.Visible = false;
                 gvSearchReminderTable.Visible = false;
                 lGridViewTitleSearch.Visible = false;
+                lGridViewTitleAllReminders.Visible = false;
 
                 currentTable = (int)tableStatus.activeTable;
             }
@@ -749,6 +819,7 @@ namespace GUIApp.MysticTodo
                 lGridViewTitleActive.Visible = false;
                 gvSearchReminderTable.Visible = false;
                 lGridViewTitleSearch.Visible = false;
+                lGridViewTitleAllReminders.Visible = false;
 
                 currentTable = (int)tableStatus.completedTable;
             }
@@ -766,7 +837,7 @@ namespace GUIApp.MysticTodo
                 lGridViewTitleActive.Visible = false;
                 gvInactiveReminderTable.Visible = false;
                 lGridViewTitleCompleted.Visible = false;
- 
+                
 
                 currentTable = (int)tableStatus.searchtable;
             }
@@ -926,7 +997,7 @@ namespace GUIApp.MysticTodo
                 lGridViewTitleActive.Visible = false;
                 gvInactiveReminderTable.Visible = false;
                 lGridViewTitleCompleted.Visible = false;
-
+                lGridViewTitleAllReminders.Visible = false;
 
                 currentTable = (int)tableStatus.searchtable;
             }
