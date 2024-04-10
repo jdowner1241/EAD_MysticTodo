@@ -281,7 +281,7 @@ namespace GUIApp.MysticTodo
         //
         private void gvReminderList_DoubleClick(object sender, EventArgs e)
         {
-            int viewerID = 0;
+            /*int viewerID = 0;
             try
             {
                 if (gvReminderTable.SelectedRows.Count > 0 && gvReminderTable.SelectedRows[0].Cells.Count > 0)
@@ -304,13 +304,13 @@ namespace GUIApp.MysticTodo
             if (!viewReminder.Visible) 
             {
                 viewReminder.Show();
-            }
+            }*/
         }
         //
         //
         private void gvInactiveReminderTable_DoubleClick(object sender, EventArgs e)
         {
-            int viewerID = 0;
+            /*int viewerID = 0;
 
             try
             {
@@ -333,16 +333,17 @@ namespace GUIApp.MysticTodo
             if (!viewReminder.Visible)
             {
                 viewReminder.Show();
-            }
+            }*/
         }
         //
         //
         private void gvSearchReminderTable_DoubleClick(object sender, EventArgs e)
         {
-            int viewerID = 0;
+          /*  int viewerID = 0;
 
             try
             {
+
                 if (gvSearchReminderTable.SelectedRows.Count > 0 && gvSearchReminderTable.SelectedRows[0].Cells.Count > 0)
                 {
                     var searchId = (int)gvSearchReminderTable.SelectedRows[0].Cells["gvSearchId"].Value as int?;
@@ -350,6 +351,109 @@ namespace GUIApp.MysticTodo
                     if (searchId.HasValue)
                     {
                         viewerID = searchId.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
+
+            var viewReminder = new formViewReminder(viewerID);
+            if (!viewReminder.Visible)
+            {
+                viewReminder.Show();
+            }*/
+        }
+        //
+        //
+        private void gvReminderTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int viewerID = 0;
+
+            try
+            {
+                if (e.RowIndex > -1)
+                {
+                    gvReminderTable.Rows[e.RowIndex].Selected = true;
+
+                    if (gvReminderTable.SelectedRows.Count > 0 && gvReminderTable.SelectedRows[0].Cells.Count > 0)
+                    {
+                        var Id = gvReminderTable.SelectedRows[0].Cells["gvId"].Value as int?;
+
+                        if (Id.HasValue)
+                        {
+                            viewerID = Id.Value;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
+
+            var viewReminder = new formViewReminder(viewerID);
+            if (!viewReminder.Visible)
+            {
+                viewReminder.Show();
+            }
+
+        }
+        //
+        //
+        private void gvSearchReminderTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int viewerID = 0;
+
+            try
+            {
+                if (e.RowIndex > -1)
+                {
+                    gvSearchReminderTable.Rows[e.RowIndex].Selected = true;
+
+                    if (gvSearchReminderTable.SelectedRows.Count > 0 && gvSearchReminderTable.SelectedRows[0].Cells.Count > 0)
+                    {
+                        var searchId = gvSearchReminderTable.SelectedRows[0].Cells["gvSearchId"].Value as int?;
+
+                        if (searchId.HasValue)
+                        {
+                            viewerID = searchId.Value;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
+
+            var viewReminder = new formViewReminder(viewerID);
+            if (!viewReminder.Visible)
+            {
+                viewReminder.Show();
+            }
+        }
+        //
+        //
+        private void gvInactiveReminderTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int viewerID = 0;
+
+            try
+            {
+                if (e.RowIndex > -1)
+                {
+                    gvInactiveReminderTable.Rows[e.RowIndex].Selected = true;
+
+                    if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
+                    {
+                        var inactiveId = gvInactiveReminderTable.SelectedRows[0].Cells["gvInactiveId"].Value as int?;
+
+                        if (inactiveId.HasValue)
+                        {
+                            viewerID = inactiveId.Value;
+                        }
                     }
                 }
             }
@@ -385,7 +489,7 @@ namespace GUIApp.MysticTodo
                 dtpAlarmDate.Show();
                 dtpAlarmTime.Show();
                 dtpAlarmTime.Format = DateTimePickerFormat.Custom;
-                dtpAlarmTime.CustomFormat = "HH:mm";
+                dtpAlarmTime.CustomFormat = "hh:mm tt";
                 dtpAlarmTime.ShowUpDown = true;
             }
         }
@@ -1003,33 +1107,135 @@ namespace GUIApp.MysticTodo
 
         private void gvInactiveReminderTable_MouseEnter(object sender, EventArgs e)
         {
-
+   /*         gvInactiveReminderTable.DefaultCellStyle.SelectionBackColor = Color.Blue;
+            gvInactiveReminderTable.DefaultCellStyle.SelectionForeColor = Color.Red;*/
         }
 
         private void gvInactiveReminderTable_MouseLeave(object sender, EventArgs e)
         {
-
+           /* gvInactiveReminderTable.DefaultCellStyle.SelectionBackColor = Color.Red;
+            gvInactiveReminderTable.DefaultCellStyle.SelectionForeColor = Color.Blue;*/
         }
 
         private void gvSearchReminderTable_MouseEnter(object sender, EventArgs e)
         {
-
+            /*gvSearchReminderTable.DefaultCellStyle.SelectionBackColor = Color.Blue;
+            gvSearchReminderTable.DefaultCellStyle.SelectionForeColor = Color.Red;*/
         }
 
         private void gvSearchReminderTable_MouseLeave(object sender, EventArgs e)
         {
-
+            /*gvSearchReminderTable.DefaultCellStyle.SelectionBackColor = Color.Red;
+            gvSearchReminderTable.DefaultCellStyle.SelectionForeColor = Color.Blue;*/
         }
 
         private void gvReminderTable_MouseEnter(object sender, EventArgs e)
         {
+          
+
+            /*if (gvReminderTable.SelectedRows.Count > 0 && gvReminderTable.SelectedRows[0].Cells.Count > 0)
+            {
+                gvReminderTable.DefaultCellStyle.SelectionBackColor = Color.Blue;
+                gvReminderTable.DefaultCellStyle.SelectionForeColor = Color.Red;
+            }*/
 
         }
 
         private void gvReminderTable_MouseLeave(object sender, EventArgs e)
         {
 
+/*
+            gvReminderTable.DefaultCellStyle.SelectionBackColor = Color.Red;
+            gvReminderTable.DefaultCellStyle.SelectionForeColor = Color.Blue;*/
         }
+
+        private void gvReminderTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+       /*     gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvReminderTable.Rows[e.RowIndex].Selected = true;
+            }*/
+        }
+
+        private void gvReminderTable_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            /*gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvReminderTable.Rows[e.RowIndex].Selected = false;
+            }*/
+        }
+
+        private void gvSearchReminderTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+           /* gvSearchReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvSearchReminderTable.Rows[e.RowIndex].Selected = true;
+            }*/
+        }
+
+        private void gvSearchReminderTable_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+         /*   gvSearchReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvSearchReminderTable.Rows[e.RowIndex].Selected = false;
+            }*/
+        }
+
+        private void gvInactiveReminderTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            /*gvInactiveReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvInactiveReminderTable.Rows[e.RowIndex].Selected = true;
+            }*/
+ 
+        }
+
+        private void gvInactiveReminderTable_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+           /* gvInactiveReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvInactiveReminderTable.Rows[e.RowIndex].Selected = false;
+            }*/
+        }
+
+        private void gvInactiveReminderTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            gvInactiveReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvInactiveReminderTable.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        private void gvSearchReminderTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            gvSearchReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvSearchReminderTable.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        private void gvReminderTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            if (e.RowIndex > -1)
+            {
+                gvReminderTable.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+      
+
+
+
+
         //
         //
 
