@@ -43,6 +43,7 @@ namespace GUIApp.MysticTodo
             gvSearchReminderTable.Visible = false;
             lGridViewTitleSearch.Visible = false;
             lGridViewTitleAllReminders.Visible = false;
+            BSearch.Visible = false;
             currentTable = (int)tableStatus.activeTable;
         }
         // 
@@ -535,6 +536,7 @@ namespace GUIApp.MysticTodo
                         MessageBox.Show("Reminder Added!!!");
                         refreshActiveReminderTable();
                         refreshInActiveReminderTable();
+                        refreshSearchReminderTable();
                         clearFields();
                         break;
 
@@ -586,23 +588,64 @@ namespace GUIApp.MysticTodo
 
                                     mysticTodoDatabase.Reminders.AddOrUpdate(useReminderInfo((int)id));
                                 }
-                                MessageBox.Show("Reminder Updated!!!");
+                                MessageBox.Show($"Reminder ID: {id.Value} Updated!!!");
                             }
                             mysticTodoDatabase.SaveChanges();
                             refreshActiveReminderTable();
                             refreshInActiveReminderTable();
+                            refreshSearchReminderTable();
                             clearFields();
                             break;
 
                         case (int)tableStatus.completedTable:
                             if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
                             {
-                                MessageBox.Show("You can only edit active Reminders!!!");
+                                if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
+                                {
+                                    // Access the selected row and its cells
+                                    int? inactiveid = (int)gvInactiveReminderTable.SelectedRows[0].Cells["gvinactive"].Value as int?;
+
+                                    if (inactiveid.HasValue)
+                                    {
+                                        //query database for record
+                                        var reminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == inactiveid);
+
+                                        reminder.Reminder_Id = inactiveid.Value;
+
+                                        mysticTodoDatabase.Reminders.AddOrUpdate(useReminderInfo((int)inactiveid));
+                                    }
+                                    MessageBox.Show($"Reminder ID: {inactiveid.Value} Updated!!!");
+                                }
+                                mysticTodoDatabase.SaveChanges();
+                                refreshActiveReminderTable();
+                                refreshInActiveReminderTable();
+                                refreshSearchReminderTable();
+                                clearFields();
                             }
                             break;
 
                         case (int)tableStatus.searchtable:
-                            MessageBox.Show("This button cannot be used from the search results table!!!");
+                            if (gvSearchReminderTable.SelectedRows.Count > 0 && gvSearchReminderTable.SelectedRows[0].Cells.Count > 0)
+                            {
+                                // Access the selected row and its cells
+                                int? searchid = (int)gvSearchReminderTable.SelectedRows[0].Cells["gvSearchId"].Value as int?;
+
+                                if (searchid.HasValue)
+                                {
+                                    //query database for record
+                                    var reminder = mysticTodoDatabase.Reminders.FirstOrDefault(q => q.Reminder_Id == searchid);
+
+                                    reminder.Reminder_Id = searchid.Value;
+
+                                    mysticTodoDatabase.Reminders.AddOrUpdate(useReminderInfo((int)searchid));
+                                }
+                                MessageBox.Show($"Reminder ID: {searchid.Value} Updated!!!");
+                            }
+                            mysticTodoDatabase.SaveChanges();
+                            refreshActiveReminderTable();
+                            refreshInActiveReminderTable();
+                            refreshSearchReminderTable();
+                            clearFields();
                             break;
 
                         default:
@@ -805,6 +848,7 @@ namespace GUIApp.MysticTodo
                 lGridViewTitleAllReminders.Visible = false;
 
                 currentTable = (int)tableStatus.activeTable;
+
             }
         }
         //
@@ -878,6 +922,7 @@ namespace GUIApp.MysticTodo
             gvReminderTable.Columns["gvAlarmTime"].DefaultCellStyle.Format = "hh:mm tt";
 
             gvReminderTable.Refresh();
+            refreshSearchReminderTable();
         }
         //
         //
@@ -1222,7 +1267,7 @@ namespace GUIApp.MysticTodo
 
         private void gvReminderTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-       /*     gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+           /* gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
             if (e.RowIndex > -1)
             {
                 gvReminderTable.Rows[e.RowIndex].Selected = true;
@@ -1231,7 +1276,7 @@ namespace GUIApp.MysticTodo
 
         private void gvReminderTable_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            /*gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+        /*    gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
             if (e.RowIndex > -1)
             {
                 gvReminderTable.Rows[e.RowIndex].Selected = false;
@@ -1258,12 +1303,12 @@ namespace GUIApp.MysticTodo
 
         private void gvInactiveReminderTable_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            /*gvInactiveReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+          /*  gvInactiveReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
             if (e.RowIndex > -1)
             {
                 gvInactiveReminderTable.Rows[e.RowIndex].Selected = true;
             }*/
- 
+
         }
 
         private void gvInactiveReminderTable_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
@@ -1277,7 +1322,7 @@ namespace GUIApp.MysticTodo
 
         private void gvInactiveReminderTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            gvInactiveReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            gvInactiveReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
             if (e.RowIndex > -1)
             {
                 gvInactiveReminderTable.Rows[e.RowIndex].Selected = true;
@@ -1286,7 +1331,7 @@ namespace GUIApp.MysticTodo
 
         private void gvSearchReminderTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            gvSearchReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            gvSearchReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
             if (e.RowIndex > -1)
             {
                 gvSearchReminderTable.Rows[e.RowIndex].Selected = true;
@@ -1295,7 +1340,7 @@ namespace GUIApp.MysticTodo
 
         private void gvReminderTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.LightBlue;
+            gvReminderTable.RowsDefaultCellStyle.SelectionBackColor = Color.Blue;
             if (e.RowIndex > -1)
             {
                 gvReminderTable.Rows[e.RowIndex].Selected = true;
