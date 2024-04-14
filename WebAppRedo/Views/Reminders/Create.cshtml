@@ -4,13 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Reminder</h4>
+<h1 class="text-center">Add Reminder</h1>
 <hr />
 
-<div class="container text-center"> 
-    <div class="row">
+<div class="container text-center">
+    <div class="row justify-content-center">
         <div class="col-md-10">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -73,46 +71,8 @@
 
 </div>
 
-
-<div>
+<hr />
+<br />
+<button class="btn-info rounded-pill justify-content-center">
     <a asp-action="Index">Back to List</a>
-</div>
-
-
-
-
-<dv id="taskInputField ">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                <input type="text" id="taskInput" class="form-control" placeholder="Enter task" />
-            </div>
-            <div class="col">
-                <input type="text" id="taskDescription" class="form-control" placeholder=":Enter description" />
-            </div>
-            <div class="row">
-                <div class="form-check form-switch col-auto">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Alarm</label>
-                </div>
-                <div class="col">
-                    <input type="date" id="alarmDate" class="form-control" />
-                </div>
-                <div class="col">
-                    <input type="time" id="alarmTime" class="form-control" />
-                </div>
-                <div class="row">
-                    <div class="form-check form-switch col-auto">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Periodic</label>
-                    </div>
-                    <div class="col">
-                        <input type="date" id="periodicDate" class="form-control" />
-                    </div>
-                    <div class="col">
-                        <input type="time" id="periodicTime" class="form-control" />
-                    </div>
-                </div>
-                <button onclick="addTask()">Add Task</button>
-            </div>
-</dv> 
+</button>
