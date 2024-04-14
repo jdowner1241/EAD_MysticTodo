@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebAppRedo.Data.Reminder>
+﻿@model IEnumerable<WebAppRedo.Data.Models.Reminder>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,22 +25,16 @@
                 @Html.DisplayNameFor(model => model.HasAlarms)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AlarmTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlarmDate)
+                @Html.DisplayNameFor(model => model.Alarm)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Periodic)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeFramesId)
+                @Html.DisplayNameFor(model => model.TimeFrameSelection)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PeriodicDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PeriodicTime)
+                @Html.DisplayNameFor(model => model.PeriodicAlarm)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserId)
@@ -64,22 +58,16 @@
                 @Html.DisplayFor(modelItem => item.HasAlarms)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AlarmTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AlarmDate)
+                @Html.DisplayFor(modelItem => item.Alarm)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Periodic)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TimeFramesId)
+                @Html.DisplayFor(modelItem => item.TimeFrameSelection)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PeriodicDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PeriodicTime)
+                @Html.DisplayFor(modelItem => item.PeriodicAlarm)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserId)

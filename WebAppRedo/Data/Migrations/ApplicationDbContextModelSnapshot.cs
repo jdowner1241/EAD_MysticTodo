@@ -17,7 +17,7 @@ namespace WebAppRedo.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -55,8 +55,7 @@ namespace WebAppRedo.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>
-                        ("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -225,7 +224,7 @@ namespace WebAppRedo.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebAppRedo.Data.Reminder", b =>
+            modelBuilder.Entity("WebAppRedo.Data.Models.Reminder", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -233,11 +232,8 @@ namespace WebAppRedo.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<TimeOnly?>("AlarmDate")
-                        .HasColumnType("time");
-
-                    b.Property<DateOnly?>("AlarmTime")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("Alarm")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -255,16 +251,10 @@ namespace WebAppRedo.Data.Migrations
                     b.Property<bool?>("Periodic")
                         .HasColumnType("bit");
 
-                    b.Property<DateOnly?>("PeriodicDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("PeriodicAlarm")
+                        .HasColumnType("datetime2");
 
-                    b.Property<TimeOnly?>("PeriodicTime")
-                        .HasColumnType("time");
-
-                    b.Property<int?>("TimeFrameId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TimeFramesId")
+                    b.Property<int>("TimeFrameSelection")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -272,26 +262,7 @@ namespace WebAppRedo.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TimeFrameId");
-
-                    b.ToTable("Reminders", (string)null);
-                });
-
-            modelBuilder.Entity("WebAppRedo.Data.TimeFrame", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("PeriodicName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TimeFrames", (string)null);
+                    b.ToTable("Reminders");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -343,15 +314,6 @@ namespace WebAppRedo.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("WebAppRedo.Data.Reminder", b =>
-                {
-                    b.HasOne("WebAppRedo.Data.TimeFrame", "TimeFrame")
-                        .WithMany()
-                        .HasForeignKey("TimeFrameId");
-
-                    b.Navigation("TimeFrame");
                 });
 #pragma warning restore 612, 618
         }

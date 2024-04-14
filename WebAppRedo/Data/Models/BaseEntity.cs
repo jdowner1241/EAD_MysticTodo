@@ -1,4 +1,4 @@
-﻿namespace WebAppRedo.Data
+﻿namespace WebAppRedo.Data.Models
 {
     public abstract class BaseEntity
     {
