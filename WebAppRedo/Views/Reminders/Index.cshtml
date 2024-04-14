@@ -1,83 +1,119 @@
-﻿@model IEnumerable<WebAppRedo.Data.Models.Reminder>
+﻿@using WebAppRedo.Data.Models
+@model IEnumerable<ReminderVM>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Task Reminder</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsComplete)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HasAlarms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Alarm)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Periodic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeFrameSelection)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PeriodicAlarm)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsComplete)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HasAlarms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alarm)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Periodic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeFrameSelection)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PeriodicAlarm)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+@* <style>
+    input {
+        margin-left: 50px;
+        margin-bottom: 30px;
+        border: none;
+    }
+
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        margin-right;
+        margin-left;
+    }
+
+    th{
+        border: 3px solid #dddddd;
+        background-color: blue;
+        color: dddddd;
+        text-align: left;
+        padding: 8px;
+        width: 2px;
+    }
+
+    td, tr{
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        width: 2px;
+    }
+
+    tr:nth-child(even) {
+        background: white;
+        width: 23px;
+    }
+
+    #taskTable {
+        margin-left: 50px;
+        margin-bottom: 30px;
+    }
+
+   /*  body {
+        background-color: #1ad0f4;
+    } */
+
+    button {
+        background-color: #43a1d0;
+        border-radius: 7px;
+        border-block: none;
+    }
+</style> *@
+
+<br />
+<button class="btn-info rounded-pill justify-content-center">
+    <a asp-action="Create">Add New Task</a>
+</button>
+<br />
+<br />
+    <div id="taskTable" class="container">
+        <table class="table table-bordered rounded-top">
+            <thead class="thead-dark bg-black text-light">
+                <tr class="bg-body">
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsComplete)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alarm)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TimeFrameSelection)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PeriodicAlarm)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsComplete)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Alarm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TimeFrameSelection)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PeriodicAlarm)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+

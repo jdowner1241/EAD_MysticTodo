@@ -27,21 +27,35 @@
                     <input class="form-check-input" asp-for="IsComplete" /> @Html.DisplayNameFor(model => model.IsComplete)
                 </label>
             </div>
-            <div class="form-group">
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasAlarms" /> @Html.DisplayNameFor(model => model.HasAlarms)
+                </label>
+            </div>
+
+@*             <div class="form-group">
                 <label asp-for="HasAlarms" class="control-label"></label>
                 <input asp-for="HasAlarms" class="form-control" />
                 <span asp-validation-for="HasAlarms" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <label asp-for="Alarm" class="control-label"></label>
                 <input asp-for="Alarm" class="form-control" />
                 <span asp-validation-for="Alarm" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Periodic" /> @Html.DisplayNameFor(model => model.Periodic)
+                </label>
+            </div>
+
+        @*     <div class="form-group">
                 <label asp-for="Periodic" class="control-label"></label>
                 <input asp-for="Periodic" class="form-control" />
                 <span asp-validation-for="Periodic" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <label asp-for="TimeFrameSelection" class="control-label"></label>
                 <select asp-for="TimeFrameSelection" class="form-control"></select>

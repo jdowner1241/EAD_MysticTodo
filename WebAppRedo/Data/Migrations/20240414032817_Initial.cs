@@ -20,10 +20,10 @@ namespace WebAppRedo.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsComplete = table.Column<bool>(type: "bit", nullable: false),
-                    HasAlarms = table.Column<bool>(type: "bit", nullable: true),
+                    HasAlarms = table.Column<bool>(type: "bit", nullable: false),
                     Alarm = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Periodic = table.Column<bool>(type: "bit", nullable: true),
-                    TimeFrameSelection = table.Column<int>(type: "int", nullable: false),
+                    Periodic = table.Column<bool>(type: "bit", nullable: false),
+                    TimeFrameSelection = table.Column<int>(type: "int", nullable: true),
                     PeriodicAlarm = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },

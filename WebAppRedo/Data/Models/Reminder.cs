@@ -5,6 +5,7 @@ namespace WebAppRedo.Data.Models
 {
     public enum TimeFrame
     {
+        NotSet,
         Daily,
         Weekly,
         Monthly,
@@ -19,11 +20,11 @@ namespace WebAppRedo.Data.Models
 
         public bool IsComplete { get; set; }
 
-        public bool? HasAlarms { get; set; }
+        public bool HasAlarms { get; set; } = false;
 
         public DateTime? Alarm { get; set; }
 
-        public bool? Periodic { get; set; }
+        public bool Periodic { get; set; } = false;
 
         public TimeFrame TimeFrameSelection {  get; set; }
   

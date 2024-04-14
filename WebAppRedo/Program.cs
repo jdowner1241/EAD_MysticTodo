@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebAppRedo.Data;
+using AutoMapper;
+using WebAppRedo.Configuration;
 
 namespace WebAppRedo
 {
@@ -18,6 +20,8 @@ namespace WebAppRedo
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.AddAutoMapper(typeof(Mapperconfig));
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

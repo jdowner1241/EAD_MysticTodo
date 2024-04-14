@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,16 +14,19 @@ namespace WebAppRedo.Controllers
     public class RemindersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private IMapper mapper;
 
-        public RemindersController(ApplicationDbContext context)
+        public RemindersController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            this.mapper = mapper;
         }
 
         // GET: Reminders
         public async Task<IActionResult> Index()
-        {
-            return View(await _context.Reminders.ToListAsync());
+        {   
+            var reminders = mapper.Map<List<ReminderVM>>(await _context.Reminders.ToListAsync());
+            return View(reminders);
         }
 
         // GET: Reminders/Details/5
@@ -54,15 +58,16 @@ namespace WebAppRedo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Description,IsComplete,HasAlarms,Alarm,Periodic,TimeFrameSelection,PeriodicAlarm,UserId,Id")] Reminder reminder)
+        public async Task<IActionResult> Create(ReminderAddVM reminderAddVM)
         {
             if (ModelState.IsValid)
             {
+                var reminder = mapper.Map<Reminder>(reminderAddVM);
                 _context.Add(reminder);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(reminder);
+            return View(reminderAddVM);
         }
 
         // GET: Reminders/Edit/5
