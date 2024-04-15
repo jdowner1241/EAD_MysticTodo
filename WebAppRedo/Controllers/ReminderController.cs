@@ -85,7 +85,8 @@ namespace WebAppRedo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,IsComplete,HasAlarms,AlarmTime,AlarmDate,Periodic,TimeFramesId,PeriodicDate,PeriodicTime,UserId,Id")] Reminder reminder)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,IsComplete,HasAlarms," +
+            "AlarmTime,AlarmDate,Periodic,TimeFramesId,PeriodicDate,PeriodicTime,UserId,Id")] Reminder reminder)
         {
             if (id != reminder.Id)
             {

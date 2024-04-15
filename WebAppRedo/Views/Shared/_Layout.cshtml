@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -124,13 +126,22 @@
                 background-color: #43a1d0;
                 border-radius:7px;
                 border-block:none;
+                margin-top:2344px;
 
             }
         </style>
+
+
+        @model IEnumerable<Reminder>
     </head1>
     <body1>
         @RenderBody();
-      <h2>Task Reminder</h2>
+   <div class=" container d-flex justify-content-center"> 
+       <div>
+          <h2>Task Reminder</h2> 
+       </div>
+ </div>
+    
       <dv id="taskInputField ">
             <div class="container text-center">
                 <div class="row">
@@ -163,9 +174,11 @@
                                 <input type="time" id="periodicTime" class="form-control" />
                             </div>
                 </div>
-                <button onclick="addTask()">Add Task</button>
+                <button class="potion" onclick="addTask()">Add Task</button>
             </div>
-      </dv>
+      </<style>
+         b
+      </style>
        
 
         <table id="taskTable">
@@ -199,8 +212,23 @@
                         <td>2024-03-28</td>
                         <td>08:00 AM</td>
                     </tr>
-                    <!-- Add more rows as needed -->
+                    
                 </tbody>
+                            @foreach (var reminder in Model)
+                            {
+                                <tr>
+                                    <td>@reminder.Id</td>
+                                    <td>@reminder.Name</td>
+                                    <td>@reminder.Description</td>
+                                    <td>@reminder.IsComplete</td>
+                                    
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@reminder.Id">Details</a> |
+                                        <a asp-action="Edit" asp-route-id="@reminder.Id">Edit</a> |
+                                        <a asp-action="Delete" asp-route-id="@reminder.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
              </table>
             <tr>
                 <th>Task</th>
