@@ -1,0 +1,78 @@
+﻿@model WebAppRedo.Data.Models.ReminderAddVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center">Add Reminder</h1>
+<hr />
+
+<div class="container text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group col">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="row justify-content-between">
+                    <div class="form-group form-check form-switch col-md-6">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="HasAlarms" /> @Html.DisplayNameFor(model => model.HasAlarms)
+                            </label>
+                            <span asp-validation-for="HasAlarms" class="text-danger"></span>
+                        </div>
+
+                    <div class="form-group form-check form-switch col-md-6">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="Periodic" /> @Html.DisplayNameFor(model => model.Periodic)
+                            </label>
+                            <span asp-validation-for="Periodic" class="text-danger"></span>
+                        </div>
+                </div>
+
+                <div class="row justify-content-between">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="Alarm" class="control-label"></label>
+                            <input asp-for="Alarm" class="form-control form-control-sm" />
+                            <span asp-validation-for="Alarm" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label asp-for="TimeFrameSelection" class="control-label"></label>
+                            <select asp-for="TimeFrameSelection" class="form-control form-control-sm">
+                                <option value="1">Daily</option>
+                                <option value="2">Weekly</option>
+                                <option value="3">Monthly</option>
+                                <option value="4">Yearly</option>
+                            </select>
+                            <span asp-validation-for="TimeFrameSelection" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+         
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+<br />
+<button class="btn-info rounded-pill justify-content-center">
+    <a asp-action="Index">Back to List</a>
+</button>

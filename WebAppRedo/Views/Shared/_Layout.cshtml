@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,8 +21,8 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grows-1">
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Home" 
-                                asp-action="Index">Home</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Reminders"
+                                   asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">About</a>
@@ -119,29 +117,20 @@
                  margin-bottom: 30px;
 
             }
-            body{
+        /*     body{
                 background-color: #1ad0f4;
-            }
+            } */
             button{
                 background-color: #43a1d0;
                 border-radius:7px;
                 border-block:none;
-                margin-top:2344px;
 
             }
         </style>
-
-
-        @model IEnumerable<Reminder>
     </head1>
     <body1>
         @RenderBody();
-   <div class=" container d-flex justify-content-center"> 
-       <div>
-          <h2>Task Reminder</h2> 
-       </div>
- </div>
-    
+      @* <h2>Task Reminder</h2>
       <dv id="taskInputField ">
             <div class="container text-center">
                 <div class="row">
@@ -174,14 +163,12 @@
                                 <input type="time" id="periodicTime" class="form-control" />
                             </div>
                 </div>
-                <button class="potion" onclick="addTask()">Add Task</button>
+                <button onclick="addTask()">Add Task</button>
             </div>
-      </<style>
-         b
-      </style>
+      </dv> *@
        
 
-        <table id="taskTable">
+       @*  <table id="taskTable">
              <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
@@ -212,23 +199,8 @@
                         <td>2024-03-28</td>
                         <td>08:00 AM</td>
                     </tr>
-                    
+                    <!-- Add more rows as needed -->
                 </tbody>
-                            @foreach (var reminder in Model)
-                            {
-                                <tr>
-                                    <td>@reminder.Id</td>
-                                    <td>@reminder.Name</td>
-                                    <td>@reminder.Description</td>
-                                    <td>@reminder.IsComplete</td>
-                                    
-                                    <td>
-                                        <a asp-action="Details" asp-route-id="@reminder.Id">Details</a> |
-                                        <a asp-action="Edit" asp-route-id="@reminder.Id">Edit</a> |
-                                        <a asp-action="Delete" asp-route-id="@reminder.Id">Delete</a>
-                                    </td>
-                                </tr>
-                            }
              </table>
             <tr>
                 <th>Task</th>
@@ -236,7 +208,7 @@
             </tr> 
             <!-- Tasks will be dynamically added here -->
         </table>  
-        <br>
+        <br> *@
         
         <script>
             function addTask() {

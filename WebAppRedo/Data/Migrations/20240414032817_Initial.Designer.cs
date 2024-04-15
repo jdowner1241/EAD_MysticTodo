@@ -12,15 +12,15 @@ using WebAppRedo.Data;
 namespace WebAppRedo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240403021950_AddedReminders")]
-    partial class AddedReminders
+    [Migration("20240414032817_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -227,7 +227,7 @@ namespace WebAppRedo.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebAppRedo.Data.Reminder", b =>
+            modelBuilder.Entity("WebAppRedo.Data.Models.Reminder", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -235,11 +235,8 @@ namespace WebAppRedo.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<TimeOnly?>("AlarmDate")
-                        .HasColumnType("time");
-
-                    b.Property<DateOnly?>("AlarmTime")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("Alarm")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -257,16 +254,10 @@ namespace WebAppRedo.Data.Migrations
                     b.Property<bool?>("Periodic")
                         .HasColumnType("bit");
 
-                    b.Property<DateOnly?>("PeriodicDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("PeriodicAlarm")
+                        .HasColumnType("datetime2");
 
-                    b.Property<TimeOnly?>("PeriodicTime")
-                        .HasColumnType("time");
-
-                    b.Property<int?>("TimeFrameId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TimeFramesId")
+                    b.Property<int>("TimeFrameSelection")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -274,26 +265,7 @@ namespace WebAppRedo.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TimeFrameId");
-
                     b.ToTable("Reminders");
-                });
-
-            modelBuilder.Entity("WebAppRedo.Data.TimeFrame", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("PeriodicName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TimeFrames");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -345,15 +317,6 @@ namespace WebAppRedo.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("WebAppRedo.Data.Reminder", b =>
-                {
-                    b.HasOne("WebAppRedo.Data.TimeFrame", "TimeFrame")
-                        .WithMany()
-                        .HasForeignKey("TimeFrameId");
-
-                    b.Navigation("TimeFrame");
                 });
 #pragma warning restore 612, 618
         }

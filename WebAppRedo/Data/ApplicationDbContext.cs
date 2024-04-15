@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebAppRedo.Data.Models;
 
 namespace WebAppRedo.Data
 {
@@ -11,6 +12,5 @@ namespace WebAppRedo.Data
         }
 
         public DbSet<Reminder> Reminders { get; set; }
-        public DbSet<TimeFrame> TimeFrames { get; set; }
     }
 }
