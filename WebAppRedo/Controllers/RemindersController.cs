@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +63,46 @@ namespace WebAppRedo.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if (reminderAddVM.HasAlarms == true)
+                {
+                    if (reminderAddVM.Periodic == true)
+                    {
+                        switch (reminderAddVM.TimeFrameSelection)
+                        {
+                            case TimeFrame.Daily:
+                               reminderAddVM.PeriodicAlarm = reminderAddVM.Alarm?.AddDays(1);
+                                break;
+                            case TimeFrame.Weekly:
+                                reminderAddVM.PeriodicAlarm = reminderAddVM.Alarm?.AddDays(7);
+                                break;
+                            case TimeFrame.Monthly:
+                                reminderAddVM.PeriodicAlarm = reminderAddVM.Alarm?.AddMonths(1);
+                                break;
+                            case TimeFrame.Yearly:
+                                reminderAddVM.PeriodicAlarm = reminderAddVM.Alarm?.AddYears(1);
+                                break;
+                            default:
+                                reminderAddVM.PeriodicAlarm =  null;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        reminderAddVM.TimeFrameSelection = TimeFrame.NotSet;
+                        reminderAddVM.PeriodicAlarm = null;
+                        reminderAddVM.Periodic = false;
+                    }
+                }
+                else
+                {
+                    reminderAddVM.Alarm = null;
+                    reminderAddVM.Periodic = false;
+                    reminderAddVM.PeriodicAlarm = null;
+                    reminderAddVM.TimeFrameSelection = TimeFrame.NotSet;
+                }
+
+
                 var reminder = mapper.Map<Reminder>(reminderAddVM);
                 _context.Add(reminder);
                 await _context.SaveChangesAsync();
@@ -83,7 +124,9 @@ namespace WebAppRedo.Controllers
             {
                 return NotFound();
             }
-            return View(reminder);
+
+            var reminderEditVM = mapper.Map<ReminderEditVM>(reminder);
+            return View(reminderEditVM);
         }
 
         // POST: Reminders/Edit/5
@@ -91,9 +134,9 @@ namespace WebAppRedo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Description,IsComplete,HasAlarms,Alarm,Periodic,TimeFrameSelection,PeriodicAlarm,UserId,Id")] Reminder reminder)
+        public async Task<IActionResult> Edit(int id, ReminderEditVM reminderEditVM)
         {
-            if (id != reminder.Id)
+            if (id != reminderEditVM.Id)
             {
                 return NotFound();
             }
@@ -102,12 +145,56 @@ namespace WebAppRedo.Controllers
             {
                 try
                 {
+
+
+                    if (reminderEditVM.HasAlarms == true)
+                    {
+                        if (reminderEditVM.Periodic == true)
+                        {
+                            switch (reminderEditVM.TimeFrameSelection)
+                            {
+                                case TimeFrame.Daily:
+                                    reminderEditVM.PeriodicAlarm = reminderEditVM.Alarm?.AddDays(1);
+                                    break;
+                                case TimeFrame.Weekly:
+                                    reminderEditVM.PeriodicAlarm = reminderEditVM.Alarm?.AddDays(7);
+                                    break;
+                                case TimeFrame.Monthly:
+                                    reminderEditVM.PeriodicAlarm = reminderEditVM.Alarm?.AddMonths(1);
+                                    break;
+                                case TimeFrame.Yearly:
+                                    reminderEditVM.PeriodicAlarm = reminderEditVM.Alarm?.AddYears(1);
+                                    break;
+                                default:
+                                    reminderEditVM.PeriodicAlarm = null;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            reminderEditVM.TimeFrameSelection = TimeFrame.NotSet;
+                            reminderEditVM.PeriodicAlarm = null;
+                            reminderEditVM.Periodic = false;
+                        }
+                    }
+                    else
+                    {
+                        reminderEditVM.Alarm = null;
+                        reminderEditVM.Periodic = false;
+                        reminderEditVM.PeriodicAlarm = null;
+                        reminderEditVM.TimeFrameSelection = TimeFrame.NotSet;
+                    }
+
+
+
+
+                    var reminder = mapper.Map<Reminder>(reminderEditVM);
                     _context.Update(reminder);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReminderExists(reminder.Id))
+                    if (!ReminderExists(reminderEditVM.Id))
                     {
                         return NotFound();
                     }
@@ -118,7 +205,7 @@ namespace WebAppRedo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(reminder);
+            return View(reminderEditVM);
         }
 
         // GET: Reminders/Delete/5

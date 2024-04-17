@@ -130,86 +130,22 @@
     </head1>
     <body1>
         @RenderBody();
-      @* <h2>Task Reminder</h2>
-      <dv id="taskInputField ">
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col">
-                        <input type="text" id="taskInput" class="form-control" placeholder="Enter task"/>
-                    </div>
-                    <div class="col">
-                        <input type="text" id="taskDescription" class="form-control" placeholder=":Enter description"/>
-                    </div>
-                <div class="row">
-                    <div class="form-check form-switch col-auto">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Alarm</label>
-                    </div>
-                    <div class="col">
-                        <input type="date" id="alarmDate" class="form-control" />
-                    </div>
-                    <div class="col">
-                        <input type="time" id="alarmTime" class="form-control" />
-                    </div>
-                <div class="row">
-                            <div class="form-check form-switch col-auto">
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                                <label class="form-check-label" for="flexSwitchCheckChecked">Periodic</label>
-                            </div>
-                            <div class="col">
-                                <input type="date" id="periodicDate" class="form-control" />
-                            </div>
-                            <div class="col">
-                                <input type="time" id="periodicTime" class="form-control" />
-                            </div>
-                </div>
-                <button onclick="addTask()">Add Task</button>
-            </div>
-      </dv> *@
+    
        
+        <a id="mainPage" asp-area="" asp-controller="Reminders"
+           asp-action="Index"></a>
 
-       @*  <table id="taskTable">
-             <table class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Active</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Alarm</th>
-                        <th>Alarm Date</th>
-                        <th>Alarm Time</th>
-                        <th>Periodic</th>
-                        <th>Frequency</th>
-                        <th>Periodic Date</th>
-                        <th>Periodic Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><input type="checkbox" checked></td>
-                        <td>Task 1</td>
-                        <td>Description 1</td>
-                        <td><input type="checkbox"></td>
-                        <td>2024-03-28</td>
-                        <td>08:00 AM</td>
-                        <td><input type="checkbox"></td>
-                        <td>Daily</td>
-                        <td>2024-03-28</td>
-                        <td>08:00 AM</td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                </tbody>
-             </table>
-            <tr>
-                <th>Task</th>
-                <th>Action</th>
-            </tr> 
-            <!-- Tasks will be dynamically added here -->
-        </table>  
-        <br> *@
-        
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; @DateTime.Now.Year - Mystic To Do - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
         <script>
             function addTask() {
                 var task = document.getElementById("taskInput").value;
@@ -230,14 +166,23 @@
                 document.getElementById("taskTable").deleteRow(rowIndex);
             }
         </script>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - Mystic To Do - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+        @* <script>
+            var hasLoaded = false; // Initialize the flag
+
+            window.onload = function () {
+                if (!hasLoaded) { // Check if it hasn't loaded before
+                    // Find the anchor element by its ID
+                    var anchorElement = document.getElementById('mainPage');
+                    if (anchorElement) {
+                        anchorElement.click(); // Trigger the click event
+                        hasLoaded = true; // Set the flag to true
+                    }
+                }
+            };
+        </script> *@
     @await RenderSectionAsync("Scripts", required: false)
    </body1>
 </body>
