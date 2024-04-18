@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebAppRedo.Data.Models;
 using WebAppRedo.Models;
 
 namespace WebAppRedo.Controllers
