@@ -24,7 +24,7 @@ namespace WebAppRedo.Controllers
 
         // GET: Reminders
         public async Task<IActionResult> Index()
-        {   
+        {
             var reminders = mapper.Map<List<ReminderVM>>(await _context.Reminders.ToListAsync());
             return View(reminders);
         }
@@ -32,6 +32,10 @@ namespace WebAppRedo.Controllers
         // GET: Reminders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+
+
+
+
             if (id == null)
             {
                 return NotFound();
@@ -158,5 +162,95 @@ namespace WebAppRedo.Controllers
         {
             return _context.Reminders.Any(e => e.Id == id);
         }
+
     }
 }
+
+    //public async Task<IActionResult> Edit(int? id)
+    //{
+    //    if (id == null)
+    //    {
+    //        return NotFoundResult();
+    //    }
+
+    //    var reminder = await _context.Reminders.FindAsync(id);
+    //    if (reminder == null)
+    //    {
+    //        return NotFound();
+    //    }
+
+    //    var editViewModel = new EditReminderViewModel
+    //    {
+    //        Id = reminder.Id,
+    //        Name = reminder.Name,
+    //        Description = reminder.Description,
+    //        IsComplete = reminder.IsComplete,
+    //        HasAlarms = reminder.HasAlarms,
+    //        AlarmDate = reminder.AlarmDate,
+    //        AlarmTime = reminder.AlarmTime,
+    //        Periodic = reminder.Periodic,
+    //        TimeFramesId = reminder.TimeFramesId,
+    //        PeriodicDate = reminder.PeriodicDate,
+    //        PeriodicTime = reminder.PeriodicTime
+    //    };
+
+    //    return View(editViewModel);
+    //}
+
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> Edit(int id, EditReminderViewModel model)
+    //{
+    //    if (id != model.Id)
+    //    {
+    //        return NotFound();
+    //    }
+
+    //    if (ModelState.IsValid)
+    //    {
+    //        try
+    //        {
+    //            var reminder = await _context.Reminders.FindAsync(id);
+    //            if (reminder == null)
+    //            {
+    //                return NotFound();
+    //            }
+
+    //            // Update the reminder entity with data from the view model
+    //            reminder.Name = model.Name;
+    //            reminder.Description = model.Description;
+    //            reminder.IsComplete = model.IsComplete;
+    //            reminder.HasAlarms = model.HasAlarms;
+    //            reminder.AlarmDate = model.AlarmDate;
+    //            reminder.AlarmTime = model.AlarmTime;
+    //            reminder.Periodic = model.Periodic;
+    //            reminder.TimeFramesId = model.TimeFramesId;
+    //            reminder.PeriodicDate = model.PeriodicDate;
+    //            reminder.PeriodicTime = model.PeriodicTime;
+
+    //            _context.Update(reminder);
+    //            await _context.SaveChangesAsync();
+    //        }
+    //        catch (DbUpdateConcurrencyException)
+    //        {
+    //            if (!ReminderExists(model.Id))
+    //            {
+    //                return NotFound();
+    //            }
+    //            else
+    //            {
+    //                throw;
+    //            }
+    //        }
+    //        return RedirectToAction(nameof(Index));
+    //    }
+
+
+
+
+
+
+
+    //}
+
+   

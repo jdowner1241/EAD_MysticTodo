@@ -6,7 +6,8 @@ namespace WebAppRedo.Data.Models
     {
         public int Id { get; set; }
 
-        [Required] 
+        [Required]
+        [Display(Name = "Reminder Title")]
         public string Name { get; set; }
 
 
