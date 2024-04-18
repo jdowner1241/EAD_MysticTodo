@@ -11,6 +11,7 @@ namespace WebAppRedo.Data.Models
 
         public int Id { get; set; }
 
+        [Display(Name = "Reminder Title")]
         public string Name { get; set; }
 
         public DateTime? Alarm { get; set; }

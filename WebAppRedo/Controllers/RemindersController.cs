@@ -35,8 +35,6 @@ namespace WebAppRedo.Controllers
         {
 
 
-
-
             if (id == null)
             {
                 return NotFound();
@@ -49,7 +47,8 @@ namespace WebAppRedo.Controllers
                 return NotFound();
             }
 
-            return View(reminder);
+            var reminderDetailsVM = mapper.Map<ReminderDetailsVM>(reminder);
+            return View(reminderDetailsVM);
         }
 
         // GET: Reminders/Create

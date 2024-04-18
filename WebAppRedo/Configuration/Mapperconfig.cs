@@ -12,6 +12,7 @@ namespace WebAppRedo.Configuration
             CreateMap<Reminder, ReminderAddVM>().ReverseMap();
             CreateMap<Reminder, ReminderEditVM>().ReverseMap();
             CreateMap<Reminder, ReminderDetailsVM>().ReverseMap();
+            CreateMap<Reminder, ReminderDeleteVM>().ReverseMap();
         }
     }
 }
