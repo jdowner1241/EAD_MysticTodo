@@ -226,7 +226,8 @@ namespace WebAppRedo.Controllers
                 return NotFound();
             }
 
-            return View(reminder);
+            var reminderDeleteVM = mapper.Map<ReminderDeleteVM>(reminder);
+            return View(reminderDeleteVM);
         }
 
         // POST: Reminders/Delete/5
@@ -242,6 +243,7 @@ namespace WebAppRedo.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+
         }
 
         private bool ReminderExists(int id)

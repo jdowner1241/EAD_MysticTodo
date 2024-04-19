@@ -28,5 +28,7 @@ namespace WebAppRedo.Data.Models
         [Display(Name = "Next Alarm")]
         public DateTime? PeriodicAlarm { get; set; }
 
+        [Display(Name = "User")]
+        public string? UserId { get; set; }
     }
 }

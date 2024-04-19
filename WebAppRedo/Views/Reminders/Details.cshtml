@@ -15,26 +15,26 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group col">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" runat="server" ReadOnly="true" />
+                        <label asp-for="Name" class="control-label fw-bold"></label>
+                    <input asp-for="Name" class="form-control bg-light" runat="server" ReadOnly="true" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="form-group col">
-                        <label asp-for="Description" class="control-label"></label>
-                        <input asp-for="Description" class="form-control" runat="server" ReadOnly="true" />
+                    <label asp-for="Description" class="control-label fw-bold"></label>
+                    <input asp-for="Description" class="form-control bg-light" runat="server" ReadOnly="true" />
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
 
                     <div class="row justify-content-between">
                     <div class="form-group form-check form-switch col-md-6 " runat="server" ReadOnly="true">
-                        <label class="form-check-label" runat="server" ReadOnly="true">
+                        <label class="form-check-label fw-bold" runat="server" ReadOnly="true">
                                 <input class="form-check-input" asp-for="HasAlarms" id="hasAlarm" runat="server" ReadOnly="true" /> @Html.DisplayNameFor(model => model.HasAlarms)
                             </label>
                             <span asp-validation-for="HasAlarms" class="text-danger" runat="server" ReadOnly="true"></span>
                         </div>
 
                     <div class="form-group form-check form-switch col-md-6" runat="server" ReadOnly="true">
-                        <label class="form-check-label" runat="server" ReadOnly="true">
+                        <label class="form-check-label fw-bold" runat="server" ReadOnly="true">
                                 <input class="form-check-input" asp-for="Periodic" id="hasPeriodic" runat="server" ReadOnly="true" /> @Html.DisplayNameFor(model => model.Periodic)
                             </label>
                             <span asp-validation-for="Periodic" class="text-danger" runat="server" ReadOnly="true"></span>
@@ -44,16 +44,16 @@
                     <div class="row justify-content-between">
                         <div class="col-md-5">
                             <div class="form-group" id="Alarm">
-                                <label asp-for="Alarm" class="control-label"></label>
-                                <input asp-for="Alarm" class="form-control form-control-sm" runat="server" ReadOnly="true" />
+                            <label asp-for="Alarm" class="control-label fw-bold"></label>
+                            <input asp-for="Alarm" class="form-control form-control bg-light" runat="server" ReadOnly="true" />
                                 <span asp-validation-for="Alarm" class="text-danger"></span>
                             </div>
                         </div>
 
                         <div class="col-md-5">
                             <div class="form-group" id="PeriodicAlarm">
-                                <label asp-for="TimeFrameSelection" class="control-label"></label>
-                                <input asp-for="TimeFrameSelection" class="form-control" runat="server" ReadOnly="true" />
+                            <label asp-for="TimeFrameSelection" class="control-label fw-bold"></label>
+                            <input asp-for="TimeFrameSelection" class="form-control bg-light" runat="server" ReadOnly="true" />
                                 <span asp-validation-for="TimeFrameSelection" class="text-danger"></span>
                             </div>
                         </div>
@@ -66,13 +66,20 @@
 
                         <div class="col-md-5">
                             <div class="form-group" id="PeriodicAlarmText">
-                                <label asp-for="PeriodicAlarm" class="control-label"></label>
-                                <input asp-for="PeriodicAlarm" class="form-control" runat="server" ReadOnly="true" />
+                            <label asp-for="PeriodicAlarm" class="control-label fw-bold"></label>
+                            <input asp-for="PeriodicAlarm" class="form-control bg-light" runat="server" ReadOnly="true" />
                                 <span asp-validation-for="PeriodicAlarm" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
-                    </form>
+
+                <div class="form-group col">
+                    <label asp-for="UserId" class="control-label fw-bold"></label>
+                    <input asp-for="UserId" class="form-control bg-light" runat="server" ReadOnly="true" />
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+
+                </form>
             </div>
         </div>
     </div>

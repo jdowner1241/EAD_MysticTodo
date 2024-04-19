@@ -1,75 +1,121 @@
-﻿@model WebAppRedo.Data.Models.Reminder
+﻿@model WebAppRedo.Data.Models.ReminderDeleteVM
 
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Reminder</h4>
+    <h1 class="text-center">Delete Reminder</h1>
+    <br />
+    <h3 class="text-center">Are you sure you want to delete this?</h3>
+    <br />
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsComplete)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsComplete)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HasAlarms)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HasAlarms)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Alarm)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Alarm)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Periodic)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Periodic)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TimeFrameSelection)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TimeFrameSelection)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PeriodicAlarm)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PeriodicAlarm)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <br />
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+              
+                    <div class="form-group col">
+                    <label asp-for="Name" class="control-label fw-bold"></label>
+                        <input asp-for="Name" class="form-control bg-light" runat="server" ReadOnly="true" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col">
+                    <label asp-for="Description" class="control-label fw-bold"></label>
+                    <input asp-for="Description" class="form-control bg-light" runat="server" ReadOnly="true" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="row justify-content-between">
+                        <div class="form-group form-check form-switch col-md-6 " runat="server" ReadOnly="true">
+                        <label class="form-check-label fw-bold" runat="server" ReadOnly="true">
+                                <input class="form-check-input" asp-for="HasAlarms" id="hasAlarm" runat="server" ReadOnly="true" /> @Html.DisplayNameFor(model => model.HasAlarms)
+                            </label>
+                            <span asp-validation-for="HasAlarms" class="text-danger" runat="server" ReadOnly="true"></span>
+                        </div>
+
+                        <div class="form-group form-check form-switch col-md-6" runat="server" ReadOnly="true">
+                        <label class="form-check-label fw-bold" runat="server" ReadOnly="true">
+                                <input class="form-check-input" asp-for="Periodic" id="hasPeriodic" runat="server" ReadOnly="true" /> @Html.DisplayNameFor(model => model.Periodic)
+                            </label>
+                            <span asp-validation-for="Periodic" class="text-danger" runat="server" ReadOnly="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                        <div class="col-md-5">
+                            <div class="form-group" id="Alarm">
+                            <label asp-for="Alarm" class="control-label fw-bold"></label>
+                            <input asp-for="Alarm" class="form-control form-control bg-light" runat="server" ReadOnly="true" />
+                                <span asp-validation-for="Alarm" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group" id="PeriodicAlarm">
+                            <label asp-for="TimeFrameSelection" class="control-label fw-bold"></label>
+                            <input asp-for="TimeFrameSelection" class="form-control bg-light" runat="server" ReadOnly="true" />
+                                <span asp-validation-for="TimeFrameSelection" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                        <div class="col-md-5">
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group" id="PeriodicAlarmText">
+                            <label asp-for="PeriodicAlarm" class="control-label fw-bold"></label>
+                            <input asp-for="PeriodicAlarm" class="form-control bg-light" runat="server" ReadOnly="true" />
+                                <span asp-validation-for="PeriodicAlarm" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="form-group col">
+                    <label asp-for="UserId" class="control-label fw-bold"></label>
+                    <input asp-for="UserId" class="form-control bg-light" runat="server" ReadOnly="true" />
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+
+    <form asp-action="Delete" class="text-center">
+        <input type="hidden" asp-for="Id"  />
+        <input type="submit" value="Delete" class="btn btn-danger" />  |   
         <a asp-action="Index">Back to List</a>
     </form>
+
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script>
+    window.onload = function () {
+        const hasAlarmValue = document.getElementById('hasAlarm').checked;
+        const alarmInput = document.getElementById('Alarm');
+
+        if (hasAlarmValue) {
+            alarmInput.style.display = 'block'; // Show the input field
+        } else {
+            alarmInput.style.display = 'none'; // Hide the input field
+        }
+
+        const hasPeriodic = document.getElementById('hasPeriodic').checked;
+        const PeriodicAlarm = document.getElementById('PeriodicAlarm');
+        const PeriodicAlarmText = document.getElementById('PeriodicAlarmText');
+
+        if (hasPeriodic) {
+            PeriodicAlarm.style.display = 'block'; // Show the input field
+            PeriodicAlarmText.style.display = 'block';
+        } else {
+            PeriodicAlarm.style.display = 'none'; // Hide the input field
+            PeriodicAlarmText.style.display = 'none';
+        }
+    };
+</script>
