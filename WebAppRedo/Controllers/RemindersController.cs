@@ -251,6 +251,14 @@ namespace WebAppRedo.Controllers
             return _context.Reminders.Any(e => e.Id == id);
         }
 
+        // Reminders/Contacts
+        public IActionResult Contacts()
+        {
+            return View();
+        }
+
+
+
     }
 }
 
