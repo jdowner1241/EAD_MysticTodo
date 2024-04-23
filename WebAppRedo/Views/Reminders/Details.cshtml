@@ -14,6 +14,12 @@
                 <form asp-action="Details">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+                <div class="form-group form-check form-switch col">
+                    <label class="form-check-label fw-bold">
+                        <input class="form-check-input" asp-for="IsComplete" id="IsComplete" runat="server" ReadOnly="true" /> @Html.DisplayNameFor(model => model.IsComplete)
+                    </label>
+                    <span asp-validation-for="IsComplete" class="text-danger"></span>
+                </div>
 
                     <div class="form-group col">
                         <label asp-for="Name" class="control-label fw-bold"></label>

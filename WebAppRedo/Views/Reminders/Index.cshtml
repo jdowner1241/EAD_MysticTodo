@@ -15,21 +15,19 @@
 </div> *@
 
 <div class="text-center">
-        <a asp-action="Create">Add New Task</a>
+        <a asp-action="Create" class="fw-bold">Add New Task</a>
 </div>
 
 <br />
 <hr />
-@* <div class="form-group col">
-    <label asp-for="UserId" class="control-label fw-bold"></label>
-    <input asp-for="UserId" class="form-control bg-light" runat="server" ReadOnly="true" />
-    <span asp-validation-for="UserId" class="text-danger"></span>
-</div> *@
-
-<div id="taskTable" class="container text-center">
-        <table class="table table-bordered rounded-top">
-            <thead class="thead-primary bg-primary text-light">
-                <tr class="bg-body">
+<br />
+<h4 class="text-center">Active Reminders</h4>
+<br />
+<div class="container text-center justify-content-center">
+    <div id="taskTable" class="text-center ">
+        <table class="table table-bordered rounded-top bg-info text-black">
+            <thead class="bg-secondary text-light">
+                <tr class="bg-primary">
                     <th>
                         @Html.DisplayNameFor(model => model.IsComplete)
                     </th>
@@ -49,7 +47,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Where(modelItem => modelItem.IsComplete == false))
                 {
                     <tr>
                         <td>
@@ -78,4 +76,62 @@
         </table>
 
     </div>
+</div>
+<br />
+<h4 class="text-center">Completed Reminders</h4>
+<br />
+<div class="container text-center justify-content-center">
+    <div id="taskTable" class="text-center ">
+        <table class="table table-bordered rounded-top bg-info text-black">
+            <thead class="bg-secondary text-light">
+                <tr class="bg-primary">
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsComplete)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alarm)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TimeFrameSelection)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PeriodicAlarm)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Where(modelItem => modelItem.IsComplete == true))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsComplete)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Alarm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TimeFrameSelection)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PeriodicAlarm)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
 <hr />
