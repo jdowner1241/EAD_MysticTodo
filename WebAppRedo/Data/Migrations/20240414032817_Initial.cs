@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 #nullable disable
 
@@ -31,6 +32,7 @@ namespace WebAppRedo.Data.Migrations
                 {
                     table.PrimaryKey("PK_Reminders", x => x.Id);
                 });
+
         }
 
         /// <inheritdoc />
@@ -38,6 +40,7 @@ namespace WebAppRedo.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Reminders");
+
         }
     }
 }
