@@ -20,11 +20,11 @@ namespace WebAppRedo.Data.Models
 
         public bool IsComplete { get; set; }
 
-        public bool HasAlarms { get; set; } = false;
+        public bool HasAlarms { get; set; }
 
         public DateTime? Alarm { get; set; }
 
-        public bool Periodic { get; set; } = false;
+        public bool Periodic { get; set; }
 
         public TimeFrame TimeFrameSelection {  get; set; }
   

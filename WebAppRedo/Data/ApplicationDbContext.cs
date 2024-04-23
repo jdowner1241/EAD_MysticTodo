@@ -12,5 +12,6 @@ namespace WebAppRedo.Data
         }
 
         public DbSet<Reminder> Reminders { get; set; }
+        public DbSet<ContactMessages> ContactMessages { get; set; }
     }
 }
