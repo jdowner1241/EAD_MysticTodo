@@ -51,7 +51,12 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IsComplete)
+                            <div class="form-group form-check form-switch col">
+                                <label class="form-check-label fw-bold">
+                                    <input class="form-check-input toggle-cell" data-item-value="@item.IsComplete" type="checkbox" !checked />
+                                </label>
+                                <span class="text-danger"></span>
+                            </div>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
@@ -67,8 +72,9 @@
                         </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> | 
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> | <br />
+                            <a asp-action="UpdateIsComplete" asp-route-id="@item.Id">Set to Complete</a>
                         </td>
                     </tr>
                 }
@@ -108,7 +114,12 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IsComplete)
+                            <div class="form-group form-check form-switch col">
+                                <label class="form-check-label fw-bold">
+                                    <input class="form-check-input toggle-cell" data-item-value="@item.IsComplete" type="checkbox" checked />
+                                </label>
+                                <span class="text-danger"></span>
+                            </div>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
@@ -125,7 +136,8 @@
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>  |<br />
+                            <a asp-action="UpdateIsComplete" asp-route-id="@item.Id">Set to Active</a>
                         </td>
                     </tr>
                 }
@@ -135,3 +147,27 @@
     </div>
 </div>
 <hr />
+
+
+@* <script>
+    $(document).ready(function () {
+        $('.toggle-cell').change(function () {
+            var itemId = $(this).data('item-id');
+            var newValue = $(this).prop('checked'); // Get the new value (true or false)
+
+            // Send an AJAX request to update the database
+            $.ajax({
+                url: '@Url.Action("UpdateIsComplete", "Reminders")',
+                type: 'POST',
+                data: { id: itemId, isComplete: newValue },
+                success: function (result) {
+                    // Handle success (e.g., update UI if needed)
+                    console.log('Item updated successfully');
+                },
+                error: function () {
+                    console.error('Error updating item');
+                }
+            });
+        });
+    }); *@
+</script>

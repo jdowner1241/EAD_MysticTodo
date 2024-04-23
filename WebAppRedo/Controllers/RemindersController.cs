@@ -257,6 +257,33 @@ namespace WebAppRedo.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<JsonResult> UpdateIsCompleteAsync(int id)
+        {
+            // Logic to update the database record based on the item ID
+            // Example: Toggle the IsComplete value
+
+            var itemToUpdate = await _context.Reminders.FindAsync(id);
+            if (itemToUpdate != null)
+            {
+                itemToUpdate.IsComplete = !itemToUpdate.IsComplete;
+                await _context.SaveChangesAsync(); // Use SaveChangesAsync
+                return Json(new { success = true });
+            }
+            return Json(new { success = true });
+        }
+
+        public async Task<IActionResult> UpdateIsComplete(int? id)
+        {
+            var reminder = await _context.Reminders.FindAsync(id);
+            if (reminder != null)
+            {
+                reminder.IsComplete = !reminder.IsComplete;
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
 
     }

@@ -6,7 +6,7 @@ namespace WebAppRedo.Data.Models
 
     public class ReminderVM
     {
-        [Display(Name = "Active")]
+        [Display(Name = "Completed")]
         public bool IsComplete { get; set; }
 
         public int Id { get; set; }
