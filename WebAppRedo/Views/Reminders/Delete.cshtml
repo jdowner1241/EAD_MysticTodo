@@ -85,11 +85,14 @@
     <br />
     <hr />
 
-    <form asp-action="Delete" class="text-center">
+    <form asp-action="Delete" class="text-center align-content-center">
         <input type="hidden" asp-for="Id"  />
-        <input type="submit" value="Delete" class="btn btn-danger" />  |   
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn-danger rounded-pill text-white" />
+        <button class="bg-primary rounded-pill">
+            <a asp-action="Index" class="text-white text-decoration-none">Back to List</a>
+        </button>
     </form>
+
 
 </div>
 

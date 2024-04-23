@@ -8,15 +8,13 @@
 <h1 class="text-center">Task Reminder</h1>
 
 <br />
-@* <div class="text-center">
-    <button class="btn-light rounded-pill justify-content-center ">
-        <a asp-action="Create">Add New Task</a>
-    </button>
-</div> *@
-
 <div class="text-center">
-        <a asp-action="Create" class="fw-bold">Add New Task</a>
+    <button class="bg-primary rounded-pill">
+        <a asp-action="Create" class="text-white text-decoration-none">Add New Task</a>
+    </button>
 </div>
+
+
 
 <br />
 <hr />
@@ -71,10 +69,19 @@
                             @Html.DisplayFor(modelItem => item.PeriodicAlarm)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> | 
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> | <br />
-                            <a asp-action="UpdateIsComplete" asp-route-id="@item.Id">Set to Complete</a>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="text-white text-decoration-none">Edit</a>
+                            </button>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="text-white text-decoration-none">Details</a>
+                            </button>
+                            <button class="bg-danger rounded">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="text-white text-decoration-none">Delete</a>
+                            </button>
+                            <br />
+                            <button class="bg-primary rounded">
+                                <a asp-action="UpdateIsComplete" asp-route-id="@item.Id" class="text-white text-decoration-none">Set to Complete</a>
+                            </button>
                         </td>
                     </tr>
                 }
@@ -134,10 +141,19 @@
                             @Html.DisplayFor(modelItem => item.PeriodicAlarm)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>  |<br />
-                            <a asp-action="UpdateIsComplete" asp-route-id="@item.Id">Set to Active</a>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="text-white text-decoration-none">Edit</a>
+                            </button>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="text-white text-decoration-none">Details</a>
+                            </button>
+                            <button class="bg-danger rounded">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="text-white text-decoration-none">Delete</a>
+                            </button>
+                            <br />
+                            <button class="bg-primary rounded">
+                                <a asp-action="UpdateIsComplete" asp-route-id="@item.Id" class="text-white text-decoration-none">Set to Active</a>
+                            </button>
                         </td>
                     </tr>
                 }
