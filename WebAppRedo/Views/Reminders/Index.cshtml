@@ -5,7 +5,39 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-center">Task Reminder</h1>
+<link rel="stylesheet" href="~/WebAppRedo.styles.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
+
+<div class="text-center">
+    <h1 class="display-4 rakkas-regular ">Mystic To Do</h1>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/reminder.png" class="d-block mx-auto w-80" alt="reminders">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/task.png" class="d-block mx-auto w-80" alt="tasks">
+            </div>
+            <!-- You can add more carousel items here -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</div>
+
+<hr />
+<hr />
+<h1 class="text-center">Reminder List</h1>
 
 <br />
 <div class="text-center">
@@ -21,7 +53,7 @@
 <br />
 <h4 class="text-center">Active Reminders</h4>
 <br />
-<div class="container text-center justify-content-center">
+<div class="text-center justify-content-center">
     <div id="taskTable" class="text-center ">
         <table class="table table-bordered rounded-top bg-info text-black">
             <thead class="bg-secondary text-light">
@@ -165,25 +197,15 @@
 <hr />
 
 
-@* <script>
-    $(document).ready(function () {
-        $('.toggle-cell').change(function () {
-            var itemId = $(this).data('item-id');
-            var newValue = $(this).prop('checked'); // Get the new value (true or false)
+<style>
+    .rakkas-regular {
+        font-family: "Rakkas", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
 
-            // Send an AJAX request to update the database
-            $.ajax({
-                url: '@Url.Action("UpdateIsComplete", "Reminders")',
-                type: 'POST',
-                data: { id: itemId, isComplete: newValue },
-                success: function (result) {
-                    // Handle success (e.g., update UI if needed)
-                    console.log('Item updated successfully');
-                },
-                error: function () {
-                    console.error('Error updating item');
-                }
-            });
-        });
-    }); *@
-</script>
+    img {
+        width: 700px;
+        height: 300px;
+    }
+</style>

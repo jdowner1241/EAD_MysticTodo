@@ -257,7 +257,7 @@ namespace WebAppRedo.Controllers
             return View();
         }
 
-        [HttpPost]
+       /* [HttpPost]
         public async Task<JsonResult> UpdateIsCompleteAsync(int id)
         {
             // Logic to update the database record based on the item ID
@@ -271,7 +271,7 @@ namespace WebAppRedo.Controllers
                 return Json(new { success = true });
             }
             return Json(new { success = true });
-        }
+        }*/
 
         public async Task<IActionResult> UpdateIsComplete(int? id)
         {

@@ -47,7 +47,7 @@ namespace WebAppRedo
 
             _ = app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Reminders}/{action=Index}/{id?}");
 
            
 

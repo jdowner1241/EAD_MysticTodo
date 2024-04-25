@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\NewFolder\reminder.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\img\reminder.png" />
   </ItemGroup>
 
   <ItemGroup>
