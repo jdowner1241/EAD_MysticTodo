@@ -8,28 +8,24 @@
 <h1 class="text-center">Task Reminder</h1>
 
 <br />
-@* <div class="text-center">
-    <button class="btn-light rounded-pill justify-content-center ">
-        <a asp-action="Create">Add New Task</a>
-    </button>
-</div> *@
-
 <div class="text-center">
-        <a asp-action="Create">Add New Task</a>
+    <button class="bg-primary rounded-pill">
+        <a asp-action="Create" class="text-white text-decoration-none">Add New Task</a>
+    </button>
 </div>
+
+
 
 <br />
 <hr />
-@* <div class="form-group col">
-    <label asp-for="UserId" class="control-label fw-bold"></label>
-    <input asp-for="UserId" class="form-control bg-light" runat="server" ReadOnly="true" />
-    <span asp-validation-for="UserId" class="text-danger"></span>
-</div> *@
-
-<div id="taskTable" class="container text-center">
-        <table class="table table-bordered rounded-top">
-            <thead class="thead-primary bg-primary text-light">
-                <tr class="bg-body">
+<br />
+<h4 class="text-center">Active Reminders</h4>
+<br />
+<div class="container text-center justify-content-center">
+    <div id="taskTable" class="text-center ">
+        <table class="table table-bordered rounded-top bg-info text-black">
+            <thead class="bg-secondary text-light">
+                <tr class="bg-primary">
                     <th>
                         @Html.DisplayNameFor(model => model.IsComplete)
                     </th>
@@ -49,11 +45,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Where(modelItem => modelItem.IsComplete == false))
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.IsComplete)
+                            <div class="form-group form-check form-switch col">
+                                <label class="form-check-label fw-bold">
+                                    <input class="form-check-input toggle-cell" data-item-value="@item.IsComplete" type="checkbox" !checked />
+                                </label>
+                                <span class="text-danger"></span>
+                            </div>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
@@ -68,9 +69,19 @@
                             @Html.DisplayFor(modelItem => item.PeriodicAlarm)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="text-white text-decoration-none">Edit</a>
+                            </button>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="text-white text-decoration-none">Details</a>
+                            </button>
+                            <button class="bg-danger rounded">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="text-white text-decoration-none">Delete</a>
+                            </button>
+                            <br />
+                            <button class="bg-primary rounded">
+                                <a asp-action="UpdateIsComplete" asp-route-id="@item.Id" class="text-white text-decoration-none">Set to Complete</a>
+                            </button>
                         </td>
                     </tr>
                 }
@@ -78,4 +89,101 @@
         </table>
 
     </div>
+</div>
+<br />
+<h4 class="text-center">Completed Reminders</h4>
+<br />
+<div class="container text-center justify-content-center">
+    <div id="taskTable" class="text-center ">
+        <table class="table table-bordered rounded-top bg-info text-black">
+            <thead class="bg-secondary text-light">
+                <tr class="bg-primary">
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsComplete)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alarm)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TimeFrameSelection)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PeriodicAlarm)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Where(modelItem => modelItem.IsComplete == true))
+                {
+                    <tr>
+                        <td>
+                            <div class="form-group form-check form-switch col">
+                                <label class="form-check-label fw-bold">
+                                    <input class="form-check-input toggle-cell" data-item-value="@item.IsComplete" type="checkbox" checked />
+                                </label>
+                                <span class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Alarm)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TimeFrameSelection)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PeriodicAlarm)
+                        </td>
+                        <td>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="text-white text-decoration-none">Edit</a>
+                            </button>
+                            <button class="bg-primary rounded">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="text-white text-decoration-none">Details</a>
+                            </button>
+                            <button class="bg-danger rounded">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="text-white text-decoration-none">Delete</a>
+                            </button>
+                            <br />
+                            <button class="bg-primary rounded">
+                                <a asp-action="UpdateIsComplete" asp-route-id="@item.Id" class="text-white text-decoration-none">Set to Active</a>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
 <hr />
+
+
+@* <script>
+    $(document).ready(function () {
+        $('.toggle-cell').change(function () {
+            var itemId = $(this).data('item-id');
+            var newValue = $(this).prop('checked'); // Get the new value (true or false)
+
+            // Send an AJAX request to update the database
+            $.ajax({
+                url: '@Url.Action("UpdateIsComplete", "Reminders")',
+                type: 'POST',
+                data: { id: itemId, isComplete: newValue },
+                success: function (result) {
+                    // Handle success (e.g., update UI if needed)
+                    console.log('Item updated successfully');
+                },
+                error: function () {
+                    console.error('Error updating item');
+                }
+            });
+        });
+    }); *@
+</script>
