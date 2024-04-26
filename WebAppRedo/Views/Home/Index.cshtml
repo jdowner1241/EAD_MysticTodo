@@ -36,9 +36,10 @@
 @* <div class="col-12 d-flex justify-content-center align-items-center">
     <button class="btn btn-primary" type="submit">Reminder</button>
 </div> *@
-<div class="text-center">
-    <button class="bg-primary rounded-pill">
-        <a asp-action="Create" class="text-white text-decoration-none">Add New Task</a>
+<div class="text-center mt-4">
+    <button class="bg-primary btn-lg rounded-pill">
+        <a asp-controller="Reminders" class="text-white text-decoration-none"
+           asp-action="Index">Reminder</a>
     </button>
 </div>
 
@@ -57,6 +58,8 @@
        
     
     }
-    
+    c.center{
+      
+    }
 
 </style>
