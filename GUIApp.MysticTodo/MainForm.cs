@@ -282,89 +282,19 @@ namespace GUIApp.MysticTodo
         //
         private void gvReminderList_DoubleClick(object sender, EventArgs e)
         {
-            /*int viewerID = 0;
-            try
-            {
-                if (gvReminderTable.SelectedRows.Count > 0 && gvReminderTable.SelectedRows[0].Cells.Count > 0)
-                {
-                    // Access the selected row and its cells
-                    int? id = (int)gvReminderTable.SelectedRows[0].Cells["gvId"].Value as int?;
-
-                    if (id.HasValue)
-                    {
-                        viewerID = id.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex));
-            }
-
-            var viewReminder = new formViewReminder(viewerID);
-            if (!viewReminder.Visible) 
-            {
-                viewReminder.Show();
-            }*/
+   
         }
         //
         //
         private void gvInactiveReminderTable_DoubleClick(object sender, EventArgs e)
         {
-            /*int viewerID = 0;
 
-            try
-            {
-                  if (gvInactiveReminderTable.SelectedRows.Count > 0 && gvInactiveReminderTable.SelectedRows[0].Cells.Count > 0)
-                  {
-                      int? inactiveId = (int)gvInactiveReminderTable.SelectedRows[0].Cells["gvinactiveId"].Value as int?;
-
-                      if (inactiveId.HasValue)
-                      {
-                          viewerID = inactiveId.Value;
-                      }
-                  }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex));
-            }
-
-            var viewReminder = new formViewReminder(viewerID);
-            if (!viewReminder.Visible)
-            {
-                viewReminder.Show();
-            }*/
         }
         //
         //
         private void gvSearchReminderTable_DoubleClick(object sender, EventArgs e)
         {
-          /*  int viewerID = 0;
 
-            try
-            {
-
-                if (gvSearchReminderTable.SelectedRows.Count > 0 && gvSearchReminderTable.SelectedRows[0].Cells.Count > 0)
-                {
-                    var searchId = (int)gvSearchReminderTable.SelectedRows[0].Cells["gvSearchId"].Value as int?;
-
-                    if (searchId.HasValue)
-                    {
-                        viewerID = searchId.Value;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex));
-            }
-
-            var viewReminder = new formViewReminder(viewerID);
-            if (!viewReminder.Visible)
-            {
-                viewReminder.Show();
-            }*/
         }
         //
         //
