@@ -541,11 +541,25 @@ namespace GUIApp.MysticTodo
                         break;
 
                     case (int)tableStatus.completedTable:
-                        MessageBox.Show("This button cannot be used from the completed table!!!");
+                        selectActiveTaskTab();
+                        context.Reminders.Add(addReminderInfo());
+                        context.SaveChanges();
+                        MessageBox.Show("Reminder Added!!!");
+                        refreshActiveReminderTable();
+                        refreshInActiveReminderTable();
+                        refreshSearchReminderTable();
+                        clearFields();
                         break;
 
                     case (int)tableStatus.searchtable:
-                        MessageBox.Show("This button cannot be used from the search results table!!!");
+                        selectActiveTaskTab();
+                        context.Reminders.Add(addReminderInfo());
+                        context.SaveChanges();
+                        MessageBox.Show("Reminder Added!!!");
+                        refreshActiveReminderTable();
+                        refreshInActiveReminderTable();
+                        refreshSearchReminderTable();
+                        clearFields();
                         break;
 
                     default:
@@ -1045,6 +1059,23 @@ namespace GUIApp.MysticTodo
                 lGridViewTitleAllReminders.Visible = false;
 
                 currentTable = (int)tableStatus.searchtable;
+            }
+        }
+        //
+        //
+        private void selectActiveTaskTab()
+        {
+            if (!gvSearchReminderTable.Visible)
+            {
+                gvSearchReminderTable.Visible = false;
+                lGridViewTitleSearch.Visible = false;
+                gvReminderTable.Visible = true;
+                lGridViewTitleActive.Visible = true;
+                gvInactiveReminderTable.Visible = false;
+                lGridViewTitleCompleted.Visible = false;
+                lGridViewTitleAllReminders.Visible = false;
+
+                currentTable = (int)tableStatus.activeTable;
             }
         }
         // 
