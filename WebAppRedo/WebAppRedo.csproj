@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Database\**" />
+    <Content Remove="Database\**" />
+    <EmbeddedResource Remove="Database\**" />
+    <None Remove="Database\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\img\reminder.png" />
   </ItemGroup>
 
@@ -26,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Database\" />
     <Folder Include="wwwroot\css\NewFolder\" />
   </ItemGroup>
 
