@@ -28,7 +28,13 @@ namespace GUIApp.MysticTodo
         private bool messageShown = false;
         private enum tableStatus {activeTable, completedTable, searchtable}
         private int currentTable;
-        //private var gvRowselection; 
+        public enum Timeframe
+        {
+            Daily,
+            Weekly,
+            Monthly,
+            Yearly
+        };
 
 
         public MainForm()
@@ -58,10 +64,15 @@ namespace GUIApp.MysticTodo
             //tbSearch.AutoSize = false;
             //gvReminderTable.AutoSize = false;
 
-            var timeframe = mysticTodoDatabase.Timeframes.ToList();
+
+            /*var timeframe = mysticTodoDatabase.Timeframes.ToList();
             comboboxPerodicAlarm.DisplayMember = "Timeframe_Name";
             comboboxPerodicAlarm.ValueMember = "Timeframe_Key";
-            comboboxPerodicAlarm.DataSource = timeframe;
+            comboboxPerodicAlarm.DataSource = timeframe;*/
+
+            comboboxPerodicAlarm.DataSource = Enum.GetValues(typeof(Timeframe));
+            comboboxPerodicAlarm.DisplayMember = "ToString";
+            //comboboxPerodicAlarm.ValueMember = "ToString";
 
             refreshActiveReminderTable();
             refreshInActiveReminderTable();
@@ -1032,7 +1043,7 @@ namespace GUIApp.MysticTodo
                 checkboxPeriodicAlarm.Checked = reminder.Reminder_IsPeriodic ?? false;
                 if (checkboxPeriodicAlarm.Checked == true)
                 {
-                    comboboxPerodicAlarm.SelectedIndex = (int)reminder.Reminder_PeriodicIntervalLabel - 1;
+                    comboboxPerodicAlarm.SelectedIndex = (int)reminder.Reminder_PeriodicIntervalLabel -1;
                 }
                 else
                 {
@@ -1076,25 +1087,29 @@ namespace GUIApp.MysticTodo
                 if (checkboxPeriodicAlarm.Checked == true)
                 {
                     reminder.Reminder_PeriodicActive = true;
-                    int reminderPerodicAlarm = comboboxPerodicAlarm.SelectedIndex;
-                    reminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm + 1;
+                    //int reminderPerodicAlarm = comboboxPerodicAlarm.SelectedIndex;
+                    //reminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm + 1;
 
                     //Adds the required repeat date
-                    switch (reminder.Reminder_PeriodicIntervalLabel)
+                    switch (comboboxPerodicAlarm.SelectedIndex)
                     {
-                        case 1:
+                        case (int)Timeframe.Daily:
+                            reminder.Reminder_PeriodicIntervalLabel = 1;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(1));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
-                        case 2:
+                        case (int)Timeframe.Weekly:
+                            reminder.Reminder_PeriodicIntervalLabel = 2;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(7));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
-                        case 3:
+                        case (int)Timeframe.Monthly:
+                            reminder.Reminder_PeriodicIntervalLabel = 3;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddMonths(1));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
-                        case 4:
+                        case (int)Timeframe.Yearly:
+                            reminder.Reminder_PeriodicIntervalLabel = 4;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddYears(1));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
@@ -1129,25 +1144,29 @@ namespace GUIApp.MysticTodo
                 if (checkboxPeriodicAlarm.Checked == true)
                 {
                     reminder.Reminder_PeriodicActive = true;
-                    int reminderPerodicAlarm = comboboxPerodicAlarm.SelectedIndex;
-                    reminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm + 1;
+                    //int reminderPerodicAlarm = comboboxPerodicAlarm.SelectedIndex;
+                    //reminder.Reminder_PeriodicIntervalLabel = reminderPerodicAlarm + 1;
 
                     //Adds the required repeat date
-                    switch (reminder.Reminder_PeriodicIntervalLabel)
+                    switch (comboboxPerodicAlarm.SelectedIndex)
                     {
-                        case 1:
+                        case (int)Timeframe.Daily:
+                            reminder.Reminder_PeriodicIntervalLabel = 1;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(1));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
-                        case 2:
+                        case (int)Timeframe.Weekly:
+                            reminder.Reminder_PeriodicIntervalLabel = 2;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddDays(7));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
-                        case 3:
+                        case (int)Timeframe.Monthly:
+                            reminder.Reminder_PeriodicIntervalLabel = 3;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddMonths(1));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
-                        case 4:
+                        case (int)Timeframe.Yearly:
+                            reminder.Reminder_PeriodicIntervalLabel = 4;
                             reminder.Reminder_NextPeriodicDate = (reminderAlarm.AddYears(1));
                             reminder.Reminder_NextPeriodicTime = reminderAlarmTime;
                             break;
